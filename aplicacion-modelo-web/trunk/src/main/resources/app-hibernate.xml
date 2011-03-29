@@ -13,19 +13,16 @@
             <list>
         <!-- Agregar los mappings necesarios -->
                 <value>com.dosideas.app.domain.Persona</value>
-
             </list>
         </property>
         <property name="hibernateProperties">
             <props>
 
-                <prop key="hibernate.dialect">
-          org.hibernate.dialect.Oracle9Dialect
-                </prop>
+                <prop key="hibernate.dialect">org.hibernate.dialect.HSQLDialect</prop>
 
         <!--  Descomentar si se usa Hibernate 3 y Hibernate 2 a la vez
           <prop key="hibernate.transaction.factory_class">org.hibernate.transaction.JTATransactionFactory</prop>-->
-                <prop key="hibernate.show_sql">false</prop>
+                <prop key="hibernate.show_sql">true</prop>
             </props>
         </property>
     </bean>
