@@ -36,18 +36,4 @@ public class PersonaBoImpl implements PersonaBo {
         return personaDao.buscarTodos();
     }
 
-    /**
-     * @return the personaDao
-     */
-    public PersonaDao getPersonaDao() {
-        return personaDao;
-    }
-
-    /**
-     * @param personaDao the personaDao to set
-     */
-    public void setPersonaDao(PersonaDao personaDao) {
-        this.personaDao = personaDao;
-    }
-
 }
