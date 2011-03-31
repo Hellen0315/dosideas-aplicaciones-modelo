@@ -28,7 +28,6 @@ public class PersonaController {
 
     @RequestMapping(value = "/guardar", method=RequestMethod.POST)
     public @ResponseBody String guardar(@RequestBody Persona persona) {
-        System.out.println("################Guardar##############");
         personaBo.guardar(persona);
         return "Ok";
     }
