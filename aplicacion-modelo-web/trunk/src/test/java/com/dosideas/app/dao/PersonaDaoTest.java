@@ -127,6 +127,7 @@ public class PersonaDaoTest {
         persona.setEmail("pepe sapo.com");
         try {
             instance.guardar(persona);
+            sessionFactory.getCurrentSession().flush();
         } catch (ConstraintViolationException ex) {
             for (ConstraintViolation error : ex.getConstraintViolations()) {
                 Assert.assertEquals("Email invalido", error.getMessage());
