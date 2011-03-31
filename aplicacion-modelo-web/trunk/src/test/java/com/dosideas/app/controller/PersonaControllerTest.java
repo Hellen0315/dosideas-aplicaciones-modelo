@@ -52,9 +52,9 @@ public class PersonaControllerTest {
     }
 
     @Test
-    public void buscarTodos() throws NoSuchFieldException {
+    public void buscarTodos() {
 
-    
+
         /**
          * Workaround de Colecciones tipadas en restTemplate
          * En lugar de una collection ponemos una Array del objeto.
@@ -65,7 +65,4 @@ public class PersonaControllerTest {
         Assert.assertNotNull(personas);
 
     }
-
-
-
 }
