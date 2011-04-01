@@ -113,7 +113,7 @@ public class PersonaBoTest {
 
     }
 
-    @Test
+    @Test(expected=ConstraintViolationException.class)
     public void guardar_conEmailIncorrecto_lanzaInvalidStateException() {
         Persona persona = new Persona();
         persona.setNombre("Sapo");
@@ -126,10 +126,11 @@ public class PersonaBoTest {
                 Assert.assertEquals("Email invalido", error.getMessage());
                 Assert.assertEquals(persona.getEmail(), error.getInvalidValue());
             }
+            throw ex;
         }
     }
 
-    @Test
+    @Test(expected=ConstraintViolationException.class)
     public void guardar_conEmailVacio_lanzaInvalidStateException() {
         Persona persona = new Persona();
         persona.setNombre("Sapo");
@@ -142,6 +143,8 @@ public class PersonaBoTest {
                 Assert.assertEquals("Email obligatorio", error.getMessage());
                 Assert.assertEquals(persona.getEmail(), error.getInvalidValue());
             }
+            
+            throw ex;
         }
     }
 }
