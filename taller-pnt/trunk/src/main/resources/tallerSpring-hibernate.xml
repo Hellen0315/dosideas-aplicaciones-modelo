@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN"
+    "http://www.springframework.org/dtd/spring-beans-2.0.dtd">
+
+<beans>
+
+    <bean id="defaultSessionFactory"
+    class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">
+        <property name="dataSource" ref="defaultDataSource" />
+        
+        <property name="annotatedClasses">
+            <list>
+        <!-- Agregar los mappings necesarios -->
+                                
+                <value>com.thales.tallerspring.domain.Alumno</value>
+                <value>com.thales.tallerspring.domain.Curso</value>
+                <value>com.thales.tallerspring.domain.Materia</value>
+                
+                
+            </list>
+        </property>
+        <property name="hibernateProperties">
+            <props>
+
+                <prop key="hibernate.dialect">
+                    org.hibernate.dialect.HSQLDialect
+                </prop>
+
+        <!--  Descomentar si se usa Hibernate 3 y Hibernate 2 a la vez
+          <prop key="hibernate.transaction.factory_class">org.hibernate.transaction.JTATransactionFactory</prop>-->
+                <prop key="hibernate.show_sql">true</prop>
+            </props>
+        </property>
+        
+        
+    </bean>
+
+</beans>
+
