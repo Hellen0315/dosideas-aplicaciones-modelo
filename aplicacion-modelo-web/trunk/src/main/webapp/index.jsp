@@ -3,6 +3,13 @@
 <p>
     Esta aplicación contiene varios ejemplos de uso concreto de tecnologías web Java. 
 </p>
+<h4>Ejemplos</h4>
 <ul>
     <li><a href="listaPersonasConDatatable.jsp">Lista de personas usando jquery-datatable</a></li>
 </ul>
+
+<h4>Template general</h4>
+Toda esta aplicación utiliza Apache Tiles como framework de template para la 
+presentación de páginas JSP. Está configurado de forma sencilla utilizando el
+filter <code>TilesDecorationFilter</code> (ver detalles de configuración en el 
+arhcivo <code>WEB-INF/web.xml</code> y <code>WEB-INF/tiles.xml</code>)
