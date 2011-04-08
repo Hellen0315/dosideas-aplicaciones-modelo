@@ -7,21 +7,16 @@
     <bean id="defaultSessionFactory"
     class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">
         <property name="dataSource" ref="dataSource" />
-        
-
         <property name="annotatedClasses">
             <list>
-        <!-- Agregar los mappings necesarios -->
                 <value>com.dosideas.app.domain.Persona</value>
             </list>
         </property>
         <property name="hibernateProperties">
             <props>
-
                 <prop key="hibernate.dialect">org.hibernate.dialect.HSQLDialect</prop>
-
-        <!--  Descomentar si se usa Hibernate 3 y Hibernate 2 a la vez
-          <prop key="hibernate.transaction.factory_class">org.hibernate.transaction.JTATransactionFactory</prop>-->
+               <!--  Descomentar si se usa Hibernate 3 y Hibernate 2 a la vez
+               <prop key="hibernate.transaction.factory_class">org.hibernate.transaction.JTATransactionFactory</prop>-->
                 <prop key="hibernate.show_sql">true</prop>
             </props>
         </property>
