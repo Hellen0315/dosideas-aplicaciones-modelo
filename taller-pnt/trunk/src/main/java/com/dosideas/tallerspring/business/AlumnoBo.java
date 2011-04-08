@@ -3,9 +3,9 @@
  * and open the template in the editor.
  */
 
-package com.thales.tallerspring.business;
+package com.dosideas.tallerspring.business;
 
-import com.thales.tallerspring.domain.Alumno;
+import com.dosideas.tallerspring.domain.Alumno;
 
 /**
  *

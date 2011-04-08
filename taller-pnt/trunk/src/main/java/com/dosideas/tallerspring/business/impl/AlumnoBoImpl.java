@@ -2,11 +2,11 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.thales.tallerspring.business.impl;
+package com.dosideas.tallerspring.business.impl;
 
-import com.thales.tallerspring.business.AlumnoBo;
-import com.thales.tallerspring.dao.AlumnoDao;
-import com.thales.tallerspring.domain.Alumno;
+import com.dosideas.tallerspring.business.AlumnoBo;
+import com.dosideas.tallerspring.dao.AlumnoDao;
+import com.dosideas.tallerspring.domain.Alumno;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

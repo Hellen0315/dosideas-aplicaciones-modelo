@@ -12,9 +12,9 @@
             <list>
         <!-- Agregar los mappings necesarios -->
                                 
-                <value>com.thales.tallerspring.domain.Alumno</value>
-                <value>com.thales.tallerspring.domain.Curso</value>
-                <value>com.thales.tallerspring.domain.Materia</value>
+                <value>com.dosideas.tallerspring.domain.Alumno</value>
+                <value>com.dosideas.tallerspring.domain.Curso</value>
+                <value>com.dosideas.tallerspring.domain.Materia</value>
                 
                 
             </list>

@@ -2,10 +2,10 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.thales.tallerspring.dao.impl;
+package com.dosideas.tallerspring.dao.impl;
 
-import com.thales.tallerspring.dao.AlumnoDao;
-import com.thales.tallerspring.domain.Alumno;
+import com.dosideas.tallerspring.dao.AlumnoDao;
+import com.dosideas.tallerspring.domain.Alumno;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;

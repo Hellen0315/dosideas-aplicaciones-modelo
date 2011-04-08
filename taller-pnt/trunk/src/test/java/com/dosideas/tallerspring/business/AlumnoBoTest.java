@@ -2,11 +2,12 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.thales.tallerspring.business;
+package com.dosideas.tallerspring.business;
 
-import com.thales.tallerspring.domain.Alumno;
-import com.thales.tallerspring.domain.Curso;
-import com.thales.tallerspring.domain.Materia;
+import com.dosideas.tallerspring.business.AlumnoBo;
+import com.dosideas.tallerspring.domain.Alumno;
+import com.dosideas.tallerspring.domain.Curso;
+import com.dosideas.tallerspring.domain.Materia;
 import java.util.ArrayList;
 import java.util.Collection;
 import javax.sql.DataSource;
