@@ -1,0 +1,29 @@
+/* 
+    Document   : default
+    Created on : 08/04/2011, 10:25:42
+    Author     : ldeseta
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+/* 
+   TODO customize this sample style
+   Syntax recommendation http://www.w3.org/TR/REC-CSS2/
+*/
+
+body { 
+    font-family: Verdana, Arial, Helvetica;
+    margin: 0px;
+}
+
+div.header {
+   background-color: bisque;
+   font-size: 0.7em;
+   padding: 1em 3em 1em 3em;
+   margin: 0px 0px 30px 0px;
+}
+
+div.wrapper {
+    margin: 0px 20px;
+}
+

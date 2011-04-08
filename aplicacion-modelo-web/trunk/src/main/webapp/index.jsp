@@ -1,16 +1,8 @@
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
-   "http://www.w3.org/TR/html4/loose.dtd">
 
-<html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>AplicaciÃ³n base</title>
-    </head>
-    <body>
-        <h1>AplicaciÃ³n base</h1>
-        <ul>
-            <li><a href="listadoPersona.jsp">lista Personas</a></li>
-        </ul>
-    </body>
-</html>
+<h1>Dos Ideas - Aplicación modelo web</h1>
+<p>
+    Esta aplicación contiene varios ejemplos de uso concreto de tecnologías web Java. 
+</p>
+<ul>
+    <li><a href="listaPersonasConDatatable.jsp">Lista de personas usando jquery-datatable</a></li>
+</ul>
