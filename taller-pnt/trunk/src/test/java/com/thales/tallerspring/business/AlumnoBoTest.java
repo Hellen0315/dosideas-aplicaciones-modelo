@@ -10,6 +10,8 @@ import com.thales.tallerspring.domain.Materia;
 import java.util.ArrayList;
 import java.util.Collection;
 import javax.sql.DataSource;
+import javax.validation.ConstraintViolation;
+import javax.validation.ConstraintViolationException;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -129,5 +131,45 @@ public class AlumnoBoTest {
         Assert.assertEquals(filasIniMaterias , filasFinMaterias);
     }
 
+    @Test
+    public void guardar_alumnoConEmailIncorrecto_lanzaConstraintViolationException() {
+
+        Alumno alumno = new Alumno();
+        alumno.setNombre("Sapo");
+        alumno.setApellido("Pepe");
+        alumno.setEmail("pepe sapo");
+        try {
+
+            instance.guardar(alumno);
+            Assert.fail();
+            
+        } catch (ConstraintViolationException ex) {
+            for (ConstraintViolation error : ex.getConstraintViolations()) {
+                Assert.assertEquals("not a well-formed email address", error.getMessage());
+                Assert.assertEquals(alumno.getEmail(), error.getInvalidValue());
+            }
+        }
+
+    }
+    
+    @Test
+    public void guardar_alumnoConVacio_lanzaConstraintViolationException() {
+
+        Alumno alumno = new Alumno();
+        alumno.setNombre("Sapo");
+        alumno.setApellido("Pepe");
+                
+        try {
+
+            instance.guardar(alumno);
+            Assert.fail();
+            
+        } catch (ConstraintViolationException ex) {
+            for (ConstraintViolation error : ex.getConstraintViolations()) {
+                Assert.assertEquals("may not be null", error.getMessage());
+                Assert.assertEquals(alumno.getEmail(), error.getInvalidValue());
+            }
+        }
+    }
     
 }

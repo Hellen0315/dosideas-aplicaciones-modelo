@@ -21,6 +21,7 @@ import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
 import org.hibernate.validator.constraints.Email;
+import org.hibernate.validator.constraints.NotEmpty;
 
 /**
  *
@@ -39,8 +40,8 @@ public class Alumno implements Serializable {
     private String Apellido;
     
     @Column
-    @Email(message="Email invalido")
-    @NotNull(message="Email obligatorio")
+    @Email
+    @NotNull
     private String email;
     
     
