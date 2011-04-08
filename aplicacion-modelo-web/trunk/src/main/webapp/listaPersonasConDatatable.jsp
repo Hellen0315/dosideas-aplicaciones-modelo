@@ -1,6 +1,16 @@
 <%@ page isELIgnored="true" %>
 
 <h1>Listado de personas</h1>
+<p>
+    Esta página utiliza: 
+    <ul>
+        <li>Servicios REST</li>
+        <li>jQuery para invocar a REST</li>
+        <li>jQuery Template para dibujar los datos</li>
+        <li>jQuery Datatable para armar la tabla final</li>
+    </ul>
+</p>
+
 <table id="listaDePersonas" class="display">
     <thead>
         <tr>
