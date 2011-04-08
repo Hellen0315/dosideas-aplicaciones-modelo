@@ -9,13 +9,10 @@ function personaService_buscarTodos(onSuccessCallback) {
 }
 
 function personaService_guardar(data, onSuccessCallback) {
-    alert("guardar: "+ data);
     $.postJSON("/app/persona/guardar",data,successCallback);
 }
 
 $.postJSON = function(url, data, successCallback) {
-    
-    alert("POST: "+ data);
     return jQuery.ajax({
         type: 'POST',
         url: url,
