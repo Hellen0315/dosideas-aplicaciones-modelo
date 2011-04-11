@@ -6,7 +6,7 @@
     <artifactId>tallerSpring-3</artifactId>
     <packaging>war</packaging>
     <version>1.0-SNAPSHOT</version>
-    <name>tallerSpring-3 JEE5 Webapp</name>
+    <name>taller-pnt Webapp</name>
     <url>http://maven.apache.org</url>
     <dependencies>
         <dependency>
