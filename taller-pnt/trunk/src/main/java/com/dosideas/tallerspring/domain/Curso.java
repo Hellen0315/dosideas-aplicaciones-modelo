@@ -14,6 +14,7 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.CascadeType;
 
 /**
  *
@@ -31,7 +32,7 @@ public class Curso implements Serializable {
     private String titulo;
     
     @ManyToOne(fetch= FetchType.EAGER)
-    @Cascade(org.hibernate.annotations.CascadeType.SAVE_UPDATE)
+    @Cascade(CascadeType.SAVE_UPDATE)
     private Materia materia;
     
     

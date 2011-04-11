@@ -18,10 +18,10 @@ import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.CascadeType;
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
 import org.hibernate.validator.constraints.Email;
-import org.hibernate.validator.constraints.NotEmpty;
 
 /**
  *
@@ -46,7 +46,7 @@ public class Alumno implements Serializable {
     
     
     @ManyToMany(fetch=FetchType.EAGER)
-    @Cascade(org.hibernate.annotations.CascadeType.SAVE_UPDATE)
+    @Cascade(CascadeType.SAVE_UPDATE)
     @JoinTable(name = "alumno_curso", joinColumns = {
         @JoinColumn(name = "id_alumno")},
     inverseJoinColumns = {
