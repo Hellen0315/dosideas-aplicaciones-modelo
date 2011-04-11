@@ -31,8 +31,8 @@ public class Curso implements Serializable {
     @Column
     private String titulo;
     
-    @ManyToOne(fetch= FetchType.EAGER)
-    @Cascade(CascadeType.SAVE_UPDATE)
+    /*@ManyToOne(fetch= FetchType.EAGER)
+    @Cascade(CascadeType.SAVE_UPDATE)*/
     private Materia materia;
     
     
