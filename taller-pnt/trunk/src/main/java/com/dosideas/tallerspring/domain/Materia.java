@@ -34,12 +34,12 @@ public class Materia implements Serializable {
     @Column
     private String nombre;
     
-    /*@OneToMany(cascade= CascadeType.ALL)
+    @OneToMany(cascade= CascadeType.ALL)
     @JoinTable(name = "curso_materia", joinColumns = {
         @JoinColumn(name = "id_materia")},
     inverseJoinColumns = {
         @JoinColumn(name = "id_curso")})
-    @Fetch(FetchMode.SUBSELECT)*/
+    @Fetch(FetchMode.SUBSELECT)
     private Collection<Curso> cursos;
 
     /**

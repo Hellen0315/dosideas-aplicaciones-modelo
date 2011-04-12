@@ -44,14 +44,14 @@ public class Alumno implements Serializable {
     @NotNull
     private String email;
     
-    /*
+    
     @ManyToMany(fetch=FetchType.EAGER)
     @Cascade(CascadeType.SAVE_UPDATE)
     @JoinTable(name = "alumno_curso", joinColumns = {
         @JoinColumn(name = "id_alumno")},
     inverseJoinColumns = {
         @JoinColumn(name = "id_curso")})
-    @Fetch(FetchMode.SUBSELECT)*/
+    @Fetch(FetchMode.SUBSELECT)
     private Collection<Curso> cursos;
     
     
