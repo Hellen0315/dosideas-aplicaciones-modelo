@@ -4,7 +4,6 @@
  */
 package com.dosideas.tallerspring.dao;
 
-import com.dosideas.tallerspring.dao.AlumnoDao;
 import com.dosideas.tallerspring.domain.Alumno;
 import com.dosideas.tallerspring.domain.Curso;
 import com.dosideas.tallerspring.domain.Materia;
