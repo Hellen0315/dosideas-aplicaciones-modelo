@@ -1,13 +1,9 @@
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
-   "http://www.w3.org/TR/html4/loose.dtd">
+<h1>Dos Ideas - Taller PNT</h1>
+<p>
+    Esta aplicación contiene varios ejemplos de uso concreto de tecnologías web Java. 
+</p>
+<h4>Ejemplos</h4>
+<ul>
+    <li><a href="listaAlumnosConDatatable.jsp">Lista de personas usando jquery-datatable</a></li>
+</ul>
 
-<html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
-    </head>
-    <body>
-        <h1>Hello World!</h1>
-    </body>
-</html>

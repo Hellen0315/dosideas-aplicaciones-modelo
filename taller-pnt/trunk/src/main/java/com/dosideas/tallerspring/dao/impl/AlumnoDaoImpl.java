@@ -6,6 +6,7 @@ package com.dosideas.tallerspring.dao.impl;
 
 import com.dosideas.tallerspring.dao.AlumnoDao;
 import com.dosideas.tallerspring.domain.Alumno;
+import java.util.Collection;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +14,7 @@ import org.springframework.stereotype.Repository;
 
 /**
  *
- * @author parivero
+ * @author DosIdeas
  */
 @Repository
 public class AlumnoDaoImpl implements AlumnoDao {
@@ -31,12 +32,19 @@ public class AlumnoDaoImpl implements AlumnoDao {
     }
 
 
-    public void borrarPorId(Long id) {
+    public void eliminarPorId(Long id) {
         
         Session session = sessionFactory.getCurrentSession();
         
         Alumno alumno = (Alumno) session.get(Alumno.class, id);
 
         session.delete(alumno);
+    }
+
+    public Collection<Alumno> buscarTodos() {
+        
+        Session session = sessionFactory.getCurrentSession();
+        
+        return session.createCriteria(Alumno.class).list();
     }
 }

@@ -28,7 +28,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 /**
  *
- * @author parivero
+ * @author DosIdeas
  */
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = {"classpath:tallerSpring-context.xml",
@@ -109,20 +109,20 @@ public class AlumnoDaoTest {
 
         Assert.assertNotNull(alumno);
         Assert.assertEquals("Jose", alumno.getNombre());
-        Assert.assertEquals(2, alumno.getCursos().size());
+        Assert.assertEquals(3, alumno.getCursos().size());
 
 
     }
 
     @Test
-    public void borrarPorId_conIdValido_borraAlumno() {
+    public void eliminarPorId_conIdValido_borraAlumno() {
 
         int filasIniAlumnos = SimpleJdbcTestUtils.countRowsInTable(simpleJdbcTemplate, "alumnos");
         int filasIniAlumnoCurso = SimpleJdbcTestUtils.countRowsInTable(simpleJdbcTemplate, "alumno_curso");
         int filasIniCursos = SimpleJdbcTestUtils.countRowsInTable(simpleJdbcTemplate, "cursos");
         int filasIniMaterias = SimpleJdbcTestUtils.countRowsInTable(simpleJdbcTemplate, "materias");
 
-        instance.borrarPorId(2L);
+        instance.eliminarPorId(2L);
         session.getCurrentSession().flush();
 
         int filasFinAlumnos = SimpleJdbcTestUtils.countRowsInTable(simpleJdbcTemplate, "alumnos");

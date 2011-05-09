@@ -4,7 +4,6 @@
  */
 package com.dosideas.tallerspring.business;
 
-import com.dosideas.tallerspring.business.AlumnoBo;
 import com.dosideas.tallerspring.domain.Alumno;
 import com.dosideas.tallerspring.domain.Curso;
 import com.dosideas.tallerspring.domain.Materia;
@@ -13,7 +12,7 @@ import java.util.Collection;
 import javax.sql.DataSource;
 import javax.validation.ConstraintViolation;
 import javax.validation.ConstraintViolationException;
-import org.junit.Assert;
+import junit.framework.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -25,9 +24,10 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.jdbc.SimpleJdbcTestUtils;
 
+
 /**
  *
- * @author parivero
+ * @author DosIdeas
  */
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = {"classpath:tallerSpring-context.xml",
@@ -38,10 +38,8 @@ public class AlumnoBoTest {
 
     @Autowired
     private AlumnoBo instance;
-    
     @Autowired
     private DataSource dataSource;
-    
     private SimpleJdbcTemplate simpleJdbcTemplate;
 
     @Before
@@ -107,7 +105,7 @@ public class AlumnoBoTest {
         
         Assert.assertNotNull(alumno);
         Assert.assertEquals("Jose", alumno.getNombre());
-        Assert.assertEquals(2, alumno.getCursos().size());
+        Assert.assertEquals(3, alumno.getCursos().size());
         
     }
     
@@ -119,7 +117,7 @@ public class AlumnoBoTest {
         int filasIniCursos = SimpleJdbcTestUtils.countRowsInTable(simpleJdbcTemplate, "cursos");
         int filasIniMaterias = SimpleJdbcTestUtils.countRowsInTable(simpleJdbcTemplate, "materias");
         
-        instance.borrarPorId(2L);
+        instance.eliminarPorId(2L);
                      
         int filasFinAlumnos = SimpleJdbcTestUtils.countRowsInTable(simpleJdbcTemplate, "alumnos");
         int filasFinAlumnoCurso = SimpleJdbcTestUtils.countRowsInTable(simpleJdbcTemplate, "alumno_curso");
@@ -172,5 +170,4 @@ public class AlumnoBoTest {
             }
         }
     }
-    
 }

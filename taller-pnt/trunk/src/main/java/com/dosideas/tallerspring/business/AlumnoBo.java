@@ -6,15 +6,17 @@
 package com.dosideas.tallerspring.business;
 
 import com.dosideas.tallerspring.domain.Alumno;
+import java.util.Collection;
 
 /**
  *
- * @author parivero
+ * @author DosIdeas
  */
 public interface AlumnoBo {
 
     public void guardar(Alumno alumno);
     public Alumno buscarPorId(Long id);
-    public void borrarPorId(Long id);
+    public void eliminarPorId(Long id);
+    public Collection<Alumno> buscarTodos();
 
 }

@@ -7,13 +7,14 @@ package com.dosideas.tallerspring.business.impl;
 import com.dosideas.tallerspring.business.AlumnoBo;
 import com.dosideas.tallerspring.dao.AlumnoDao;
 import com.dosideas.tallerspring.domain.Alumno;
+import java.util.Collection;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 /**
  *
- * @author parivero
+ * @author DosIdeas
  */
 @Service
 @Transactional
@@ -30,8 +31,12 @@ public class AlumnoBoImpl implements AlumnoBo {
         return alumnoDao.buscarPorId(id);
     }
 
-    public void borrarPorId(Long id) {
-        alumnoDao.borrarPorId(id);
+    public void eliminarPorId(Long id) {
+        alumnoDao.eliminarPorId(id);
+    }
+
+    public Collection<Alumno> buscarTodos() {
+        return alumnoDao.buscarTodos();
     }
     
     
