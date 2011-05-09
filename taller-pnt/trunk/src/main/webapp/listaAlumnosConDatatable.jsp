@@ -20,8 +20,8 @@
 
     <div class="alumno">
         <div class="header">
-            <h1 class="header"><a>${apellido}, ${nombre}</a></h1>
-            <h1 class="header">${email}</h1>
+            <h1>${apellido}, ${nombre}</h1>
+            <small>${email}</small>
         </div>
         <div class="content">
             <h2>Cursos</h2>
