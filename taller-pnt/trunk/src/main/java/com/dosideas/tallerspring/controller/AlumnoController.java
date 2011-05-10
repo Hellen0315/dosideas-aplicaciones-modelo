@@ -31,6 +31,7 @@ public class AlumnoController {
     private AlumnoBo alumnoBo;
     
     @RequestMapping(value = "/alta", method=RequestMethod.PUT)
+    @ResponseStatus(HttpStatus.NO_CONTENT)
     public void alta(@RequestBody @Valid Alumno alumno) {
         alumnoBo.guardar(alumno);
     }
