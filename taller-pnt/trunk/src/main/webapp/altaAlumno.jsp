@@ -58,7 +58,7 @@
     }
     
     function onErrorSave(data) {        
-        alert(data.responseText);
+        
         $().toastmessage('showErrorToast', 'Error realizando alta de alumno: '+data.responseText);
         
     }
