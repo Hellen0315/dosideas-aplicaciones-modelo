@@ -9,6 +9,16 @@
     <name>taller-pnt Webapp</name>
     <url>http://maven.apache.org</url>
     <dependencies>
+        <dependency>  
+            <groupId>org.restlet.jse</groupId>  
+            <artifactId>org.restlet</artifactId>  
+            <version>2.0.0</version>  
+        </dependency>  
+        <dependency>  
+            <groupId>org.restlet.jse</groupId>  
+            <artifactId>org.restlet.ext.simple</artifactId>  
+            <version>2.0.0</version>  
+        </dependency>  
         <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>servlet-api</artifactId>
@@ -125,6 +135,11 @@
             <name>JBoss repository</name>
             <url>http://repository.jboss.org/nexus/content/groups/public-jboss</url>
         </repository>
+        <repository>  
+            <id>maven-restlet</id>  
+            <name>Public online Restlet repository</name>  
+            <url>http://maven.restlet.org</url>  
+        </repository>  
     </repositories>
 
     <properties>

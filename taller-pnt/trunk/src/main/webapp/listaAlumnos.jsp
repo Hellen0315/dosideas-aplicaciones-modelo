@@ -45,16 +45,17 @@
     });
 
     /**
-     * Dibuja la lista de alumnoss en la tabla.
+     * Dibuja la lista de alumnoss.
      * @param data un array de Alumnos.
      */
     function dibujarAlumnos(data) {
         
         $("#listaAlumnos").empty();
+        $( "#listaAlumnos" ).sortable({revert: true});
         $("#contactTemplate" ).tmpl(data).appendTo("#listaAlumnos");
         
     }
-    
+        
     function borrarAlumno(id) {
         alumnoService_eliminar(id,onSuccessDelete);
     }
@@ -62,6 +63,8 @@
     function onSuccessDelete() {        
         alumnoService_buscarTodos(dibujarAlumnos); 
     }
+    
+    
 
 </script>
 

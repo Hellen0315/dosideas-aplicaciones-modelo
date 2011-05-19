@@ -23,6 +23,7 @@ public class AlumnoDaoImpl implements AlumnoDao {
     private SessionFactory sessionFactory;
 
     public void guardar(Alumno alumno) {
+        System.out.println("GUARDAR DAO");
         sessionFactory.getCurrentSession().save(alumno);
 
     }

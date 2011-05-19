@@ -20,6 +20,15 @@
     <tx:annotation-driven transaction-manager="txManager"/>
     
     <mvc:annotation-driven/>
-    
-    
+        
+    <bean id="methodHandlerExceptionResolver" 
+        class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerExceptionResolver">
+        <property name="messageConverters">
+            <list>
+                <bean class="org.springframework.http.converter.json.MappingJacksonHttpMessageConverter"/>
+            </list>
+        </property>
+    </bean>
+
+
 </beans>

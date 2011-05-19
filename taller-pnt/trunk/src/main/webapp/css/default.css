@@ -42,12 +42,10 @@ div.header a {
 
 
 div.alumno {
-    width:90%;
     margin:20px;
     border:1px solid gray;
     border-radius: 6px;
     box-shadow: 2px 2px 10px gray;
-    line-height:150%;
     padding:0.5em;
 }
 

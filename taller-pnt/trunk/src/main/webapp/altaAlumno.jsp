@@ -16,21 +16,19 @@
             <div class="header_alta">
                 <h1>Formulario de Alta</h1>
             </div>
-            
-                <label> Nombre : </label>
-                <input type="text" name="nombre" />
-                <label> Apellido : </label>
-                <input type="text" name="apellido"  />
-                <label> Email : </label>
-                <input type="text" name="email"  />
-            
+
+            <label> Nombre : </label>
+            <input type="text" name="nombre" />
+            <label> Apellido : </label>
+            <input type="text" name="apellido"  />
+            <label> Email : </label>
+            <input type="text" name="email"  />
+
         </fieldset>
         <input type="submit" value="Guardar Alumno" id="save"/>
         <input type="reset" value="Cancelar" id="saveCancel" />
     </div>
 </form>
-
-
 
 <script type="text/javascript">
 
@@ -38,13 +36,12 @@
         
         $("#save").submit(function(){
             
-        guardar($('#save').serializeObject());
+            guardar($('#save').serializeObject());
             
             return false;
         });
         
     });
-            
            
     function guardar(data) {        
         alumnoService_guardar(data, onSuccessSave,onCompleteSave,onErrorSave); 
@@ -60,8 +57,9 @@
         
     }
     
-    function onErrorSave() {        
-        $().toastmessage('showErrorToast', 'Error realizando alta de alumno');
+    function onErrorSave(data) {        
+        alert(data.responseText);
+        $().toastmessage('showErrorToast', 'Error realizando alta de alumno: '+data.responseText);
         
     }
     
