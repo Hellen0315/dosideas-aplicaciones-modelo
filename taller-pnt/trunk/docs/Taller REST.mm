@@ -1,6 +1,6 @@
 <map version="0.9.0">
 <!-- To view this file, download free mind mapping software FreeMind from http://freemind.sourceforge.net -->
-<node CREATED="1305639049794" ID="ID_1805969397" MODIFIED="1305895340377" STYLE="fork">
+<node CREATED="1305639049794" ID="ID_1805969397" MODIFIED="1305918188731" STYLE="fork">
 <richcontent TYPE="NODE"><html>
   <head>
     
@@ -13,7 +13,52 @@
       
     </p>
     <p>
+      Los metodos HTTP se dividen en:
+    </p>
+    <p>
+      
+    </p>
+    <p>
+      Seguros:
+    </p>
+    <p>
+      GET (No provocan cambios en el servicio y se pueden invocar repetidas veces de manera segura - CONSULTAS ) <o p="#DEFAULT"></o>
+    </p>
+    <p>
+      
+    </p>
+    <p>
+      De idempotencia:
+    </p>
+    <p>
+      PUT, DELETE (Se pueden invocar repetidas veces obteniendo siempre el mismo resultado - SAVE CON IDENTIFICADOR - UPDATE) <o p="#DEFAULT"></o>
+    </p>
+    <p>
+      
+    </p>
+    <p>
+      Inseguros: POST (Cada invocaci&#243;n modifica el servicio - SAVE SIN IDENTIFICADOR) <o p="#DEFAULT"></o>
+    </p>
+    <p>
+      
+    </p>
+    <p>
+      
+    </p>
+    <p>
       Ejemplos:
+    </p>
+    <p>
+      
+    </p>
+    <p>
+      Obtener el recurso con id 1 de focus con la operaci&#243;n HTTP GET
+    </p>
+    <p>
+      http://www.ford.com/focus/1
+    </p>
+    <p>
+      
     </p>
     <p>
       
@@ -28,10 +73,7 @@
       
     </p>
     <p>
-      Obtener el recurso con id 1 de focus con la operaci&#243;n HTTP GET
-    </p>
-    <p>
-      http://www.ford.com/focus/1
+      
     </p>
     <p>
       

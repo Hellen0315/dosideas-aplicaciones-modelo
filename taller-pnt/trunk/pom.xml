@@ -126,7 +126,7 @@
                 </configuration>
             </plugin>
         </plugins>
-        <finalName>taller-spring</finalName>
+        <finalName>taller-PNT</finalName>
     </build>
     
     <repositories>

@@ -22,7 +22,7 @@ public class AlumnoControllerTest {
 
     private ClientResource clientResource;
     private RestTemplate restTemplate;
-    private static String URL = "http://localhost:8080/tallerSpring-3/app/alumno/";
+    private static String URL = "http://localhost:8080/taller-PNT/app/alumno/";
     private int cantidadAlumnos = 0;
 
     @Before
@@ -59,6 +59,8 @@ public class AlumnoControllerTest {
         Alumno alumnoRetorno = restTemplate.postForObject(URL + "alta", alumno, Alumno.class);
         
         Assert.assertNotNull(alumnoRetorno);
+        Assert.assertEquals(cantidadAlumnos+1, cantidadAlumnos());
+        
     }
     
     @Test
@@ -73,16 +75,18 @@ public class AlumnoControllerTest {
             Assert.fail();
         } catch (HttpClientErrorException ex) {
             Assert.assertEquals(HttpStatus.BAD_REQUEST, ex.getStatusCode());
+            Assert.assertEquals(cantidadAlumnos, cantidadAlumnos());
         }
+         
     }
 
-//    @Test
-//    public void eliminar_conIdCorrecto() throws IOException {
-//        Long id = 2L;
-//        restTemplate.delete(URL + id + "/eliminar");
-//        Assert.assertEquals(cantidadAlumnos - 1, cantidadAlumnos());
-//    }
-
+    @Test
+    public void eliminar_conIdCorrecto() throws IOException {
+        Long id = 2L;
+        restTemplate.delete(URL + id + "/eliminar");
+        Assert.assertEquals(cantidadAlumnos - 1, cantidadAlumnos());
+    }
+    
     private int cantidadAlumnos() throws IOException {
         
         return restTemplate.getForObject(URL + "todos", Alumno[].class).length;
