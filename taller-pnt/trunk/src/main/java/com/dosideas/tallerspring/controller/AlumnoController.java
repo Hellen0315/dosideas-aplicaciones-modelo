@@ -12,7 +12,6 @@ import java.util.HashMap;
 import java.util.Map;
 import javax.validation.ConstraintViolation;
 import javax.validation.ConstraintViolationException;
-import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
@@ -52,6 +51,18 @@ public class AlumnoController {
     public void eliminarPorId(@PathVariable Long id) {
         alumnoBo.eliminarPorId(id);
     }
+    
+    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
+    public @ResponseBody
+    Alumno buscarPorId(@PathVariable Long id) throws NotFoundException {
+        Alumno alumno = alumnoBo.buscarPorId(id);
+        if (alumno == null) {
+            throw new NotFoundException("Alumno no encontrado");
+        }
+
+        return alumno;
+
+    }
 
     
     @ResponseStatus(HttpStatus.BAD_REQUEST)
@@ -67,24 +78,14 @@ public class AlumnoController {
     }
     
     
-    //    @ResponseStatus(HttpStatus.NOT_FOUND)
-//    @ExceptionHandler(NotFoundException.class)
-//    public @ResponseBody
-//    Map<String, String> handleException(NotFoundException ex) {
-//        Map<String, String> fault = new HashMap<String, String>();
-//        fault.put("error", ex.getMensaje());
-//        return fault;
-//    }
+    @ResponseStatus(HttpStatus.NOT_FOUND)
+    @ExceptionHandler(NotFoundException.class)
+    public @ResponseBody
+    Map<String, String> handleException(NotFoundException ex) {
+        Map<String, String> fault = new HashMap<String, String>();
+        fault.put("error", ex.getMensaje());
+        return fault;
+    }
     
-    //    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
-//    public @ResponseBody
-//    Alumno buscarPorId(@PathVariable Long id) throws NotFoundException {
-//        Alumno alumno = alumnoBo.buscarPorId(id);
-//        if (alumno == null) {
-//            throw new NotFoundException("Alumno no encontrado");
-//        }
-//
-//        return alumno;
-//
-//    }
+    
 }

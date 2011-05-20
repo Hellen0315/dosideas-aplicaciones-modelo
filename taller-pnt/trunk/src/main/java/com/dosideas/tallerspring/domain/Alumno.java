@@ -26,7 +26,7 @@ import org.hibernate.validator.constraints.NotEmpty;
 
 /**
  *
- * @author parivero
+ * @author DosIdeas
  */
 @Entity
 @Table(name = "alumnos")

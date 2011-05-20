@@ -18,7 +18,7 @@ import org.hibernate.annotations.CascadeType;
 
 /**
  *
- * @author parivero
+ * @author DosIdeas
  */
 @Entity
 @Table(name = "cursos")

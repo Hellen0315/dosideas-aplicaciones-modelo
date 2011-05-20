@@ -22,7 +22,7 @@ import org.hibernate.annotations.FetchMode;
 
 /**
  *
- * @author parivero
+ * @author DosIdeas
  */
 @Entity
 @Table(name="materias")
