@@ -9,21 +9,23 @@ function alumnoService_buscarTodos(onSuccessCallback) {
 }
 
 function alumnoService_guardar(data, onSuccessCallback,onCompleteCallback, onErrorCallback) {
-    $.putJSON("app/alumno/alta",data,onSuccessCallback, onCompleteCallback, onErrorCallback);
+    $.postJSON("app/alumno/alta",data,onSuccessCallback, onCompleteCallback, onErrorCallback);
 }
 
 function alumnoService_eliminar(data, onSuccessCallback) {
     $.deleteAlumno("app/alumno/"+data+"/eliminar", onSuccessCallback );
 }
 
-$.postJSON = function(url, data, successCallback) {
+$.postJSON = function(url, data, successCallback, completeCallback, errorCallback) {
     return jQuery.ajax({
         type: 'POST',
         url: url,
         contentType: 'application/json',
         data: JSON.stringify(data),
         dataType: 'json',
-        success: successCallback
+        success: successCallback,
+        complete: completeCallback,
+        error: errorCallback
         
     });
 };

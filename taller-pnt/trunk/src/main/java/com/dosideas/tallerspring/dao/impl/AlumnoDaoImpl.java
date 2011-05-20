@@ -25,7 +25,7 @@ public class AlumnoDaoImpl implements AlumnoDao {
     public void guardar(Alumno alumno) {
         System.out.println("GUARDAR DAO");
         sessionFactory.getCurrentSession().save(alumno);
-
+        
     }
 
     public Alumno buscarPorId(Long id) {

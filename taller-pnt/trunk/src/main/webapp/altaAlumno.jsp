@@ -47,8 +47,8 @@
         alumnoService_guardar(data, onSuccessSave,onCompleteSave,onErrorSave); 
     }
     
-    function onSuccessSave() {        
-        $().toastmessage('showSuccessToast', 'Alta realizada');
+    function onSuccessSave(data) {        
+        $().toastmessage('showSuccessToast', 'Alta realizada con id:'+data.id);
         
     }
     

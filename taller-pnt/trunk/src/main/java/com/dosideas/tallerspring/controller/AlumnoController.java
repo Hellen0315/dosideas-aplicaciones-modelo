@@ -36,17 +36,14 @@ public class AlumnoController {
     private AlumnoBo alumnoBo;
     
 
-    @RequestMapping(value = "/alta", method = RequestMethod.PUT)
-    @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void alta(@RequestBody Alumno alumno) {
+    @RequestMapping(value = "/alta", method = RequestMethod.POST)
+    public @ResponseBody Alumno alta(@RequestBody Alumno alumno) {
         alumnoBo.guardar(alumno);
+        return alumno;
     }
 
-
-
     @RequestMapping(value = "/todos", method = RequestMethod.GET)
-    public @ResponseBody
-    Collection<Alumno> buscarTodos() {
+    public @ResponseBody Collection<Alumno> buscarTodos() {
         return alumnoBo.buscarTodos();
     }
 
