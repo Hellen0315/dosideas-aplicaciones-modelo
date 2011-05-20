@@ -1,13 +1,53 @@
 <map version="0.9.0">
 <!-- To view this file, download free mind mapping software FreeMind from http://freemind.sourceforge.net -->
-<node CREATED="1305639049794" ID="ID_1805969397" MODIFIED="1305722708019" STYLE="fork">
+<node CREATED="1305639049794" ID="ID_1805969397" MODIFIED="1305895340377" STYLE="fork">
 <richcontent TYPE="NODE"><html>
   <head>
     
   </head>
   <body>
     <p>
-      REST :&#160;&#160;<br /><br />Rest (Transferencia de Estado Representacional) es una t&#233;cnica de arquitectura de desarrollo de software, que utiliza una interfase est&#225;ndar (HTTP), define recursos que son los elementos de informaci&#243;n de inter&#233;s en una aplicaci&#243;n, define identificadores globales (URLs) que son mediante los cuales se accede a estos recursos y define las representaci&#243;n de los recursos que suele ser en formatos Html, xml o json.&#160;&#160;&#160;<br /><br />Ejemplo: La empresa Ford puede definir un recurso &#8220;focus&#8221; al cual se podr&#237;a acceder mediante la siguiente URL:&#160;&#160;<br /><br />http://www.ford.com/focus&#160;&#160;<br /><br />La representaci&#243;n de este recurso puede se la pagina FordFocus.html, esta representaci&#243;n pone al cliente en un estado, en el caso de que se acceda a otro vinculo (URL) en la pagina FordFocus.html esto transferir&#225; al cliente a otra representaci&#243;n con otro estado.&#160;&#160;La &#8220;Transferencia de Estado Representacional&#8221; se da a medida que el cliente navega por los distintos v&#237;nculos de la aplicaci&#243;n.<br />
+      REST :&#160;&#160;<br /><br />Rest (Transferencia de Estado Representacional) es una t&#233;cnica de arquitectura de desarrollo de software, que utiliza una interfase est&#225;ndar (HTTP <font face="SansSerif" size="2">GET, POST, PUT, DELETE</font>), define recursos que son los elementos de informaci&#243;n de inter&#233;s en una aplicaci&#243;n, define identificadores globales (URLs) que son mediante los cuales se accede a estos recursos y define las representaci&#243;n de los recursos que suele ser en formatos Html, xml o json.&#160;&#160;&#160;<br /><br />Ejemplo: La empresa Ford puede definir un recurso &#8220;focus&#8221; al cual se podr&#237;a acceder mediante la siguiente URL:&#160;&#160;<br /><br />http://www.ford.com/focus&#160;&#160;<br /><br />La representaci&#243;n de este recurso puede se la pagina FordFocus.html, esta representaci&#243;n pone al cliente en un estado, en el caso de que se acceda a otro vinculo (URL) en la pagina FordFocus.html esto transferir&#225; al cliente a otra representaci&#243;n con otro estado.&#160;&#160;La &#8220;Transferencia de Estado Representacional&#8221; se da a medida que el cliente navega por los distintos v&#237;nculos de la aplicaci&#243;n.
+    </p>
+    <p>
+      
+    </p>
+    <p>
+      Ejemplos:
+    </p>
+    <p>
+      
+    </p>
+    <p>
+      Borrar el id 1 de focus con la operaci&#243;n HTTP DELETE
+    </p>
+    <p>
+      http://www.ford.com/focus/1/borrar
+    </p>
+    <p>
+      
+    </p>
+    <p>
+      Obtener el recurso con id 1 de focus con la operaci&#243;n HTTP GET
+    </p>
+    <p>
+      http://www.ford.com/focus/1
+    </p>
+    <p>
+      
+    </p>
+    <p>
+      
+    </p>
+    <p>
+      
+    </p>
+    <p>
+      <br />
+      
+    </p>
+    <p>
+      <br />
     </p>
   </body>
 </html>
@@ -28,8 +68,7 @@
       <br />
     </p>
   </body>
-</html>
-</richcontent>
+</html></richcontent>
 <node CREATED="1305721782353" HGAP="19" ID="ID_908163541" MODIFIED="1305722818706" VSHIFT="24">
 <richcontent TYPE="NODE"><html>
   <head>
@@ -43,8 +82,7 @@
       
     </p>
   </body>
-</html>
-</richcontent>
+</html></richcontent>
 </node>
 </node>
 <node CREATED="1305639786430" HGAP="58" ID="ID_968804180" MODIFIED="1305722755050" POSITION="right" VSHIFT="-91">
@@ -61,6 +99,27 @@
     </p>
     <p>
       <br />
+    </p>
+  </body>
+</html></richcontent>
+</node>
+<node CREATED="1305893743294" HGAP="57" ID="ID_461726918" MODIFIED="1305893837496" POSITION="right" VSHIFT="-56">
+<richcontent TYPE="NODE"><html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      @ResponseBody:&#160;
+    </p>
+    <p>
+      Anotaci&#243;n de Spring MVC que indica el mapeio de la respuesta del metodo con el body HTTP.
+    </p>
+    <p>
+      
+    </p>
+    <p>
+      
     </p>
   </body>
 </html>
@@ -82,8 +141,7 @@
       <br />
     </p>
   </body>
-</html>
-</richcontent>
+</html></richcontent>
 </node>
 <node CREATED="1305639821695" HGAP="59" ID="ID_710194121" MODIFIED="1305722763753" POSITION="right" VSHIFT="52">
 <richcontent TYPE="NODE"><html>
@@ -101,23 +159,19 @@
       <br />
     </p>
   </body>
-</html>
-</richcontent>
+</html></richcontent>
 </node>
-<node CREATED="1305639834430" HGAP="63" ID="ID_1138304788" MODIFIED="1305722770550" POSITION="right" VSHIFT="56">
+<node CREATED="1305639834430" HGAP="63" ID="ID_1138304788" MODIFIED="1305890784250" POSITION="right" VSHIFT="56">
 <richcontent TYPE="NODE"><html>
   <head>
     
   </head>
   <body>
     <p>
-      @ExceptionHandler: <o p="#DEFAULT"></o>
+      @ExceptionHandler: <o p="#DEFAULT"></o>(ConstraintViolationException)
     </p>
     <p>
       Anotaci&#243;n de Spring MVC que permite manejar excepciones lanzadas en el controlador. <o p="#DEFAULT"></o>
-    </p>
-    <p>
-      
     </p>
     <p>
       
@@ -138,8 +192,7 @@
       
     </p>
   </body>
-</html>
-</richcontent>
+</html></richcontent>
 </node>
 </node>
 <node CREATED="1305639850445" HGAP="65" ID="ID_1148770237" MODIFIED="1305722773847" POSITION="right" VSHIFT="31">
@@ -158,8 +211,7 @@
       <br />
     </p>
   </body>
-</html>
-</richcontent>
+</html></richcontent>
 </node>
 <node CREATED="1305639860242" HGAP="44" ID="ID_998235748" MODIFIED="1305722777316" POSITION="right" VSHIFT="99">
 <richcontent TYPE="NODE"><html>
@@ -177,8 +229,7 @@
       <br />
     </p>
   </body>
-</html>
-</richcontent>
+</html></richcontent>
 </node>
 </node>
 </map>
