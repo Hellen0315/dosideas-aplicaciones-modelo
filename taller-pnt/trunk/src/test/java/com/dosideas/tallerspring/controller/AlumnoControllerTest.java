@@ -43,23 +43,23 @@ public class AlumnoControllerTest {
 
     }
 
-    @Test
-    public void buscarPorId_conIdCorrecto_retornaAlumno() {
-        Long id = 1L;
-        Alumno alumnos = restTemplate.getForObject(URL + id, Alumno.class);
-        Assert.assertNotNull(alumnos);
-    }
+//    @Test
+//    public void buscarPorId_conIdCorrecto_retornaAlumno() {
+//        Long id = 1L;
+//        Alumno alumnos = restTemplate.getForObject(URL + id, Alumno.class);
+//        Assert.assertNotNull(alumnos);
+//    }
 
-    @Test
-    public void buscarPorId_conIdInCorrecto_retorna404() {
-        Long id = 1001L;
-        try {
-            Alumno alumno = restTemplate.getForObject(URL + id, Alumno.class);
-            Assert.fail();
-        } catch (HttpClientErrorException ex) {
-            Assert.assertEquals(HttpStatus.NOT_FOUND, ex.getStatusCode());
-        }
-    }
+//    @Test
+//    public void buscarPorId_conIdInCorrecto_retorna404() {
+//        Long id = 1001L;
+//        try {
+//            Alumno alumno = restTemplate.getForObject(URL + id, Alumno.class);
+//            Assert.fail();
+//        } catch (HttpClientErrorException ex) {
+//            Assert.assertEquals(HttpStatus.NOT_FOUND, ex.getStatusCode());
+//        }
+//    }
 
     @Test
     public void alta_conAlumnoCorrecto() throws IOException {

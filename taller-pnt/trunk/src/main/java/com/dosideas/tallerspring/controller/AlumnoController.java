@@ -34,26 +34,15 @@ public class AlumnoController {
 
     @Autowired
     private AlumnoBo alumnoBo;
-
     
 
     @RequestMapping(value = "/alta", method = RequestMethod.PUT)
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void alta(@Valid @RequestBody Alumno alumno) {
+    public void alta(@RequestBody Alumno alumno) {
         alumnoBo.guardar(alumno);
     }
 
-    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
-    public @ResponseBody
-    Alumno buscarPorId(@PathVariable Long id) throws NotFoundException {
-        Alumno alumno = alumnoBo.buscarPorId(id);
-        if (alumno == null) {
-            throw new NotFoundException("Alumno no encontrado");
-        }
 
-        return alumno;
-
-    }
 
     @RequestMapping(value = "/todos", method = RequestMethod.GET)
     public @ResponseBody
@@ -67,30 +56,38 @@ public class AlumnoController {
         alumnoBo.eliminarPorId(id);
     }
 
-    @ResponseStatus(HttpStatus.NOT_FOUND)
-    @ExceptionHandler(NotFoundException.class)
-    public @ResponseBody
-    Map<String, String> handleException(NotFoundException ex) {
-        Map<String, String> fault = new HashMap<String, String>();
-        fault.put("error", ex.getMensaje());
-        return fault;
-    }
     
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     @ExceptionHandler(ConstraintViolationException.class)
     public @ResponseBody Map<String, String> handleException(ConstraintViolationException ex) {
         Map<String, String> fault = new HashMap<String, String>();
-        int i=0;
         
         for (ConstraintViolation error : ex.getConstraintViolations() ) {
-            i++;
-            if (error.getInvalidValue() != null) {
-                fault.put("valor-"+i,error.getInvalidValue().toString());
-            }
-                            
-            fault.put("error-"+i,error.getMessage());
-            
+            fault.put(error.getPropertyPath().toString(),error.getMessage());
         }
+        
         return fault;
     }
+    
+    
+    //    @ResponseStatus(HttpStatus.NOT_FOUND)
+//    @ExceptionHandler(NotFoundException.class)
+//    public @ResponseBody
+//    Map<String, String> handleException(NotFoundException ex) {
+//        Map<String, String> fault = new HashMap<String, String>();
+//        fault.put("error", ex.getMensaje());
+//        return fault;
+//    }
+    
+    //    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
+//    public @ResponseBody
+//    Alumno buscarPorId(@PathVariable Long id) throws NotFoundException {
+//        Alumno alumno = alumnoBo.buscarPorId(id);
+//        if (alumno == null) {
+//            throw new NotFoundException("Alumno no encontrado");
+//        }
+//
+//        return alumno;
+//
+//    }
 }
