@@ -58,11 +58,14 @@
     }
     
     function onErrorSave(data) {        
-        
-        $().toastmessage('showErrorToast', 'Error realizando alta de alumno: '+data.responseText);
+        $().toastmessage('showToast', {
+            text     : 'Error realizando alta de alumno: '+data.responseText,
+            sticky   : true,
+            type     : 'error'
+            
+        });
         
     }
-    
     
     $.fn.serializeObject = function()
     {
