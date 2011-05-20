@@ -22,7 +22,6 @@ public class AlumnoControllerTest {
 
     private ClientResource clientResource;
     private RestTemplate restTemplate;
-    private static String URL = "http://localhost:8080/taller-PNT/app/alumno/";
     private int cantidadAlumnos = 0;
 
     @Before
@@ -34,15 +33,15 @@ public class AlumnoControllerTest {
     @Test
     public void buscarPorId_conIdCorrecto_retornaAlumno() {
         Long id = 1L;
-        Alumno alumno = restTemplate.getForObject(URL + id, Alumno.class);
+        Alumno alumno = restTemplate.getForObject("http://localhost:8080/taller-PNT/app/alumno/1", Alumno.class);
         Assert.assertNotNull(alumno);
     }
 
     @Test
     public void buscarPorId_conIdInCorrecto_retornaNOT_FOUND() {
-        Long id = 1001L;
+        
         try {
-            restTemplate.getForObject(URL + id, Alumno.class);
+            restTemplate.getForObject("http://localhost:8080/taller-PNT/app/alumno/1001", Alumno.class);
             Assert.fail();
         } catch (HttpClientErrorException ex) {
             Assert.assertEquals(HttpStatus.NOT_FOUND, ex.getStatusCode());
@@ -56,7 +55,7 @@ public class AlumnoControllerTest {
         alumno.setApellido("Test");
         alumno.setEmail("Test@test.com");
         
-        Alumno alumnoRetorno = restTemplate.postForObject(URL + "alta", alumno, Alumno.class);
+        Alumno alumnoRetorno = restTemplate.postForObject("http://localhost:8080/taller-PNT/app/alumno/alta", alumno, Alumno.class);
         
         Assert.assertNotNull(alumnoRetorno);
         Assert.assertEquals(cantidadAlumnos+1, cantidadAlumnos());
@@ -71,7 +70,7 @@ public class AlumnoControllerTest {
         alumno.setEmail("Test test.com");
         
         try {
-            restTemplate.postForObject(URL + "alta", alumno, Alumno.class);
+            restTemplate.postForObject("http://localhost:8080/taller-PNT/app/alumno/alta", alumno, Alumno.class);
             Assert.fail();
         } catch (HttpClientErrorException ex) {
             Assert.assertEquals(HttpStatus.BAD_REQUEST, ex.getStatusCode());
@@ -82,14 +81,13 @@ public class AlumnoControllerTest {
 
     @Test
     public void eliminar_conIdCorrecto() throws IOException {
-        Long id = 2L;
-        restTemplate.delete(URL + id + "/eliminar");
+        restTemplate.delete("http://localhost:8080/taller-PNT/app/alumno/2");
         Assert.assertEquals(cantidadAlumnos - 1, cantidadAlumnos());
     }
     
     private int cantidadAlumnos() throws IOException {
         
-        return restTemplate.getForObject(URL + "todos", Alumno[].class).length;
+        return restTemplate.getForObject("http://localhost:8080/taller-PNT/app/alumno/todos", Alumno[].class).length;
         
         
     }

@@ -27,65 +27,10 @@ import org.springframework.web.bind.annotation.ResponseStatus;
  *
  * @author DosIdeas
  */
-@Controller
-@RequestMapping(value = "/alumno")
+
 public class AlumnoController {
 
-    @Autowired
-    private AlumnoBo alumnoBo;
-    
-
-    @RequestMapping(value = "/alta", method = RequestMethod.POST)
-    public @ResponseBody Alumno alta(@RequestBody Alumno alumno) {
-        alumnoBo.guardar(alumno);
-        return alumno;
-    }
-
-    @RequestMapping(value = "/todos", method = RequestMethod.GET)
-    public @ResponseBody Collection<Alumno> buscarTodos() {
-        return alumnoBo.buscarTodos();
-    }
-
-    @RequestMapping(value = "/{id}/eliminar", method = RequestMethod.DELETE)
-    @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void eliminarPorId(@PathVariable Long id) {
-        alumnoBo.eliminarPorId(id);
-    }
-    
-    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
-    public @ResponseBody
-    Alumno buscarPorId(@PathVariable Long id) throws NotFoundException {
-        Alumno alumno = alumnoBo.buscarPorId(id);
-        if (alumno == null) {
-            throw new NotFoundException("Alumno no encontrado");
-        }
-
-        return alumno;
-
-    }
-
-    
-    @ResponseStatus(HttpStatus.BAD_REQUEST)
-    @ExceptionHandler(ConstraintViolationException.class)
-    public @ResponseBody Map<String, String> handleException(ConstraintViolationException ex) {
-        Map<String, String> fault = new HashMap<String, String>();
-        
-        for (ConstraintViolation error : ex.getConstraintViolations() ) {
-            fault.put(error.getPropertyPath().toString(),error.getMessage());
-        }
-        
-        return fault;
-    }
-    
-    
-    @ResponseStatus(HttpStatus.NOT_FOUND)
-    @ExceptionHandler(NotFoundException.class)
-    public @ResponseBody
-    Map<String, String> handleException(NotFoundException ex) {
-        Map<String, String> fault = new HashMap<String, String>();
-        fault.put("error", ex.getMensaje());
-        return fault;
-    }
     
     
 }
+
