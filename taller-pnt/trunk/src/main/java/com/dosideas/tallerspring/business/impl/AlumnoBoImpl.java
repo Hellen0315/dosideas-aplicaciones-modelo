@@ -24,7 +24,6 @@ public class AlumnoBoImpl implements AlumnoBo {
     private AlumnoDao alumnoDao;
 
     public void guardar(Alumno alumno) {
-        System.out.println("GUARDAR BO");
         alumnoDao.guardar(alumno);
     }
 

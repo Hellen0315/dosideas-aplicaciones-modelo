@@ -47,36 +47,41 @@ public class AlumnoControllerTest {
             Assert.assertEquals(HttpStatus.NOT_FOUND, ex.getStatusCode());
         }
     }
-
     @Test
     public void alta_conAlumnoCorrecto() throws IOException {
         Alumno alumno = new Alumno();
         alumno.setNombre("Test");
         alumno.setApellido("Test");
         alumno.setEmail("Test@test.com");
-        
-        Alumno alumnoRetorno = restTemplate.postForObject("http://localhost:8080/taller-PNT/app/alumno/alta", alumno, Alumno.class);
-        
-        Assert.assertNotNull(alumnoRetorno);
-        Assert.assertEquals(cantidadAlumnos+1, cantidadAlumnos());
-        
+
+        try {
+            Alumno alumnoRetorno = restTemplate.postForObject("http://localhost:8080/taller-PNT/app/alumno", alumno, Alumno.class);
+            Assert.assertNotNull(alumnoRetorno);
+            Assert.assertEquals(cantidadAlumnos + 1, cantidadAlumnos());
+        } catch (Exception e) {
+            Assert.fail();
+        }
+
+
+
+
     }
-    
+
     @Test
     public void alta_conAlumnoIncorrecto_retornaBAD_REQUEST() throws IOException {
         Alumno alumno = new Alumno();
         alumno.setNombre("Test");
         alumno.setApellido("Test");
         alumno.setEmail("Test test.com");
-        
+
         try {
-            restTemplate.postForObject("http://localhost:8080/taller-PNT/app/alumno/alta", alumno, Alumno.class);
+            restTemplate.postForObject("http://localhost:8080/taller-PNT/app/alumno", alumno, Alumno.class);
             Assert.fail();
         } catch (HttpClientErrorException ex) {
             Assert.assertEquals(HttpStatus.BAD_REQUEST, ex.getStatusCode());
             Assert.assertEquals(cantidadAlumnos, cantidadAlumnos());
         }
-         
+
     }
 
     @Test
@@ -84,13 +89,10 @@ public class AlumnoControllerTest {
         restTemplate.delete("http://localhost:8080/taller-PNT/app/alumno/2");
         Assert.assertEquals(cantidadAlumnos - 1, cantidadAlumnos());
     }
-    
     private int cantidadAlumnos() throws IOException {
-        
-        return restTemplate.getForObject("http://localhost:8080/taller-PNT/app/alumno/todos", Alumno[].class).length;
-        
-        
+
+        return restTemplate.getForObject("http://localhost:8080/taller-PNT/app/alumno", Alumno[].class).length;
+
+
     }
-    
-    
 }
