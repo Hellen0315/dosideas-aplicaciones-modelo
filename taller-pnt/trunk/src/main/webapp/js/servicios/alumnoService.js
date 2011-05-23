@@ -5,7 +5,7 @@
  * función.
  */
 function alumnoService_buscarTodos(onSuccessCallback) {
-    $.getJSON('app/alumno/todos', onSuccessCallback );
+    $.getJSON('app/alumno', onSuccessCallback );
 }
 
 function alumnoService_guardar(data, onSuccessCallback,onCompleteCallback, onErrorCallback) {
@@ -13,7 +13,7 @@ function alumnoService_guardar(data, onSuccessCallback,onCompleteCallback, onErr
 }
 
 function alumnoService_eliminar(data, onSuccessCallback) {
-    $.deleteAlumno("app/alumno/"+data+"/eliminar", onSuccessCallback );
+    $.deleteAlumno("app/alumno/"+data, onSuccessCallback );
 }
 
 $.postJSON = function(url, data, successCallback, completeCallback, errorCallback) {

@@ -1,6 +1,6 @@
 <map version="0.9.0">
 <!-- To view this file, download free mind mapping software FreeMind from http://freemind.sourceforge.net -->
-<node CREATED="1305639049794" ID="ID_1805969397" MODIFIED="1305918188731" STYLE="fork">
+<node CREATED="1305639049794" ID="ID_1805969397" MODIFIED="1306150891138" STYLE="fork">
 <richcontent TYPE="NODE"><html>
   <head>
     
@@ -92,8 +92,7 @@
       <br />
     </p>
   </body>
-</html>
-</richcontent>
+</html></richcontent>
 <node CREATED="1305639382276" HGAP="48" ID="ID_758198660" MODIFIED="1305722813706" POSITION="right" VSHIFT="-62">
 <richcontent TYPE="NODE"><html>
   <head>
@@ -164,8 +163,7 @@
       
     </p>
   </body>
-</html>
-</richcontent>
+</html></richcontent>
 </node>
 <node CREATED="1305639805477" HGAP="51" ID="ID_1957574074" MODIFIED="1305722760206" POSITION="right" VSHIFT="-23">
 <richcontent TYPE="NODE"><html>
@@ -219,8 +217,7 @@
       
     </p>
   </body>
-</html>
-</richcontent>
+</html></richcontent>
 <node CREATED="1305722185726" HGAP="19" ID="ID_44106279" MODIFIED="1305722875549" VSHIFT="24">
 <richcontent TYPE="NODE"><html>
   <head>

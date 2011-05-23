@@ -33,7 +33,7 @@ public class AlumnoControllerTest {
     @Test
     public void buscarPorId_conIdCorrecto_retornaAlumno() {
         Long id = 1L;
-        Alumno alumno = restTemplate.getForObject("http://localhost:8080/taller-PNT/app/alumno/1", Alumno.class);
+        Alumno alumno = restTemplate.getForObject("http://localhost:8080/taller-PNT/app/alumno/"+id.toString(), Alumno.class);
         Assert.assertNotNull(alumno);
     }
 
@@ -62,9 +62,6 @@ public class AlumnoControllerTest {
             Assert.fail();
         }
 
-
-
-
     }
 
     @Test
@@ -84,15 +81,15 @@ public class AlumnoControllerTest {
 
     }
 
-    @Test
-    public void eliminar_conIdCorrecto() throws IOException {
-        restTemplate.delete("http://localhost:8080/taller-PNT/app/alumno/2");
-        Assert.assertEquals(cantidadAlumnos - 1, cantidadAlumnos());
-    }
+//    @Test
+//    public void eliminar_conIdCorrecto() throws IOException {
+//        restTemplate.delete("http://localhost:8080/taller-PNT/app/alumno/2");
+//        Assert.assertEquals(cantidadAlumnos - 1, cantidadAlumnos());
+//    }
+    
     private int cantidadAlumnos() throws IOException {
 
         return restTemplate.getForObject("http://localhost:8080/taller-PNT/app/alumno", Alumno[].class).length;
-
 
     }
 }
