@@ -17,7 +17,7 @@
         <script type="text/javascript" src="<c:url value="/js/jquery-json/jquery.json-2.2.js"/>"></script>
         <script type="text/javascript" src="<c:url value="/js/jquery-toastmessage/jquery.toastmessage.js"/>"></script>
         <script type="text/javascript" src="<c:url value="/js/jquery-ui/jquery-ui-1.8.12.custom.min.js"/>"></script>
-        <script type="text/javascript" src="<c:url value="/js/servicios/alumnoService.js"/>"></script>
+        <script type="text/javascript" src="<c:url value="/js/service/alumnoService.js"/>"></script>
 
     </head>
     <body>
