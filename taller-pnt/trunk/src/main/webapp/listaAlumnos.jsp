@@ -16,7 +16,7 @@
 
 
 
-<script id="contactTemplate" type="text/x-jquery-tmpl">
+<script id="alumnoTemplate" type="text/x-jquery-tmpl">
 
     <div class="alumno">
         <div class="header">
@@ -52,7 +52,7 @@
         
         $("#listaAlumnos").empty();
         $( "#listaAlumnos" ).sortable({revert: true});
-        $("#contactTemplate" ).tmpl(data).appendTo("#listaAlumnos");
+        $("#alumnoTemplate" ).tmpl(data).appendTo("#listaAlumnos");
         
     }
         
