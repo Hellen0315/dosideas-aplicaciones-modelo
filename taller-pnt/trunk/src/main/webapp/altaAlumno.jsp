@@ -57,6 +57,20 @@
      */
     function onSuccessSave(data) {        
         $().toastmessage('showSuccessToast', 'Alta realizada con id:'+data.id);
+    }
+    
+    
+    /**
+     * Muestra el mensaje de error.
+     * @param data response.
+     */
+    function onErrorSave(data) {  
+        $().toastmessage('showToast', {
+            text     : 'Error realizando alta de alumno: '+data.responseText,
+            sticky   : true,
+            type     : 'error'
+            
+        });
         
     }
     
@@ -65,20 +79,6 @@
      */
     function onCompleteSave() {        
         $('#saveCancel').click();
-        
-    }
-    
-    /**
-     * Muestra el mensaje de error.
-     * @param data response.
-     */
-    function onErrorSave(data) {        
-        $().toastmessage('showToast', {
-            text     : 'Error realizando alta de alumno: '+data.responseText,
-            sticky   : true,
-            type     : 'error'
-            
-        });
         
     }
     

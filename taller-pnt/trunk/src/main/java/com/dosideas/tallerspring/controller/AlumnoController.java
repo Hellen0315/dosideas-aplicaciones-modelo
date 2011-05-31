@@ -34,7 +34,9 @@ public class AlumnoController {
     @Autowired
     private AlumnoBo alumnoBo;
 
+    
     @RequestMapping(method = RequestMethod.POST)
+    @ResponseStatus(HttpStatus.CREATED)
     public @ResponseBody Alumno alta(@RequestBody Alumno alumno) {
         alumnoBo.guardar(alumno);
         return alumno;
