@@ -42,21 +42,36 @@
         });
         
     });
-           
+    
+    /**
+     * Guarda un alumno.
+     * @param data un Alumno.
+     */
     function guardar(data) {        
         alumnoService_guardar(data, onSuccessSave,onCompleteSave,onErrorSave); 
     }
     
+    /**
+     * Muestra el mensaje por success.
+     * @param data alumno guardado.
+     */
     function onSuccessSave(data) {        
         $().toastmessage('showSuccessToast', 'Alta realizada con id:'+data.id);
         
     }
     
+    /**
+     * Limpia el formulario.
+     */
     function onCompleteSave() {        
         $('#saveCancel').click();
         
     }
     
+    /**
+     * Muestra el mensaje de error.
+     * @param data response.
+     */
     function onErrorSave(data) {        
         $().toastmessage('showToast', {
             text     : 'Error realizando alta de alumno: '+data.responseText,
@@ -67,6 +82,10 @@
         
     }
     
+    /**
+     * Convierte el formulario en un
+     * objeto json.
+     */
     $.fn.serializeObject = function()
     {
         var o = {};

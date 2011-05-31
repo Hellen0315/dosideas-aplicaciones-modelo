@@ -3,17 +3,16 @@
 <h1>Listado de alumnos</h1>
 <p>
     Esta página utiliza: 
-<ul>
-    <li>Servicios REST</li>
-    <li>jQuery para invocar a REST</li>
-    <li>jQuery Template para dibujar los datos</li>
+    <ul>
+        <li>Servicios REST</li>
+        <li>jQuery para invocar a REST</li>
+        <li>jQuery Template para dibujar los datos</li>
 
-</ul>
+    </ul>
 </p>
 
 <div id="listaAlumnos" class="listaAlumnosClass">
 </div>
-
 
 
 <script id="alumnoTemplate" type="text/x-jquery-tmpl">
@@ -37,7 +36,6 @@
     </div>
 </script>
 
-
 <script type="text/javascript">
 
     $(document).ready(function() {        
@@ -55,18 +53,21 @@
         $("#alumnoTemplate" ).tmpl(data).appendTo("#listaAlumnos");
         
     }
-        
+
+    /**
+     * Borra un alumno 
+     * @param id del alumno a norrar.
+     */
     function borrarAlumno(id) {
-        alumnoService_eliminar(id,onSuccessDelete);
+        alumnoService_borrar(id,onSuccessDelete);
     }
     
+    /**
+     * Busca todos los alumnos.
+     */
     function onSuccessDelete() {        
         alumnoService_buscarTodos(dibujarAlumnos); 
     }
-    
-    
+        
 
 </script>
-
-
-
