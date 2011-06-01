@@ -3,12 +3,48 @@
 <h1>Listado de alumnos</h1>
 <p>
     Esta página utiliza: 
-    <ul>
-        <li>Servicios REST</li>
-        <li>jQuery para invocar a REST</li>
-        <li>jQuery Template para dibujar los datos</li>
+<ul>
+    <li>Servicios REST</li>
+    <li>jQuery para invocar a REST</li>
+    <li>jQuery Template para dibujar los datos</li>
+    <br>
 
-    </ul>
+    <li>
+        <a onclick="fade('GET', this)" href="#">GET</a>  
+    </li>
+
+    <div id="GET" align="center">
+        <p>En la función redy de la pagina poner la invocación a la siguiente función:</p>
+        <b><em>alumnoService_buscarTodos(dibujarAlumnos);</em></b>
+    </div>
+    <br>
+    <li>
+        <a onclick="fade('TEMPLATE', this)" href="#">TEMPLATE</a>  
+    </li>
+    <div id="TEMPLATE" align="center">
+        <p>En el template agregar el div que contiene el link a borrar:</p>
+        <b>
+            <em>
+                &lt;div class="footer"&gt; 
+                &lt;a class="borrar" onclick="borrarAlumno(${id})" href="#"&gt;borrar&lt;/a&gt;  
+                &lt;/div&gt; 
+            </em>
+        </b>  
+    </div>
+    <br>
+    <li>
+        <a onclick="fade('SORTABLE', this)" href="#">SORTABLE</a>  
+    </li>
+
+    <div id="SORTABLE" align="center">
+
+        <p>En la función dibujarAlumnos de la pagina agregar la siguiente linea:</p>
+        <b><em>$( "#listaAlumnos" ).sortable({revert: true});</em></b>
+
+    </div>
+    <br>
+    
+</ul>
 </p>
 
 <div id="listaAlumnos" class="listaAlumnosClass">
@@ -30,16 +66,17 @@
                 {{/each}}
             </ol>
         </div>
-        <div class="footer">
-            <a class="borrar" onclick="borrarAlumno(${id})" href="#">borrar</a>
-        </div>
+
     </div>
 </script>
 
 <script type="text/javascript">
 
-    $(document).ready(function() {        
-        alumnoService_buscarTodos(dibujarAlumnos); 
+    $(document).ready(function() {  
+        
+        acultarDocumentacion();
+        
+        
     });
 
     /**
@@ -49,7 +86,6 @@
     function dibujarAlumnos(data) {
         
         $("#listaAlumnos").empty();
-        $( "#listaAlumnos" ).sortable({revert: true});
         $("#alumnoTemplate" ).tmpl(data).appendTo("#listaAlumnos");
         
     }
@@ -69,5 +105,21 @@
         alumnoService_buscarTodos(dibujarAlumnos); 
     }
         
+    function fade(div_id, button) {
+        if(button.value == 'Mostrar') {
+            $('#'+div_id).fadeOut('slow');
+            button.value = 'Ocultar';
+        }
+        else {
+            $('#'+div_id).fadeIn('slow');
+            button.value = 'Mostrar';
+        }
+    }
+    
+    function acultarDocumentacion() {
+        $('#GET').hide();
+        $('#TEMPLATE').hide();
+        $('#SORTABLE').hide();
+    }
 
 </script>

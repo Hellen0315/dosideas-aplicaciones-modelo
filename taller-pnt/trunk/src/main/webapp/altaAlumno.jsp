@@ -10,7 +10,7 @@
 </ul>
 </p>
 
-<form id="save">
+<form id="guardar">
     <div class="alta">
         <fieldset>
             <div class="header_alta">
@@ -34,9 +34,8 @@
 
     $(document).ready(function() {
         
-        $("#save").submit(function(){
+        $("#guardar").submit(function(){
             
-            guardar($('#save').serializeObject());
             
             return false;
         });
@@ -56,7 +55,7 @@
      * @param data alumno guardado.
      */
     function onSuccessSave(data) {        
-        $().toastmessage('showSuccessToast', 'Alta realizada con id:'+data.id);
+        
     }
     
     
