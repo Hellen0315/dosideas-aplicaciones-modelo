@@ -17,11 +17,11 @@
         <p>En la función redy de la pagina poner la invocación a la siguiente función:</p>
         <b><em>alumnoService_buscarTodos(dibujarAlumnos);</em></b>
     </div>
-    <br>
+    
     <li>
-        <a onclick="fade('TEMPLATE', this)" href="#">TEMPLATE</a>  
+        <a onclick="fade('DELETE', this)" href="#">DELETE</a>  
     </li>
-    <div id="TEMPLATE" align="center">
+    <div id="DELETE" align="center">
         <p>En el template agregar el div que contiene el link a borrar:</p>
         <b>
             <em>
@@ -31,7 +31,7 @@
             </em>
         </b>  
     </div>
-    <br>
+    
     <li>
         <a onclick="fade('SORTABLE', this)" href="#">SORTABLE</a>  
     </li>
@@ -118,7 +118,7 @@
     
     function acultarDocumentacion() {
         $('#GET').hide();
-        $('#TEMPLATE').hide();
+        $('#DELETE').hide();
         $('#SORTABLE').hide();
     }
 
