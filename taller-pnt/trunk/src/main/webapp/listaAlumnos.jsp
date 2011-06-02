@@ -7,45 +7,39 @@
     <li>Servicios REST</li>
     <li>jQuery para invocar a REST</li>
     <li>jQuery Template para dibujar los datos</li>
-    <br>
-
     <li>
-        <a onclick="fade('GET', this)" href="#">GET</a>  
+        <a onclick="toggleDocumentacion('GET')" href="#">GET</a>  
     </li>
 
-    <div id="GET" align="center">
-        <p>En la función redy agregar la siguiente línea:</p>
-        <b><em>alumnoService_buscarTodos(dibujarAlumnos);</em></b>
-    </div>
-    
     <li>
-        <a onclick="fade('DELETE', this)" href="#">DELETE</a>  
-    </li>
-    <div id="DELETE" align="center">
-        <p>En el template agregar el div que contiene el link a borrar:</p>
-        <b>
-            <em>
-                &lt;div class="footer"&gt; 
-                &lt;a class="borrar" onclick="borrarAlumno(${id})" href="#"&gt;borrar&lt;/a&gt;  
-                &lt;/div&gt; 
-            </em>
-        </b>  
-    </div>
-    
-    <li>
-        <a onclick="fade('SORTABLE', this)" href="#">SORTABLE</a>  
+        <a onclick="toggleDocumentacion('DELETE')" href="#">DELETE</a>  
     </li>
 
-    <div id="SORTABLE" align="center">
+    <li>
+        <a onclick="toggleDocumentacion('SORTABLE')" href="#">SORTABLE</a>  
+    </li>
 
-        <p>En la función dibujarAlumnos agregar la siguiente linea:</p>
-        <b><em>$( "#listaAlumnos" ).sortable({revert: true});</em></b>
-
-    </div>
-    <br>
-    
 </ul>
-</p>
+
+<div id="GET" align="center">
+    <p>En la función ready agregar la siguiente línea:</p>
+    <b><em>alumnoService_buscarTodos(dibujarAlumnos);</em></b>
+</div>
+<div id="DELETE" align="center">
+    <p>En el template agregar el div que contiene el link a borrar:</p>
+    <b>
+        <em>
+            &lt;div class="footer"&gt; 
+            &lt;a class="borrar" onclick="borrarAlumno(${id})" href="#"&gt;borrar&lt;/a&gt;  
+            &lt;/div&gt; 
+        </em>
+    </b>  
+</div>
+<div id="SORTABLE" align="center">
+    <p>En la función dibujarAlumnos agregar la siguiente linea:</p>
+    <b><em>$( "#listaAlumnos" ).sortable({revert: true});</em></b>
+</div>
+
 
 <div id="listaAlumnos" class="listaAlumnosClass">
 </div>
@@ -66,6 +60,7 @@
                 {{/each}}
             </ol>
         </div>
+        
 
     </div>
 </script>
@@ -74,7 +69,7 @@
 
     $(document).ready(function() {  
         
-        acultarDocumentacion();
+        ocultarDocumentacion();
         
         
     });
@@ -86,7 +81,7 @@
     function dibujarAlumnos(data) {
         
         $("#listaAlumnos").empty();
-        $("#alumnoTemplate" ).tmpl(data).appendTo("#listaAlumnos");
+        $("#alumnoTemplate" ).tmpl(data).appendTo("#listaAlumnos");    
         
     }
 
@@ -105,21 +100,15 @@
         alumnoService_buscarTodos(dibujarAlumnos); 
     }
         
-    function fade(div_id, elemento) {
-        if(elemento.value == 'Mostrar') {
-            $('#'+div_id).fadeOut('slow');
-            elemento.value = 'Ocultar';
-        }
-        else {
-            $('#'+div_id).fadeIn('slow');
-            elemento.value = 'Mostrar';
-        }
+    function toggleDocumentacion(div_id) {
+        ocultarDocumentacion();
+        $('#'+div_id).toggle("fast");
     }
     
-    function acultarDocumentacion() {
-        $('#GET').hide();
-        $('#DELETE').hide();
-        $('#SORTABLE').hide();
+    function ocultarDocumentacion() {
+        $('#GET').hide("fast");
+        $('#DELETE').hide("fast");
+        $('#SORTABLE').hide("fast");
     }
 
 </script>

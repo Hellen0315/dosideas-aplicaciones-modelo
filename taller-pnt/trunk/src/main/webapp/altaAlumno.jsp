@@ -8,45 +8,45 @@
     <li>jQuery para invocar a REST</li>
     <br>
     <li>
-        <a onclick="fade('GUARDAR', this)" href="#">GUARDAR</a>  
+        <a onclick="toggleDocumentacion('GUARDAR')" href="#">GUARDAR</a>  
     </li>
-
-    <div id="GUARDAR" align="center">
-
-        <p>En la función redy dentro de la función de submite del formulario guardar, agregar la siguiente línea:</p>
-        <b><em> guardar($('#save').serializeObject());</em></b>
-
-    </div>
-    <br>
     <li>
-        <a onclick="fade('OK', this)" href="#">MENSAJE OK</a>  
+        <a onclick="toggleDocumentacion('OK')" href="#">MENSAJE OK</a>  
     </li>
 
-    <div id="OK" align="center">
-
-        <p>En la función onSuccessSave agregar la siguiente línea:</p>
-        <b><em> $().toastmessage('showSuccessToast', 'Alta realizada con id:'+data.id);</em></b>
-
-    </div>
-    <br>
     <li>
-        <a onclick="fade('ERROR', this)" href="#">MENSAJE ERROR</a>  
+        <a onclick="toggleDocumentacion('ERROR')" href="#">MENSAJE ERROR</a>  
     </li>
 
-    <div id="ERROR" align="center">
-
-        <p>En la función onErrorSave agregar la siguiente linea:</p>
-        <b><em> $().toastmessage('showToast', {
-            text     : 'Error realizando alta de alumno: '+data.responseText,
-            sticky   : true,
-            type     : 'error'
-            
-        });</em></b>
-
-    </div>
     <br>
 
 </ul>
+
+<div id="GUARDAR" align="center">
+
+    <p>En la función ready dentro de la función de submite del formulario guardar, agregar la siguiente línea:</p>
+    <b><em> guardar($('#guardar').serializeObject());</em></b>
+
+</div>
+
+<div id="OK" align="center">
+
+    <p>En la función onSuccessSave agregar la siguiente línea:</p>
+    <b><em> $().toastmessage('showSuccessToast', 'Alta realizada con id:'+data.id);</em></b>
+
+</div>
+
+<div id="ERROR" align="center">
+
+    <p>En la función onErrorSave agregar la siguiente linea:</p>
+    <b><em> $().toastmessage('showToast', {
+            text     : 'Error realizando alta de alumno: '+data.responseText,
+            sticky   : true,
+            type     : 'error'
+
+            });</em></b>
+
+</div>
 </p>
 
 <form id="guardar">
@@ -73,12 +73,11 @@
 
     $(document).ready(function() {
         
-        acultarDocumentacion();
+        ocultarDocumentacion();
         
         $("#guardar").submit(function(){
             
              
-            
             return false;
         });
         
@@ -106,8 +105,7 @@
      * @param data response.
      */
     function onErrorSave(data) {  
-        
-        
+      
     }
     
     /**
@@ -139,22 +137,15 @@
         return o;
     };
     
-    function acultarDocumentacion() {
-        $('#GUARDAR').hide();
-        $('#OK').hide();
-        $('#ERROR').hide();
-        
+    function toggleDocumentacion(div_id) {
+        ocultarDocumentacion();
+        $('#'+div_id).toggle("fast");
     }
     
-    function fade(div_id, elemento) {
-        if(elemento.value == 'Mostrar') {
-            $('#'+div_id).fadeOut('slow');
-            elemento.value = 'Ocultar';
-        }
-        else {
-            $('#'+div_id).fadeIn('slow');
-            elemento.value = 'Mostrar';
-        }
+    function ocultarDocumentacion() {
+        $('#GUARDAR').hide("fast");
+        $('#OK').hide("fast");
+        $('#ERROR').hide("fast");
     }
     
 

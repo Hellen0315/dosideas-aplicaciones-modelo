@@ -6,6 +6,7 @@
  */
 function alumnoService_buscarTodos(onSuccessCallback) {
     $.getJSON('app/alumno', onSuccessCallback );
+    
 }
 
 /**
@@ -19,7 +20,20 @@ function alumnoService_buscarTodos(onSuccessCallback) {
  * función.
  */
 function alumnoService_guardar(data, onSuccessCallback,onCompleteCallback, onErrorCallback) {
-    $.postJSON("app/alumno/alta",data,onSuccessCallback, onCompleteCallback, onErrorCallback);
+    
+    var url = "app/alumno/alta";
+    
+    jQuery.ajax({
+        type: 'POST',
+        url: url,
+        contentType: 'application/json',
+        data: JSON.stringify(data),
+        dataType: 'json',
+        success: onSuccessCallback,
+        complete: onCompleteCallback,
+        error: onErrorCallback
+        
+    });
 }
 
 /**
@@ -29,41 +43,11 @@ function alumnoService_guardar(data, onSuccessCallback,onCompleteCallback, onErr
  * función.
  */
 function alumnoService_borrar(data, onSuccessCallback) {
-    $.borrar("app/alumno/"+data, onSuccessCallback );
-}
-
-/**
- * Implemetación de la función $.postJSON.
- * Paerametro: successCallback - Puntero a
- * función.
- * Paerametro: completeCallback - Puntero a
- * función.
- * Paerametro: errorCallback - Puntero a
- * función.
- */
-$.postJSON = function(url, data, successCallback, completeCallback, errorCallback) {
-    return jQuery.ajax({
-        type: 'POST',
-        url: url,
-        contentType: 'application/json',
-        data: JSON.stringify(data),
-        dataType: 'json',
-        success: successCallback,
-        complete: completeCallback,
-        error: errorCallback
-        
-    });
-};
-
-/**
- * Implemetación de DELETE.
- * Paerametro: successCallback - Puntero a
- * función.
- */
-$.borrar = function(url, successCallback) {
-    return jQuery.ajax({
+    var url = "app/alumno/"+data;
+    jQuery.ajax({
         type: 'DELETE',
         url: url,
-        success: successCallback
+        success: onSuccessCallback
     });
-};
+}
+
