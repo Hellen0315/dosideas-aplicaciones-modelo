@@ -118,7 +118,7 @@
 </richcontent>
 <font NAME="SansSerif" SIZE="12"/>
 </node>
-<node CREATED="1306928249812" ID="ID_1833625475" MODIFIED="1306937699956" POSITION="right">
+<node CREATED="1306928249812" ID="ID_1833625475" MODIFIED="1306956830239" POSITION="right">
 <richcontent TYPE="NODE"><html>
   <head>
     
@@ -201,7 +201,19 @@
         <font face="Times New Roman">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&lt;/ol&gt;<o p="#DEFAULT"></o></font>
       </p>
       <p class="MsoNormal">
-        <font face="Times New Roman">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&lt;/div&gt;<o p="#DEFAULT"></o></font>
+        <font face="Times New Roman">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&lt;/div&gt;<o p="#DEFAULT"></o>&#160;</font>
+      </p>
+      <p class="MsoNormal">
+        .
+      </p>
+      <p class="MsoNormal">
+        .
+      </p>
+      <p class="MsoNormal">
+        <b>No esta en el JSP hay que agregarlos despues del GET</b>
+      </p>
+      <p class="MsoNormal">
+        .
       </p>
       <p class="MsoNormal">
         <font face="Times New Roman">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&lt;div class=&quot;footer&quot;&gt;<o p="#DEFAULT"></o></font>
@@ -210,7 +222,13 @@
         <font face="Times New Roman">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&lt;a class=&quot;borrar&quot; onclick=&quot;borrarAlumno(${id})&quot; href=&quot;#&quot;&gt;borrar&lt;/a&gt;<o p="#DEFAULT"></o></font>
       </p>
       <p class="MsoNormal">
-        <font face="Times New Roman">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&lt;/div&gt;<o p="#DEFAULT"></o></font>
+        <font face="Times New Roman">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&lt;/div&gt;<o p="#DEFAULT"></o>&#160;</font>
+      </p>
+      <p class="MsoNormal">
+        <font face="Times New Roman">. </font>
+      </p>
+      <p class="MsoNormal">
+        <font face="Times New Roman">.</font>
       </p>
       <p class="MsoNormal">
         <font face="Times New Roman">&#160;&#160;&#160;&#160;&lt;/div&gt;<o p="#DEFAULT"></o></font>
@@ -233,7 +251,13 @@
     </p>
     <div class="Section1">
       <p class="MsoNormal">
-        <font face="Arial">$(document).ready(function() {&#160;&#160;&#160;&#160;&#160;&#160;&#160; <o p="#DEFAULT"></o></font>
+        <font face="Arial">$(document).ready(function() {&#160;&#160;&#160;&#160;&#160;&#160;&#160; <o p="#DEFAULT"></o>&#160; </font>
+      </p>
+      <p class="MsoNormal">
+        <font face="Arial">. </font>
+      </p>
+      <p class="MsoNormal">
+        <b>No esta en el JSP hay que agregarlo para mostrar metodo GET</b>
       </p>
       <p class="MsoNormal">
         <font face="Arial">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;alumnoService_buscarTodos(dibujarAlumnos); <o p="#DEFAULT"></o></font>
@@ -265,7 +289,7 @@
         <font face="Arial">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;$(&quot;#listaAlumnos&quot;).empty(); </font><font face="Wingdings">&#232;</font><font face="Arial">&#160; Limpia<o p="#DEFAULT"></o></font>
       </p>
       <p class="MsoNormal">
-        <font face="Arial">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;$( &quot;#listaAlumnos&quot; ).sortable({revert: true}); </font><font face="Wingdings">&#232;</font><font face="Arial">&#160; Drag<o p="#DEFAULT"></o></font>
+        <font face="Arial">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;$( &quot;#listaAlumnos&quot; ).sortable({revert: true}); </font><b>No esta en el JSP hay que agregarlo para mostrar DRAG.</b>
       </p>
       <p class="MsoNormal">
         <font face="Arial">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;$(&quot;#contactTemplate&quot; ).tmpl(data).appendTo(&quot;#listaAlumnos&quot;); </font><font face="Wingdings">&#232;</font><font face="Arial">&#160; Utiliza el template<o p="#DEFAULT"></o></font>
@@ -282,6 +306,18 @@
     </p>
     <p>
       .
+    </p>
+    <p>
+      <b>DELETE</b>
+    </p>
+    <p>
+      function borrarAlumno(id) {
+    </p>
+    <p>
+      &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;alumnoService_borrar(id,onSuccessDelete);
+    </p>
+    <p>
+      &#160;&#160;&#160;&#160;}
     </p>
     <p>
       .
@@ -326,7 +362,7 @@
 </richcontent>
 <font NAME="SansSerif" SIZE="12"/>
 </node>
-<node CREATED="1306928457421" ID="ID_1886657685" MODIFIED="1306937764455" POSITION="right">
+<node CREATED="1306928457421" ID="ID_1886657685" MODIFIED="1307014794819" POSITION="right">
 <richcontent TYPE="NODE"><html>
   <head>
     
@@ -345,7 +381,7 @@
       .
     </p>
     <p>
-      &lt;form id=&quot;save&quot;&gt;
+      &lt;form id=&quot;guradar&quot;&gt;
     </p>
     <p>
       &#160;&#160;&#160;&#160;&lt;div class=&quot;alta&quot;&gt;
@@ -400,54 +436,6 @@
     </p>
     <p>
       &lt;/form&gt;
-    </p>
-    <p>
-      .
-    </p>
-    <p>
-      .
-    </p>
-    <p>
-      <b>Redy :</b>
-    </p>
-    <p>
-      .
-    </p>
-    <p>
-      <b>Error (Falta convertir el formulario en Json)</b>
-    </p>
-    <p>
-      .
-    </p>
-    <p>
-      $(document).ready(function() {
-    </p>
-    <p>
-      &#160;&#160;&#160;&#160;&#160;&#160;&#160;
-    </p>
-    <p>
-      &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;$(&quot;#save&quot;).submit(function(){
-    </p>
-    <p>
-      &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;
-    </p>
-    <p>
-      &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;guardar($('#save'));
-    </p>
-    <p>
-      &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;
-    </p>
-    <p>
-      &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;return false;
-    </p>
-    <p>
-      &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;});
-    </p>
-    <p>
-      &#160;&#160;&#160;&#160;&#160;&#160;&#160;
-    </p>
-    <p>
-      &#160;&#160;&#160;&#160;});
     </p>
     <p>
       .
@@ -516,7 +504,7 @@
       .
     </p>
     <p>
-      <b>Ok (Pasamos el objeto json)</b>
+      <b>Redy :</b>
     </p>
     <p>
       .
@@ -525,16 +513,19 @@
       $(document).ready(function() {
     </p>
     <p>
-      &#160;&#160;&#160;&#160;&#160;&#160;&#160;
+      
     </p>
     <p>
-      &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;$(&quot;#save&quot;).submit(function(){
+      &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;$(&quot;#guradar&quot;).submit(function(){
     </p>
     <p>
-      &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;
+      &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;.
     </p>
     <p>
-      &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;guardar($('#save').serializeObject());
+      &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;
+    </p>
+    <p>
+      &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;guardar($('#guradar').serializeObject());
     </p>
     <p>
       &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;
@@ -586,6 +577,15 @@
     </p>
     <p>
       function onSuccessSave(data) {&#160;&#160;&#160;&#160;&#160;&#160;&#160;
+    </p>
+    <p>
+      .
+    </p>
+    <p>
+      <b>No esta en el JSP agregar para controlar el retorno Ok de la invocaci&#243;n del servicio. </b>
+    </p>
+    <p>
+      <b>.</b>
     </p>
     <p>
       &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;$().toastmessage('showSuccessToast', 'Alta realizada con id:'+data.id);

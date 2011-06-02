@@ -14,7 +14,7 @@
     </li>
 
     <div id="GET" align="center">
-        <p>En la función redy de la pagina poner la invocación a la siguiente función:</p>
+        <p>En la función redy agregar la siguiente línea:</p>
         <b><em>alumnoService_buscarTodos(dibujarAlumnos);</em></b>
     </div>
     
@@ -38,7 +38,7 @@
 
     <div id="SORTABLE" align="center">
 
-        <p>En la función dibujarAlumnos de la pagina agregar la siguiente linea:</p>
+        <p>En la función dibujarAlumnos agregar la siguiente linea:</p>
         <b><em>$( "#listaAlumnos" ).sortable({revert: true});</em></b>
 
     </div>
@@ -105,14 +105,14 @@
         alumnoService_buscarTodos(dibujarAlumnos); 
     }
         
-    function fade(div_id, button) {
-        if(button.value == 'Mostrar') {
+    function fade(div_id, elemento) {
+        if(elemento.value == 'Mostrar') {
             $('#'+div_id).fadeOut('slow');
-            button.value = 'Ocultar';
+            elemento.value = 'Ocultar';
         }
         else {
             $('#'+div_id).fadeIn('slow');
-            button.value = 'Mostrar';
+            elemento.value = 'Mostrar';
         }
     }
     
