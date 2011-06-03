@@ -1,6 +1,6 @@
 <map version="0.9.0">
 <!-- To view this file, download free mind mapping software FreeMind from http://freemind.sourceforge.net -->
-<node CREATED="1306927999373" ID="ID_1593942453" MODIFIED="1306937819642">
+<node CREATED="1306927999373" ID="ID_1593942453" MODIFIED="1307121682247">
 <richcontent TYPE="NODE"><html>
   <head>
     
@@ -13,8 +13,7 @@
       
     </p>
   </body>
-</html>
-</richcontent>
+</html></richcontent>
 <font NAME="SansSerif" SIZE="12"/>
 <node CREATED="1306928018639" HGAP="34" ID="ID_1841453836" MODIFIED="1306937473988" POSITION="right" VSHIFT="-107">
 <richcontent TYPE="NODE"><html>
@@ -38,8 +37,7 @@
       .
     </p>
   </body>
-</html>
-</richcontent>
+</html></richcontent>
 <font NAME="SansSerif" SIZE="12"/>
 </node>
 <node CREATED="1306928117406" HGAP="27" ID="ID_1610391225" MODIFIED="1306937502379" POSITION="right" VSHIFT="-29">
@@ -79,18 +77,29 @@
       .
     </p>
   </body>
-</html>
-</richcontent>
+</html></richcontent>
 <font NAME="SansSerif" SIZE="12"/>
 </node>
-<node CREATED="1306928858778" HGAP="27" ID="ID_8910292" MODIFIED="1306937668503" POSITION="right">
+<node CREATED="1306928858778" HGAP="27" ID="ID_8910292" MODIFIED="1307121780856" POSITION="right">
 <richcontent TYPE="NODE"><html>
   <head>
     
   </head>
   <body>
     <p>
-      <b>Archivo alumnoService.js</b>
+      <b>Tiles: para organizar la presentaci&#243;n </b>
+    </p>
+    <p>
+      .
+    </p>
+    <p>
+      default.jsp (tinen lo import generales de javaScript)
+    </p>
+    <p>
+      .
+    </p>
+    <p>
+      <b>Archivo alumnoService.js </b>
     </p>
     <p>
       .
@@ -118,14 +127,17 @@
 </richcontent>
 <font NAME="SansSerif" SIZE="12"/>
 </node>
-<node CREATED="1306928249812" ID="ID_1833625475" MODIFIED="1306956830239" POSITION="right">
+<node CREATED="1306928249812" ID="ID_1833625475" MODIFIED="1307121761403" POSITION="right">
 <richcontent TYPE="NODE"><html>
   <head>
     
   </head>
   <body>
     <p>
-      <b>GET&#160;&#160;(Buscar Todos )</b>
+      <b>Componentes del jsp listaAlumnos.jsp </b>
+    </p>
+    <p>
+      .
     </p>
     <p>
       .
@@ -244,7 +256,13 @@
       .
     </p>
     <p>
-      <b>redy :</b>
+      <b>Buscar todos (GET) </b>
+    </p>
+    <p>
+      .
+    </p>
+    <p>
+      <b>raedy : </b>
     </p>
     <p>
       .
@@ -307,21 +325,6 @@
     <p>
       .
     </p>
-    <p>
-      <b>DELETE</b>
-    </p>
-    <p>
-      function borrarAlumno(id) {
-    </p>
-    <p>
-      &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;alumnoService_borrar(id,onSuccessDelete);
-    </p>
-    <p>
-      &#160;&#160;&#160;&#160;}
-    </p>
-    <p>
-      .
-    </p>
   </body>
 </html>
 </richcontent>
@@ -358,11 +361,10 @@
       .
     </p>
   </body>
-</html>
-</richcontent>
+</html></richcontent>
 <font NAME="SansSerif" SIZE="12"/>
 </node>
-<node CREATED="1306928457421" ID="ID_1886657685" MODIFIED="1307014794819" POSITION="right">
+<node CREATED="1306928457421" ID="ID_1886657685" MODIFIED="1307121436077" POSITION="right">
 <richcontent TYPE="NODE"><html>
   <head>
     
@@ -504,7 +506,10 @@
       .
     </p>
     <p>
-      <b>Redy :</b>
+      <b>POST :</b>
+    </p>
+    <p>
+      <b>Ready :</b>
     </p>
     <p>
       .
@@ -598,6 +603,15 @@
     </p>
     <p>
       function onErrorSave(data) {&#160;
+    </p>
+    <p>
+      .
+    </p>
+    <p>
+      <b>No esta en el JSP agregar para controlar el retorno Ok de la invocaci&#243;n del servicio. </b>
+    </p>
+    <p>
+      <b>.</b>
     </p>
     <p>
       &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;$().toastmessage('showToast', {
