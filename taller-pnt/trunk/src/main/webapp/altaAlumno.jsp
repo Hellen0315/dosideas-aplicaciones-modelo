@@ -25,7 +25,7 @@
 <div id="GUARDAR" align="center">
 
     <p>En la función ready dentro de la función de submite del formulario guardar, agregar la siguiente línea:</p>
-    <b><em> guardar($('#guardar').serializeObject());</em></b>
+    <b><em> guardar($('#formularioAlumno').serializeObject());</em></b>
 
 </div>
 
@@ -49,7 +49,7 @@
 </div>
 </p>
 
-<form id="guardar">
+<form id="formularioAlumno">
     <div class="alta">
         <fieldset>
             <div class="header_alta">
@@ -75,9 +75,9 @@
         
         ocultarDocumentacion();
         
-        $("#guardar").submit(function(){
+        $("#formularioAlumno").submit(function(){
             
-            guardar($('#guardar').serializeObject());
+            guardar($('#formularioAlumno').serializeObject());
              
             return false;
         });
@@ -97,7 +97,7 @@
      * @param data alumno guardado.
      */
     function onSuccessSave(alumno) {        
-        onSuccess('Alta realizada con id:'+alumno.id);
+        pnt_mostrarMensajeOk('Alta realizada con id:'+alumno.id);
     }
     
     
@@ -106,7 +106,7 @@
      * @param data response.
      */
     function onErrorSave(data) {  
-        onError('Error realizando alta de alumno: '+data.responseText);
+        pnt_mostrarMensajeError('Error realizando alta de alumno: '+data.responseText);
       
     }
     

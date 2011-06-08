@@ -84,7 +84,9 @@
      * @param data un array de Alumnos.
      */
     function dibujarAlumnos(data) {
-        $( "#listaAlumnos" ).sortable({revert: true});
+        $( "#listaAlumnos" ).sortable({revert: true, change: function(event, ui) {
+                pnt_mostrarMensajeOk("Se movio: "+ui.item[0].id);
+        }});
         $("#listaAlumnos").empty();
         $("#alumnoTemplate" ).tmpl(data).appendTo("#listaAlumnos");    
         

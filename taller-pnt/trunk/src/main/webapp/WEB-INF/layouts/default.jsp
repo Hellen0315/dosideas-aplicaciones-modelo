@@ -17,9 +17,9 @@
         <script type="text/javascript" src="<c:url value="/js/jquery-json/jquery.json-2.2.js"/>"></script>
         <script type="text/javascript" src="<c:url value="/js/jquery-toastmessage/jquery.toastmessage.js"/>"></script>
         <script type="text/javascript" src="<c:url value="/js/jquery-ui/jquery-ui-1.8.12.custom.min.js"/>"></script>
-        <script type="text/javascript" src="<c:url value="/js/taller-pnt/taller-pnt-servicios/alumnoServicio.js"/>"></script>
-        <script type="text/javascript" src="<c:url value="/js/taller-pnt/taller-pnt-conversores/taller.pnt.conversores.js"/>"></script>
-        <script type="text/javascript" src="<c:url value="/js/taller-pnt/taller-pnt-mensajes/taller.pnt.mensajes.js"/>"></script>
+        <script type="text/javascript" src="<c:url value="/js/pnt/pnt.alumnoServicio.js"/>"></script>
+        <script type="text/javascript" src="<c:url value="/js/pnt/pnt.conversores.js"/>"></script>
+        <script type="text/javascript" src="<c:url value="/js/pnt/pnt.mensajes.js"/>"></script>
         
 
     </head>
