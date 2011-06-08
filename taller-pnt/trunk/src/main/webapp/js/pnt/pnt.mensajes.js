@@ -1,8 +1,14 @@
-function onSuccess(mensaje) {
+/**
+ * Mensajes Ok.
+ */
+function pnt_mostrarMensajeOk(mensaje) {
     $().toastmessage('showSuccessToast', mensaje);   
 }
 
-function onError(mensaje) {
+/**
+ * Mensajes de error.
+ */
+function pnt_mostrarMensajeError(mensaje) {
     
     $().toastmessage('showToast', {
             text     : mensaje,
@@ -10,6 +16,6 @@ function onError(mensaje) {
             type     : 'error'
 
             });
-    
+            
 }
 
