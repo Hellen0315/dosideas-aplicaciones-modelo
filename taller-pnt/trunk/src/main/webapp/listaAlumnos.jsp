@@ -47,7 +47,7 @@
 
 <script id="alumnoTemplate" type="text/x-jquery-tmpl">
 
-    <div class="alumno">
+    <div class="alumno" id="alumno_${id}">
         <div class="header">
             <h1>${apellido}, ${nombre}</h1>
             <small>${email}</small>
@@ -61,6 +61,9 @@
             </ol>
         </div>
         
+        <div class="footer"> 
+            <a class="borrar" onclick="borrarAlumno(${id})" href="#">borrar</a> 
+        </div>   
 
     </div>
 </script>
@@ -71,6 +74,8 @@
         
         ocultarDocumentacion();
         
+        alumnoService_buscarTodos(dibujarAlumnos);
+        
         
     });
 
@@ -79,7 +84,7 @@
      * @param data un array de Alumnos.
      */
     function dibujarAlumnos(data) {
-        
+        $( "#listaAlumnos" ).sortable({revert: true});
         $("#listaAlumnos").empty();
         $("#alumnoTemplate" ).tmpl(data).appendTo("#listaAlumnos");    
         
@@ -90,16 +95,12 @@
      * @param id del alumno a norrar.
      */
     function borrarAlumno(id) {
-        alumnoService_borrar(id,onSuccessDelete);
+        alumnoService_borrar(id,function(){
+            $('#alumno_'+id).hide("slow");
+        });
     }
     
-    /**
-     * Busca todos los alumnos.
-     */
-    function onSuccessDelete() {        
-        alumnoService_buscarTodos(dibujarAlumnos); 
-    }
-        
+            
     function toggleDocumentacion(div_id) {
         ocultarDocumentacion();
         $('#'+div_id).toggle("fast");
