@@ -33,7 +33,7 @@ public class AlumnoControllerTest {
     @Test
     public void buscarPorId_conIdCorrecto_retornaAlumno() {
         Long id = 1L;
-        Alumno alumno = restTemplate.getForObject("http://localhost:8080/taller-PNT/app/alumno/"+id.toString(), Alumno.class);
+        Alumno alumno = restTemplate.getForObject("http://localhost:8084/taller-PNT/app/alumno/"+id.toString(), Alumno.class);
         Assert.assertNotNull(alumno);
     }
 
@@ -41,7 +41,7 @@ public class AlumnoControllerTest {
     public void buscarPorId_conIdInCorrecto_retornaNOT_FOUND() {
         
         try {
-            restTemplate.getForObject("http://localhost:8080/taller-PNT/app/alumno/1001", Alumno.class);
+            restTemplate.getForObject("http://localhost:8084/taller-PNT/app/alumno/1001", Alumno.class);
             Assert.fail();
         } catch (HttpClientErrorException ex) {
             Assert.assertEquals(HttpStatus.NOT_FOUND, ex.getStatusCode());
@@ -55,7 +55,7 @@ public class AlumnoControllerTest {
         alumno.setEmail("Test@test.com");
 
         try {
-            Alumno alumnoRetorno = restTemplate.postForObject("http://localhost:8080/taller-PNT/app/alumno", alumno, Alumno.class);
+            Alumno alumnoRetorno = restTemplate.postForObject("http://localhost:8084/taller-PNT/app/alumno", alumno, Alumno.class);
             Assert.assertNotNull(alumnoRetorno);
             Assert.assertEquals(cantidadAlumnos + 1, cantidadAlumnos());
         } catch (Exception e) {
@@ -72,7 +72,7 @@ public class AlumnoControllerTest {
         alumno.setEmail("Test test.com");
 
         try {
-            restTemplate.postForObject("http://localhost:8080/taller-PNT/app/alumno", alumno, Alumno.class);
+            restTemplate.postForObject("http://localhost:8084/taller-PNT/app/alumno", alumno, Alumno.class);
             Assert.fail();
         } catch (HttpClientErrorException ex) {
             Assert.assertEquals(HttpStatus.BAD_REQUEST, ex.getStatusCode());
@@ -83,13 +83,13 @@ public class AlumnoControllerTest {
 
 //    @Test
 //    public void eliminar_conIdCorrecto() throws IOException {
-//        restTemplate.delete("http://localhost:8080/taller-PNT/app/alumno/2");
+//        restTemplate.delete("http://localhost:8084/taller-PNT/app/alumno/2");
 //        Assert.assertEquals(cantidadAlumnos - 1, cantidadAlumnos());
 //    }
     
     private int cantidadAlumnos() throws IOException {
 
-        return restTemplate.getForObject("http://localhost:8080/taller-PNT/app/alumno", Alumno[].class).length;
+        return restTemplate.getForObject("http://localhost:8084/taller-PNT/app/alumno", Alumno[].class).length;
 
     }
 }

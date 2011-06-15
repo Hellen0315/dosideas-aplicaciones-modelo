@@ -27,7 +27,7 @@ function alumnoService_guardar(alumno, onSuccessCallback,onCompleteCallback, onE
         type: 'POST',
         url: url,
         contentType: 'application/json',
-        data: JSON.stringify(alumno),
+        data: $.toJSON(alumno),
         dataType: 'json',
         success: onSuccessCallback,
         complete: onCompleteCallback,
