@@ -11,11 +11,11 @@ function pnt_mostrarMensajeOk(mensaje) {
 function pnt_mostrarMensajeError(mensaje) {
     
     $().toastmessage('showToast', {
-            text     : mensaje,
-            sticky   : true,
-            type     : 'error'
+        text     : mensaje,
+        sticky   : true,
+        type     : 'error'
 
-            });
+    });
             
 }
 

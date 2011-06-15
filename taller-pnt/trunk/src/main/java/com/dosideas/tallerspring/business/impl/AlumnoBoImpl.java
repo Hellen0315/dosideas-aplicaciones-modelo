@@ -23,6 +23,7 @@ public class AlumnoBoImpl implements AlumnoBo {
     @Autowired
     private AlumnoDao alumnoDao;
 
+    
     public void guardar(Alumno alumno) {
         alumnoDao.guardar(alumno);
     }

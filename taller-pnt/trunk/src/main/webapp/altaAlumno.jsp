@@ -77,7 +77,7 @@
         
         $("#formularioAlumno").submit(function(){
             
-            guardar($('#formularioAlumno').serializeObject());
+            guardarAlumno($('#formularioAlumno').serializeObject());
              
             return false;
         });
@@ -88,15 +88,15 @@
      * Guarda un alumno.
      * @param data un Alumno.
      */
-    function guardar(data) {        
-        alumnoService_guardar(data, onSuccessSave,onCompleteSave,onErrorSave); 
+    function guardarAlumno(data) {        
+        alumnoService_guardar(data, guardarAlumnoOk,guardarAlumnoCompleto,guardarAlumnoError); 
     }
     
     /**
      * Muestra el mensaje por success.
      * @param data alumno guardado.
      */
-    function onSuccessSave(alumno) {        
+    function guardarAlumnoOk(alumno) {        
         pnt_mostrarMensajeOk('Alta realizada con id:'+alumno.id);
     }
     
@@ -105,7 +105,7 @@
      * Muestra el mensaje de error.
      * @param data response.
      */
-    function onErrorSave(data) {  
+    function guardarAlumnoError(data) {  
         pnt_mostrarMensajeError('Error realizando alta de alumno: '+data.responseText);
       
     }
@@ -113,7 +113,7 @@
     /**
      * Limpia el formulario.
      */
-    function onCompleteSave() {        
+    function guardarAlumnoCompleto() {        
         $('#saveCancel').click();
         
     }
