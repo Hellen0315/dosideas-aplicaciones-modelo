@@ -1,16 +1,8 @@
-drop table if exists personas;
 drop table if exists curso_materia;
 drop table if exists materias;
 drop table if exists alumno_curso;
 drop table if exists cursos;
 drop table if exists alumnos;
-
-create table personas (
-    id bigint identity PRIMARY KEY, 
-    nombre varchar(100), 
-    apellido varchar(100), 
-    email varchar(50) not null
-);
 
 create table alumnos (
     id bigint identity primary key, 
