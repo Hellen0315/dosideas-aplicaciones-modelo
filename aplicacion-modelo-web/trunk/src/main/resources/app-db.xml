@@ -12,10 +12,11 @@
          En una implementación real se configuraría un DataSource, como se puede
          ver en el bean de abajo comentado.
     -->
-    <jdbc:embedded-database id="dataSource" type="HSQL" >
+    <jdbc:embedded-database id="defaultDataSource" type="HSQL" >
         <jdbc:script location="classpath:app-schema.sql"/>    
         <jdbc:script location="classpath:app-datos.sql"/>    
     </jdbc:embedded-database>
+    
     
     
     <!-- Este es el ejemplo de un DataSource que podría usarse en un entorno

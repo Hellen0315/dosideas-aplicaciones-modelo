@@ -22,6 +22,7 @@ import org.hibernate.annotations.CascadeType;
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
 import org.hibernate.validator.constraints.Email;
+import org.hibernate.validator.constraints.NotEmpty;
 
 /**
  *
@@ -34,9 +35,15 @@ public class Alumno implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    
     @Column
+    @NotEmpty
+    @NotNull
     private String nombre;
+    
     @Column
+    @NotEmpty
+    @NotNull
     private String Apellido;
     
     @Column

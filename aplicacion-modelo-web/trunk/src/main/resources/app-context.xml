@@ -18,10 +18,13 @@
     <aop:config proxy-target-class="true"/>
     
     <context:component-scan base-package="com.dosideas.app"/>
-    <tx:annotation-driven transaction-manager="transactionManager"/>
-    <mvc:annotation-driven/>
     
-    <bean id="methodHandlerExceptionResolver" class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerExceptionResolver">
+    <tx:annotation-driven transaction-manager="txManager"/>
+    
+    <mvc:annotation-driven/>
+        
+    <bean id="methodHandlerExceptionResolver" 
+        class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerExceptionResolver">
         <property name="messageConverters">
             <list>
                 <bean class="org.springframework.http.converter.json.MappingJacksonHttpMessageConverter"/>

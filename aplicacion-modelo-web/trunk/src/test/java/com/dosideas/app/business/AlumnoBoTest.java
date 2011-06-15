@@ -1,0 +1,174 @@
+/*
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package com.dosideas.app.business;
+
+
+import com.dosideas.app.domain.Alumno;
+import com.dosideas.app.domain.Curso;
+import com.dosideas.app.domain.Materia;
+import java.util.ArrayList;
+import java.util.Collection;
+import javax.sql.DataSource;
+import javax.validation.ConstraintViolation;
+import javax.validation.ConstraintViolationException;
+import junit.framework.Assert;
+import org.junit.Before;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.ClassPathResource;
+import org.springframework.core.io.Resource;
+import org.springframework.jdbc.core.simple.SimpleJdbcTemplate;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.test.jdbc.SimpleJdbcTestUtils;
+
+
+/**
+ *
+ * @author DosIdeas
+ */
+@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration(locations = {"classpath:app-context.xml",
+    "classpath:app-hibernate.xml",
+    "classpath:app-transaction.xml",
+    "classpath:app-db-test.xml"})
+public class AlumnoBoTest {
+
+    @Autowired
+    private AlumnoBo instance;
+    @Autowired
+    private DataSource dataSource;
+    private SimpleJdbcTemplate simpleJdbcTemplate;
+
+    @Before
+    public void setUp() {
+        simpleJdbcTemplate = new SimpleJdbcTemplate(dataSource);
+        simpleJdbcTemplate = new SimpleJdbcTemplate(dataSource);
+        Resource resourceDropEsquema = new ClassPathResource("app-drop-schema.sql");
+        Resource resourceEsquema = new ClassPathResource("app-schema.sql");
+        Resource resourceDatos = new ClassPathResource("app-datos.sql");
+        SimpleJdbcTestUtils.executeSqlScript(simpleJdbcTemplate, resourceDropEsquema, false);
+        SimpleJdbcTestUtils.executeSqlScript(simpleJdbcTemplate, resourceEsquema, false);
+        SimpleJdbcTestUtils.executeSqlScript(simpleJdbcTemplate, resourceDatos, false);
+    }
+    
+    
+    @Test
+    public void guardar_conDatosValidos_casoOk() {
+
+        Alumno alumno = new Alumno();
+        alumno.setNombre("Sapo");
+        alumno.setApellido("Pepe");
+        alumno.setEmail("pepe@sapo");
+
+        
+        Curso curso = new Curso();
+        Materia materia = new Materia();
+        materia.setNombre("Base de datos");
+        curso.setMateria(materia);
+        curso.setTitulo("Taller hibernate");
+        
+        
+        Collection<Curso> cursos = new ArrayList<Curso>();
+        cursos.add(curso);
+
+        alumno.setCursos(cursos);
+
+        int filasIniAlumnos = SimpleJdbcTestUtils.countRowsInTable(simpleJdbcTemplate, "alumnos");
+        int filasIniAlumnoCurso = SimpleJdbcTestUtils.countRowsInTable(simpleJdbcTemplate, "alumno_curso");
+        int filasIniCursos = SimpleJdbcTestUtils.countRowsInTable(simpleJdbcTemplate, "cursos");
+        int filasIniMaterias = SimpleJdbcTestUtils.countRowsInTable(simpleJdbcTemplate, "materias");
+        
+        instance.guardar(alumno);
+        
+        int filasFinAlumnos = SimpleJdbcTestUtils.countRowsInTable(simpleJdbcTemplate, "alumnos");
+        int filasFinAlumnoCurso = SimpleJdbcTestUtils.countRowsInTable(simpleJdbcTemplate, "alumno_curso");
+        int filasFinCursos = SimpleJdbcTestUtils.countRowsInTable(simpleJdbcTemplate, "cursos");
+        int filasFinMaterias = SimpleJdbcTestUtils.countRowsInTable(simpleJdbcTemplate, "materias");
+                
+
+        Assert.assertNotNull(alumno.getId());
+
+        Assert.assertEquals(filasIniAlumnos + 1, filasFinAlumnos);
+        Assert.assertEquals(filasIniAlumnoCurso + 1, filasFinAlumnoCurso);
+        Assert.assertEquals(filasIniCursos + 1, filasFinCursos);
+        Assert.assertEquals(filasIniMaterias + 1, filasFinMaterias);
+    
+    }
+    
+    @Test
+    public void buscarPorId_conIdValido_retornaAlumno() {
+        
+        Alumno alumno = instance.buscarPorId(1L);
+        
+        Assert.assertNotNull(alumno);
+        Assert.assertEquals("Jose", alumno.getNombre());
+        Assert.assertEquals(3, alumno.getCursos().size());
+        
+    }
+    
+    @Test
+    public void borrarPorId_conIdValido_borraAlumno() {
+        
+        int filasIniAlumnos = SimpleJdbcTestUtils.countRowsInTable(simpleJdbcTemplate, "alumnos");
+        int filasIniAlumnoCurso = SimpleJdbcTestUtils.countRowsInTable(simpleJdbcTemplate, "alumno_curso");
+        int filasIniCursos = SimpleJdbcTestUtils.countRowsInTable(simpleJdbcTemplate, "cursos");
+        int filasIniMaterias = SimpleJdbcTestUtils.countRowsInTable(simpleJdbcTemplate, "materias");
+        
+        instance.eliminarPorId(2L);
+                     
+        int filasFinAlumnos = SimpleJdbcTestUtils.countRowsInTable(simpleJdbcTemplate, "alumnos");
+        int filasFinAlumnoCurso = SimpleJdbcTestUtils.countRowsInTable(simpleJdbcTemplate, "alumno_curso");
+        int filasFinCursos = SimpleJdbcTestUtils.countRowsInTable(simpleJdbcTemplate, "cursos");
+        int filasFinMaterias = SimpleJdbcTestUtils.countRowsInTable(simpleJdbcTemplate, "materias");
+                
+        Assert.assertEquals(filasIniAlumnos - 1, filasFinAlumnos);
+        Assert.assertEquals(filasIniAlumnoCurso -2 , filasFinAlumnoCurso);
+        Assert.assertEquals(filasIniCursos , filasFinCursos);
+        Assert.assertEquals(filasIniMaterias , filasFinMaterias);
+    }
+
+    @Test
+    public void guardar_alumnoConEmailIncorrecto_lanzaConstraintViolationException() {
+
+        Alumno alumno = new Alumno();
+        alumno.setNombre("Sapo");
+        alumno.setApellido("Pepe");
+        alumno.setEmail("pepe sapo");
+        try {
+
+            instance.guardar(alumno);
+            Assert.fail();
+            
+        } catch (ConstraintViolationException ex) {
+            for (ConstraintViolation error : ex.getConstraintViolations()) {
+                Assert.assertEquals("not a well-formed email address", error.getMessage());
+                Assert.assertEquals(alumno.getEmail(), error.getInvalidValue());
+            }
+        }
+
+    }
+    
+    @Test
+    public void guardar_alumnoConVacio_lanzaConstraintViolationException() {
+
+        Alumno alumno = new Alumno();
+        alumno.setNombre("Sapo");
+        alumno.setApellido("Pepe");
+                
+        try {
+
+            instance.guardar(alumno);
+            Assert.fail();
+            
+        } catch (ConstraintViolationException ex) {
+            for (ConstraintViolation error : ex.getConstraintViolations()) {
+                Assert.assertEquals("may not be null", error.getMessage());
+                Assert.assertEquals(alumno.getEmail(), error.getInvalidValue());
+            }
+        }
+    }
+}

@@ -10,14 +10,17 @@
         <title><tiles:getAsString name="title"/></title>
 
         <link href="<c:url value="/css/default.css"/>" rel="stylesheet" type="text/css"/>
-        <link href="<c:url value="/js/jquery-datatables/demo_page.css"/>" rel="stylesheet" type="text/css"/>
-        <link href="<c:url value="/js/jquery-datatables/demo_table_jui.css"/>" rel="stylesheet" type="text/css"/>
-        <link href="<c:url value="/js/jquery-datatables/smoothness/jquery-ui-1.8.4.custom.css"/>" rel="stylesheet" type="text/css"/>
+        <link href="<c:url value="/js/jquery-toastmessage/css/jquery.toastmessage.css"/>" rel="stylesheet" type="text/css"/>
 
         <script type="text/javascript" src="<c:url value="/js/jquery/jquery.js"/>"></script>
-        <script type="text/javascript" src="<c:url value="/js/jquery-datatables/jquery.dataTables.js"/>"></script>
         <script type="text/javascript" src="<c:url value="/js/jquery-template/jquery.tmpl.min.js"/>"></script>
-        <script type="text/javascript" src="<c:url value="/js/servicios/personaService.js"/>"></script>
+        <script type="text/javascript" src="<c:url value="/js/jquery-json/jquery.json-2.2.js"/>"></script>
+        <script type="text/javascript" src="<c:url value="/js/jquery-toastmessage/jquery.toastmessage.js"/>"></script>
+        <script type="text/javascript" src="<c:url value="/js/jquery-ui/jquery-ui-1.8.12.custom.min.js"/>"></script>
+        <script type="text/javascript" src="<c:url value="/js/pnt/pnt.alumnoServicio.js"/>"></script>
+        <script type="text/javascript" src="<c:url value="/js/pnt/pnt.conversores.js"/>"></script>
+        <script type="text/javascript" src="<c:url value="/js/pnt/pnt.mensajes.js"/>"></script>
+        
 
     </head>
     <body>
@@ -28,5 +31,7 @@
             <tiles:insertAttribute name="body"/>
         </div>
     </body>
+    
+    
 </html>
 
