@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+           
+<!-- Spring se integra a los EJB3 mediante un interceptor declarado en 
+     cada EJB. Este interceptor busca un archivo llamado "beanRefContext.xml"
+     en todo el classpath, y allí busca una instancia de ApplicationContext, 
+     en donde se declaran los beans a cargar.
+-->
+    <bean name="applicationContext-main" class="org.springframework.context.support.ClassPathXmlApplicationContext">
+        <constructor-arg>
+            <list>
+                <value>application-business.xml</value>
+                <value>application-dao.xml</value>
+                <value>application-db.xml</value>
+                <value>application-hibernate.xml</value>
+            </list>
+        </constructor-arg>
+    </bean>
+</beans>
