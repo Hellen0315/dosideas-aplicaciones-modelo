@@ -6,7 +6,6 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import org.springframework.test.context.transaction.TransactionConfiguration;
 import org.springframework.transaction.annotation.Transactional;
 import static org.junit.Assert.*;
 
@@ -25,7 +24,7 @@ import static org.junit.Assert.*;
  *   Ir al menu Window > Services > Databases > Java DB > Click derecho > Start server
  * 
  * Para ejecutar este test en NetBeans: 
- *    click derecho > "Run PaisDaoComponenteTest.java" (SHIFT + F6)
+ *    click derecho > "Test File" (CTRL + F6)
  * 
  * @author ldeseta
  */
@@ -35,7 +34,6 @@ import static org.junit.Assert.*;
     "/application-dao.xml",
     "/application-hibernate.xml"
 })
-@TransactionConfiguration(transactionManager = "transactionManager")
 @Transactional
 public class PaisDaoComponenteTest {
 

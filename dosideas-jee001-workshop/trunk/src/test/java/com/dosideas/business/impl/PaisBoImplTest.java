@@ -19,7 +19,7 @@ import static org.mockito.Mockito.*;
  * son simulados. 
  * 
  * Para ejecutar este test en NetBeans: 
- *    click derecho > "Run PaisBoImplTest.java" (SHIFT + F6)
+ *    click derecho > "Test File" (CTRL + F6)
  * 
  * @author ldeseta
  */
