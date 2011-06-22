@@ -78,6 +78,7 @@ public class PaisDaoComponenteTest {
      */
     @Test(expected = IllegalArgumentException.class)
     public void buscarPaisPorIdConIdNull() {
-        Pais pais = instance.buscarPaisPorId(null);
+        instance.buscarPaisPorId(null);
+        fail("Debería haberse lanzado una excepcion.");
     }
 }
