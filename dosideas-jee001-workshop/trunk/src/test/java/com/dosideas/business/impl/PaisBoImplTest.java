@@ -105,6 +105,8 @@ public class PaisBoImplTest {
 
         doThrow(new IllegalArgumentException()).when(paisDaoMock).buscarPaisPorId(null);
 
-        Pais pais = instance.buscarPaisPorId(null);
+        instance.buscarPaisPorId(null);
+        
+        fail("Debería haberse lanzado una excepcion.");
     }
 }
