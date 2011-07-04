@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:int="http://www.springframework.org/schema/integration"
+	xmlns:jdbc="http://www.springframework.org/schema/integration/jdbc"
+        xmlns:stream="http://www.springframework.org/schema/integration/stream"
+        xmlns:int-xml="http://www.springframework.org/schema/integration/xml"
+        xsi:schemaLocation="http://www.springframework.org/schema/beans
+			http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+			http://www.springframework.org/schema/integration
+			http://www.springframework.org/schema/integration/spring-integration-2.0.xsd
+			http://www.springframework.org/schema/integration/jdbc
+                        http://www.springframework.org/schema/integration/jdbc/spring-integration-jdbc-2.0.xsd
+                        http://www.springframework.org/schema/integration/stream
+                        http://www.springframework.org/schema/integration/stream/spring-integration-stream-2.0.xsd
+                        http://www.springframework.org/schema/integration/xml
+                        http://www.springframework.org/schema/integration/xml/spring-integration-xml-2.0.xsd">
+
+     
+    <!-- Obtiene los registros de la tabla    -->
+    <jdbc:inbound-channel-adapter 
+		query="select * from mensajes where estado = 0"
+		channel="jdbcChannel" data-source="dataSource" 
+		update="update mensajes set estado=1 where id in (:id)">
+        <int:poller fixed-rate="5000" >
+            <int:transactional />
+        </int:poller>
+    </jdbc:inbound-channel-adapter>
+    
+    <!-- Separa la colección de registros en mensajes individuales  -->
+    <int:splitter id="splitter" input-channel="jdbcChannel" output-channel="routerChannel"/>
+    
+    <!-- Mediante el valor de la columna formato determina si tiene que serializar en json o en xml    -->
+    <int:channel id="routerChannel"/>
+    <int:router input-channel="routerChannel" expression="payload.FORMATO == 'XML' ? 'toString' : 'jsonTransformer'"/>
+    
+    <!-- Se convierte el mensaje a string para convertir a XML -->
+    <int:channel id="toString"/>
+    <int:object-to-string-transformer input-channel="toString" output-channel="xmlTransformer"/>
+    
+    <!-- Serializa en JSON y envia a imprimir por consola  -->
+    <int:channel id="jsonTransformer"/>
+    <int:object-to-json-transformer input-channel="jsonTransformer" output-channel="stdoutChannel"/>
+    
+    <!-- Serializa en XML y envia a imprimir por consola  -->
+    <int:channel id="xmlTransformer"/>
+    <int-xml:marshalling-transformer result-type="StringResult" input-channel="xmlTransformer" marshaller="xstreamMarshaller" output-channel="stdoutChannel" />
+    <!-- Implementación del serializador a xml -->
+    <bean id="xstreamMarshaller" class="org.springframework.oxm.xstream.XStreamMarshaller"/>
+        
+    <!-- Imprime por consola  -->
+    <stream:stdout-channel-adapter id="stdoutChannel" append-newline="true"/>
+    
+    
+
+</beans>
