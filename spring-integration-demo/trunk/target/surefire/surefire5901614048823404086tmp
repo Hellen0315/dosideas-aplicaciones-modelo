@@ -1,0 +1,6 @@
+#surefire
+#Mon Jul 04 23:46:37 PKT 2011
+user.dir=D\:\\DATOS\\Mis DOCUMENTOS\\NetBeansProjects\\spring-integration-demo
+localRepository=C\:\\Documents and Settings\\parivero\\.m2\\repository
+basedir=D\:\\DATOS\\Mis DOCUMENTOS\\NetBeansProjects\\spring-integration-demo
+test=AppJdbcTest
