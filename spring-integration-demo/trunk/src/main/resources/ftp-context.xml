@@ -12,11 +12,22 @@
                         http://www.springframework.org/schema/integration/ftp/spring-integration-ftp-2.0.xsd
                         http://www.springframework.org/schema/integration/file
                         http://www.springframework.org/schema/integration/file/spring-integration-file-2.0.xsd">
-                            
+     
+     <!-- Canal de log -->
+     <int:logging-channel-adapter id="logger" log-full-message="true" level="DEBUG"/>
+     
+     <!-- poller por default para los adaptadores que necesiten uno -->
+    <int:poller id="defaultPoller" default="true" max-messages-per-poll="5" fixed-rate="3000" error-channel="logger"/>
+                                  
+    <!-- Canal de entrada  -->
     <int:channel id="archivoEntrada">
         <int:queue/>
+        <int:interceptors>
+            <int:wire-tap channel="logger"/>
+        </int:interceptors>
     </int:channel>
     
+    <!-- Factory para el ftp  -->
     <bean id="ftpClientFactory" class="org.springframework.integration.ftp.session.DefaultFtpSessionFactory">
         <property name="host" value="adwww245"/>
         <property name="username" value="beasvc"/>
@@ -24,26 +35,39 @@
     
     </bean>
     
+    <!-- Controla la existencia de archivos (patron *.txt) en el directorio remoto y realiza el ftp al directorio local -->
     <ftp:inbound-channel-adapter channel="archivoEntrada" 
                                  session-factory="ftpClientFactory" 
                                  delete-remote-files="true" 
                                  remote-directory="/home/beasvc/salidaftp" 
                                  local-directory="tmp" 
-                                 temporary-file-suffix="_ftp">
-        <int:poller fixed-rate="1000"/>    
-    </ftp:inbound-channel-adapter>
+                                 temporary-file-suffix="_ftpIn" 
+                                 filename-pattern="*.txt" />
+                                     
+
+    <!-- Canal para suscripciones -->
+    <int:publish-subscribe-channel id="archivoLlegada">
+        <int:interceptors>
+            <int:wire-tap channel="logger"/>
+        </int:interceptors>
+    </int:publish-subscribe-channel>
     
+    <!-- Controla la existencia de archivos (patron *.txt) en el directorio tmp -->
+    <file:inbound-channel-adapter id="dirTmp" channel="archivoLlegada" directory="tmp" filename-pattern="*.txt" prevent-duplicates="false"/>
     
-    <int:channel id="archivoSalida"/>
+    <!-- Primer suscriptor del canal archivoSalida, que realiza un ftp al directorio /home/beasvc/entradaftp del equipo remoto -->
+    <ftp:outbound-channel-adapter channel="archivoLlegada" 
+                                  session-factory="ftpClientFactory"  
+                                  remote-directory="/home/beasvc/entradaftp" 
+                                  temporary-file-suffix="_ftpOut" 
+                                  order="1"  />
     
-    <file:inbound-channel-adapter id="dirEntrada" channel="archivoSalida" directory="tmp">
-        <int:poller>
-            <int:interval-trigger interval="1000"/>
-        </int:poller>
-    </file:inbound-channel-adapter>
-    
-    
-    <ftp:outbound-channel-adapter channel="archivoSalida" session-factory="ftpClientFactory"  remote-directory="/home/beasvc/entradaftp" temporary-file-suffix="_ftp"/>
+    <!-- Segundo suscriptor que mueve el archivo del directorio tmp al directorio archivos del equipo local -->
+    <file:outbound-channel-adapter channel="archivoLlegada" 
+                                   directory="archivos" 
+                                   delete-source-files="true"  
+                                   temporary-file-suffix="_move"
+                                   order="2" />
     
 
 </beans>
