@@ -28,23 +28,32 @@
     </jdbc:inbound-channel-adapter>
     
     <!-- Separa la colección de registros en mensajes individuales  -->
-    <int:splitter id="splitter" input-channel="jdbcChannel" output-channel="routerChannel"/>
+    <int:splitter id="splitter" 
+                  input-channel="jdbcChannel" 
+                  output-channel="routerChannel"/>
     
     <!-- Mediante el valor de la columna formato determina si tiene que serializar en json o en xml    -->
     <int:channel id="routerChannel"/>
-    <int:router input-channel="routerChannel" expression="payload.FORMATO == 'XML' ? 'toString' : 'jsonTransformer'"/>
+    <int:router input-channel="routerChannel" 
+                expression="payload.FORMATO == 'XML' ? 'toString' : 'jsonTransformer'"/>
     
     <!-- Se convierte el mensaje a string para convertir a XML -->
     <int:channel id="toString"/>
-    <int:object-to-string-transformer input-channel="toString" output-channel="xmlTransformer"/>
+    <int:object-to-string-transformer input-channel="toString" 
+                                      output-channel="xmlTransformer"/>
     
     <!-- Serializa en JSON y envia a imprimir por consola  -->
     <int:channel id="jsonTransformer"/>
-    <int:object-to-json-transformer input-channel="jsonTransformer" output-channel="stdoutChannel"/>
+    <int:object-to-json-transformer input-channel="jsonTransformer" 
+                                    output-channel="stdoutChannel"/>
     
     <!-- Serializa en XML y envia a imprimir por consola  -->
     <int:channel id="xmlTransformer"/>
-    <int-xml:marshalling-transformer result-type="StringResult" input-channel="xmlTransformer" marshaller="xstreamMarshaller" output-channel="stdoutChannel" />
+    <int-xml:marshalling-transformer result-type="StringResult" 
+                                     input-channel="xmlTransformer" 
+                                     marshaller="xstreamMarshaller" 
+                                     output-channel="stdoutChannel" />
+                                     
     <bean id="xstreamMarshaller" class="org.springframework.oxm.xstream.XStreamMarshaller"/>
         
     <!-- Imprime por consola  -->

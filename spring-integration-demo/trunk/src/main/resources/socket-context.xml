@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:int="http://www.springframework.org/schema/integration"
+	xmlns:ip="http://www.springframework.org/schema/integration/ip"
+        xsi:schemaLocation="http://www.springframework.org/schema/beans
+			http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+			http://www.springframework.org/schema/integration
+			http://www.springframework.org/schema/integration/spring-integration-2.0.xsd
+			http://www.springframework.org/schema/integration/ip
+                        http://www.springframework.org/schema/integration/ip/spring-integration-ip-2.0.xsd">
+                   
+    <!-- poller por default para los adaptadores que necesiten uno -->
+    <int:poller default="true" max-messages-per-poll="1" fixed-rate="1000"/>
+    
+    <!-- Canal de petición cliente -->
+    <int:channel id="peticionCliente">
+        <int:interceptors>
+            <int:wire-tap channel="logCliente"/>
+        </int:interceptors>
+    </int:channel>
+    
+    <!-- Canal de petición server -->
+    <int:channel id="peticionServer">
+        <int:queue/>
+        <int:interceptors>
+            <int:wire-tap channel="logServer"/>
+        </int:interceptors>
+    </int:channel>
+    
+    <!-- Canal de respuesta cliente -->
+    <int:channel id="respuestaCliente">
+        <int:queue/>
+        <int:interceptors>
+            <int:wire-tap channel="logCliente"/>
+        </int:interceptors>
+    </int:channel>
+    
+    <!-- Canal de respuesta server -->
+    <int:channel id="respuestaServer">
+        <int:queue/>
+        <int:interceptors>
+            <int:wire-tap channel="logServer"/>
+        </int:interceptors>
+    </int:channel>
+    
+    <!-- Logger de petición cliente-->
+    <int:logging-channel-adapter id="logCliente" 
+                                 expression="'############### Log cliente: '.concat(payload)" level="INFO"/>
+    
+    <!-- Logger de petición server -->
+    <int:logging-channel-adapter id="logServer" 
+                                 expression="'############### Log server: '.concat(payload)" level="INFO"/>
+    
+    <!-- Factory del cliente -->
+    <ip:tcp-connection-factory id="client" 
+                               type="client" 
+                               host="localhost" 
+                               port="5180" 
+                               deserializer="javaDeserializer" 
+                               serializer="javaSerializer"/>
+                               
+    <!-- Factory del server -->
+    <ip:tcp-connection-factory id="server" 
+                               type="server" 
+                               host="localhost" 
+                               port="5180" 
+                               deserializer="javaDeserializer" 
+                               serializer="javaSerializer"/>
+                               
+    <!-- Serializador de ByteArray a String -->
+    <bean id="javaSerializer" class="org.springframework.core.serializer.DefaultSerializer" />
+    
+    <!-- DeSerializador de ByteArray a String -->
+    <bean id="javaDeserializer" class="org.springframework.core.serializer.DefaultDeserializer" />
+                               
+    <!-- Adaptador de petición cliente-->
+    <ip:tcp-outbound-channel-adapter id="outboundClient" 
+                                     channel="peticionCliente" 
+                                     connection-factory="client" />
+    
+    <!-- Adaptador de Respuesta cliente-->
+    <ip:tcp-inbound-channel-adapter id="inboundClient" 
+                                    channel="respuestaCliente" 
+                                    connection-factory="client" />
+        
+     <!-- Adaptador de petición server-->
+    <ip:tcp-inbound-channel-adapter id="inboundServer" 
+                                    channel="peticionServer" 
+                                    connection-factory="server"/>
+    
+    <!-- Servicio que mediante groovy retorna la longitud del payload recibido -->
+    <int:service-activator expression="'Longitud del texto recibido [ '.concat(payload.length()).concat(' ]')" 
+                           input-channel="peticionServer" 
+                           output-channel="respuestaServer" />
+    
+    <!-- Adaptador de Respuesta server -->
+    <ip:tcp-outbound-channel-adapter id="outboundServer" 
+                                     channel="respuestaServer" 
+                                     connection-factory="server"/>
+        
+     
+</beans>

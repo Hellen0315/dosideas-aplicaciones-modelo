@@ -14,10 +14,16 @@
                         http://www.springframework.org/schema/integration/file/spring-integration-file-2.0.xsd">
      
      <!-- Canal de log -->
-     <int:logging-channel-adapter id="logger" log-full-message="true" level="DEBUG"/>
+     <int:logging-channel-adapter id="logger" 
+                                  log-full-message="true" 
+                                  level="DEBUG"/>
      
      <!-- poller por default para los adaptadores que necesiten uno -->
-    <int:poller id="defaultPoller" default="true" max-messages-per-poll="5" fixed-rate="3000" error-channel="logger"/>
+    <int:poller id="defaultPoller" 
+                default="true" 
+                max-messages-per-poll="5" 
+                fixed-rate="3000" 
+                error-channel="logger"/>
                                   
     <!-- Canal de entrada  -->
     <int:channel id="archivoEntrada">
@@ -53,20 +59,24 @@
     </int:publish-subscribe-channel>
     
     <!-- Controla la existencia de archivos (patron *.txt) en el directorio tmp -->
-    <file:inbound-channel-adapter id="dirTmp" channel="archivoLlegada" directory="tmp" filename-pattern="*.txt" prevent-duplicates="false"/>
+    <file:inbound-channel-adapter id="dirTmp" 
+                                  channel="archivoLlegada" 
+                                  directory="tmp" 
+                                  filename-pattern="*.txt" 
+                                  prevent-duplicates="false"/>
     
     <!-- Primer suscriptor del canal archivoSalida, que realiza un ftp al directorio /home/beasvc/entradaftp del equipo remoto -->
     <ftp:outbound-channel-adapter channel="archivoLlegada" 
                                   session-factory="ftpClientFactory"  
                                   remote-directory="/home/beasvc/entradaftp" 
-                                  temporary-file-suffix="_ftpOut" 
+                                  temporary-file-suffix="_ftpOut"  
                                   order="1"  />
     
     <!-- Segundo suscriptor que mueve el archivo del directorio tmp al directorio archivos del equipo local -->
     <file:outbound-channel-adapter channel="archivoLlegada" 
                                    directory="archivos" 
                                    delete-source-files="true"  
-                                   temporary-file-suffix="_move"
+                                   temporary-file-suffix="_move" 
                                    order="2" />
     
 
