@@ -45,7 +45,6 @@
     <!-- Serializa en XML y envia a imprimir por consola  -->
     <int:channel id="xmlTransformer"/>
     <int-xml:marshalling-transformer result-type="StringResult" input-channel="xmlTransformer" marshaller="xstreamMarshaller" output-channel="stdoutChannel" />
-    <!-- Implementación del serializador a xml -->
     <bean id="xstreamMarshaller" class="org.springframework.oxm.xstream.XStreamMarshaller"/>
         
     <!-- Imprime por consola  -->

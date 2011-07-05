@@ -9,15 +9,18 @@
 			http://www.springframework.org/schema/integration/spring-integration.xsd
 			http://www.springframework.org/schema/integration/file
                         http://www.springframework.org/schema/integration/file/spring-integration-file.xsd">
-                            
+                   
+    <!-- Canal de entrada  -->
     <int:channel id="archivoEntrada"/>
     
+    <!-- Cada un segundo controla la existencia de archivo en el directorio tmp  -->
     <file:inbound-channel-adapter id="dirEntrada" channel="archivoEntrada" directory="tmp">
         <int:poller>
             <int:interval-trigger interval="1000"/>
         </int:poller>
     </file:inbound-channel-adapter>
     
+    <!-- Mueve los archivos del directorio tmp al directorio archivos -->
     <file:outbound-channel-adapter channel="archivoEntrada" directory="archivos" delete-source-files="true" auto-create-directory="true"/>
 
 
