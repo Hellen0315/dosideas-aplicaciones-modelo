@@ -14,7 +14,7 @@
     <int:channel id="archivoEntrada"/>
     
     <!-- Cada un segundo controla la existencia de archivo en el directorio tmp  -->
-    <file:inbound-channel-adapter id="dirEntrada" channel="archivoEntrada" directory="tmp">
+    <file:inbound-channel-adapter id="dirEntrada" channel="archivoEntrada" directory="tmp" filename-pattern="*.txt">
         <int:poller>
             <int:interval-trigger interval="1000"/>
         </int:poller>
