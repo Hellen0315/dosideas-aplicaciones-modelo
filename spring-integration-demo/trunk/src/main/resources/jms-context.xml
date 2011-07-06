@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:int="http://www.springframework.org/schema/integration"
+	xmlns:jms="http://www.springframework.org/schema/integration/jms"
+        xmlns:stream="http://www.springframework.org/schema/integration/stream"
+        xsi:schemaLocation="http://www.springframework.org/schema/beans
+			http://www.springframework.org/schema/beans/spring-beans.xsd
+			http://www.springframework.org/schema/integration
+			http://www.springframework.org/schema/integration/spring-integration-2.0.xsd
+			http://www.springframework.org/schema/integration/jms
+                        http://www.springframework.org/schema/integration/jms/spring-integration-jms-2.0.xsd
+                        http://www.springframework.org/schema/integration/stream
+                        http://www.springframework.org/schema/integration/stream/spring-integration-stream-2.0.xsd">
+                   
+    <!-- poller por default para los adaptadores que necesiten uno -->
+    <int:poller default="true" max-messages-per-poll="1" fixed-rate="1000"/>
+    
+    <!-- Canal de productor  -->
+    <int:channel id="mensajeEntrada">
+        <int:interceptors>
+            <int:wire-tap channel="loggerEntrada"/>
+        </int:interceptors>
+    </int:channel>
+    
+    
+    <!-- Canal de consumidor  -->
+    <int:channel id="jmsQueueSalida">
+        <int:interceptors>
+            <int:wire-tap channel="loggerEntrada"/>
+        </int:interceptors>
+    </int:channel>
+    
+     <!-- Se añade el JMSType al header del mensaje -->
+    <int:chain input-channel="mensajeEntrada" output-channel="jmsQueueEntrada">
+         <int:header-enricher>
+             <int:header name="jms_type" value="JMS-demo"/>
+         </int:header-enricher>
+    </int:chain>
+    
+    <!-- Interceptores de log  -->
+    <int:logging-channel-adapter id="loggerEntrada"  log-full-message="true"/>
+    <int:logging-channel-adapter id="loggerSalida"  log-full-message="true"/>
+    
+    <!-- Adaptador encargado de dejar los mensajes en la queue -->
+    <jms:outbound-channel-adapter channel="jmsQueueSalida" jms-template="myJmsTemplate" destination="destination"/>
+    
+    <!-- Se utiliza este tipo de canal para poner mas de un consumidor  -->
+    <int:publish-subscribe-channel id="jmsQueueEntrada"/>
+    
+    <!-- Adaptador encargado de consumir los mensajes de la queue -->
+    <jms:inbound-channel-adapter channel="jmsQueueEntrada" jms-template="myJmsTemplate" destination="destination"/>
+    
+    <!-- Alteramos el texto del payload -->
+    <int:service-activator input-channel="jmsQueueEntrada" output-channel="consola" expression="'JMS TYPE: '.concat(headers.jms_type)" order="1"/>
+    
+    <!-- Alteramos el texto del payload -->
+    <int:service-activator input-channel="jmsQueueEntrada" output-channel="consola" expression="'Mensaje recibido: '.concat(payload)" order="2" />
+    
+    <!-- Adaptador de saluida a consola -->
+    <stream:stdout-channel-adapter id="consola" append-newline="true"/>
+    
+    
+    
+
+</beans>
