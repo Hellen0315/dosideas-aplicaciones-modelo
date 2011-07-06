@@ -17,6 +17,6 @@ public class AppFile
 {
     public static void main( String[] args )
     {
-        ApplicationContext context = new ClassPathXmlApplicationContext("classpath:file-context.xml");
+        ApplicationContext context = new ClassPathXmlApplicationContext("classpath:file/file-context.xml");
     }
 }

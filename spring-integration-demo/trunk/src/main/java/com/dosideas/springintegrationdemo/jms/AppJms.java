@@ -26,7 +26,7 @@ public class AppJms
 {
     public static void main( String[] args ) throws IOException
     {
-        AbstractApplicationContext ctx = new ClassPathXmlApplicationContext(new String[]{"classpath:jms-config.xml","classpath:jms-context.xml"});
+        AbstractApplicationContext ctx = new ClassPathXmlApplicationContext(new String[]{"classpath:jms/jms-config.xml","classpath:jms/jms-context.xml"});
         ctx.registerShutdownHook();
         
         DirectChannel channel = (DirectChannel) ctx.getBean("mensajeEntrada");

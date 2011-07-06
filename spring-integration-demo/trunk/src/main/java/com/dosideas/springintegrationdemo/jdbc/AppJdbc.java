@@ -18,6 +18,6 @@ public class AppJdbc
 {
     public static void main( String[] args )
     {
-        ApplicationContext context = new ClassPathXmlApplicationContext(new String[] {"classpath:jdbc-context.xml","classpath:jdbc-db.xml"});
+        ApplicationContext context = new ClassPathXmlApplicationContext(new String[] {"classpath:jdbc/jdbc-context.xml","classpath:jdbc/jdbc-db.xml"});
     }
 }
