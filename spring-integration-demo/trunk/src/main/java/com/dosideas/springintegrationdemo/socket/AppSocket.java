@@ -23,7 +23,7 @@ public class AppSocket
 {
     public static void main( String[] args ) throws IOException
     {
-        AbstractApplicationContext ctx = new ClassPathXmlApplicationContext("classpath:socket-context.xml");
+        AbstractApplicationContext ctx = new ClassPathXmlApplicationContext("classpath:socket/socket-context.xml");
         ctx.registerShutdownHook();
         
         DirectChannel channel = (DirectChannel) ctx.getBean("peticionCliente");

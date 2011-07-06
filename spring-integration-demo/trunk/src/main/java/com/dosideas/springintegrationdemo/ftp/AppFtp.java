@@ -24,6 +24,6 @@ public class AppFtp
 {
     public static void main( String[] args )
     {
-        ApplicationContext context = new ClassPathXmlApplicationContext("classpath:ftp-context.xml");
+        ApplicationContext context = new ClassPathXmlApplicationContext("classpath:ftp/ftp-context.xml");
     }
 }

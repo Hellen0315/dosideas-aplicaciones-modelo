@@ -16,8 +16,8 @@
          ver en el bean de abajo comentado.
     -->
     <jdbc:embedded-database id="dataSource" type="HSQL" >
-        <jdbc:script location="classpath:app-schema.sql"/>    
-        <jdbc:script location="classpath:app-datos.sql"/>    
+        <jdbc:script location="classpath:jdbc/app-schema.sql"/>    
+        <jdbc:script location="classpath:jdbc/app-datos.sql"/>    
     </jdbc:embedded-database>
     
     <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager" 
