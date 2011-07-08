@@ -3,11 +3,19 @@ package com.dosideas.springintegrationdemo.jms;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import javax.jms.Destination;
+import javax.jms.JMSException;
+import javax.jms.MessageListener;
+import javax.jms.QueueBrowser;
+import javax.jms.Session;
+import org.apache.activemq.command.ActiveMQQueue;
 import org.springframework.context.support.AbstractApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.integration.Message;
 import org.springframework.integration.channel.DirectChannel;
 import org.springframework.integration.message.GenericMessage;
+import org.springframework.jms.core.BrowserCallback;
+import org.springframework.jms.core.JmsTemplate;
 
 /**
  * Demo de manejo de JMS con Spring Integration.
@@ -22,15 +30,14 @@ import org.springframework.integration.message.GenericMessage;
  * 3) En la misma consola se tiene que loggear el envio como INFO y
  *    el consumo del mensaje como 
  */
-public class AppJms 
-{
-    public static void main( String[] args ) throws IOException
-    {
-        AbstractApplicationContext ctx = new ClassPathXmlApplicationContext(new String[]{"classpath:jms/jms-config.xml","classpath:jms/jms-context.xml"});
-        ctx.registerShutdownHook();
-        
-        DirectChannel channel = (DirectChannel) ctx.getBean("mensajeEntrada");
+public class AppJms {
 
+    public static void main(String[] args) throws IOException {
+        AbstractApplicationContext ctx = new ClassPathXmlApplicationContext(new String[]{"classpath:jms/jms-config.xml", "classpath:jms/jms-context.xml"});
+        ctx.registerShutdownHook();
+
+        DirectChannel channel = (DirectChannel) ctx.getBean("mensajeEntrada");
+        
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
         while (true) {
@@ -38,8 +45,9 @@ public class AppJms
             if (br.ready()) {
                 try {
                     Message<String> m = new GenericMessage<String>(br.readLine());
-                    System.out.println("Enviando mensaje: "+ m.getPayload());
+                    System.out.println("Enviando mensaje: " + m.getPayload());
                     channel.send(m);
+        
                 } catch (Exception ex) {
                     System.out.println("Error enviando mensaje " + ex.getMessage());
                     ex.printStackTrace();
@@ -48,6 +56,6 @@ public class AppJms
 
             }
         }
-        
+
     }
 }
