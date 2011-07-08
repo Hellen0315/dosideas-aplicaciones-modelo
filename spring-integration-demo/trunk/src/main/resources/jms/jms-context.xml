@@ -32,7 +32,7 @@
     </int:channel>
     
      <!-- Se añade el JMSType al header del mensaje -->
-    <int:chain input-channel="mensajeEntrada" output-channel="jmsQueueEntrada">
+    <int:chain input-channel="mensajeEntrada" output-channel="jmsQueueSalida">
          <int:header-enricher>
              <int:header name="jms_type" value="JMS-demo"/>
          </int:header-enricher>
@@ -43,13 +43,13 @@
     <int:logging-channel-adapter id="loggerSalida"  log-full-message="true"/>
     
     <!-- Adaptador encargado de dejar los mensajes en la queue -->
-    <jms:outbound-channel-adapter channel="jmsQueueSalida" jms-template="myJmsTemplate" destination="destination"/>
-    
+    <jms:outbound-channel-adapter channel="jmsQueueSalida" jms-template="producerJmsTemplate" destination="destination"/>
+        
     <!-- Se utiliza este tipo de canal para poner mas de un consumidor  -->
     <int:publish-subscribe-channel id="jmsQueueEntrada"/>
     
     <!-- Adaptador encargado de consumir los mensajes de la queue -->
-    <jms:inbound-channel-adapter channel="jmsQueueEntrada" jms-template="myJmsTemplate" destination="destination"/>
+    <jms:inbound-channel-adapter channel="jmsQueueEntrada" jms-template="consumerJmsTemplate" destination="destination"/>
     
     <!-- Alteramos el texto del payload -->
     <int:service-activator input-channel="jmsQueueEntrada" output-channel="consola" expression="'JMS TYPE: '.concat(headers.jms_type)" order="1"/>
@@ -59,7 +59,6 @@
     
     <!-- Adaptador de saluida a consola -->
     <stream:stdout-channel-adapter id="consola" append-newline="true"/>
-    
     
     
 
