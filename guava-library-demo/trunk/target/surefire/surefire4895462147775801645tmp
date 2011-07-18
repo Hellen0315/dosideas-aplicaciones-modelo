@@ -1,0 +1,26 @@
+#surefire
+#Mon Jul 18 20:03:50 PKT 2011
+testClassesDirectory=D\:\\workspace\\guava-library-demo\\target\\test-classes
+classPathUrl.3=C\:\\Documents and Settings\\parivero\\.m2\\repository\\junit\\junit\\3.8.1\\junit-3.8.1.jar
+classPathUrl.2=C\:\\Documents and Settings\\parivero\\.m2\\repository\\com\\google\\guava\\guava\\r09\\guava-r09.jar
+useManifestOnlyJar=true
+classPathUrl.1=D\:\\workspace\\guava-library-demo\\target\\classes
+reportsDirectory=D\:\\workspace\\guava-library-demo\\target\\surefire-reports
+classPathUrl.0=D\:\\workspace\\guava-library-demo\\target\\test-classes
+dirscanner.0=directoryScannerOptions
+providerConfiguration=org.apache.maven.surefire.junit.JUnit3Provider
+testSuiteDefinitionTestSourceDirectory=D\:\\workspace\\guava-library-demo\\src\\test\\java
+requestedTest=ConstraintsDemoTest
+surefireClassPathUrl.1=C\:\\Documents and Settings\\parivero\\.m2\\repository\\org\\apache\\maven\\surefire\\surefire-api\\2.7.1\\surefire-api-2.7.1.jar
+surefireClassPathUrl.0=C\:\\Documents and Settings\\parivero\\.m2\\repository\\org\\apache\\maven\\surefire\\surefire-junit3\\2.7.1\\surefire-junit3-2.7.1.jar
+report.2=org.apache.maven.surefire.report.XMLReporter
+useSystemClassLoader=true
+report.1=org.apache.maven.surefire.report.BriefFileReporter
+report.0=org.apache.maven.surefire.report.ForkingConsoleReporter
+isTrimStackTrace=true
+dirscanner.0.params=D\:\\workspace\\guava-library-demo\\target\\test-classes|[**/ConstraintsDemoTest.java]|[]
+enableAssertions=true
+failIfNoTests=true
+dirscanner.0.types=java.io.File|java.util.ArrayList|java.util.ArrayList
+includes0=**/ConstraintsDemoTest.java
+childDelegation=false
