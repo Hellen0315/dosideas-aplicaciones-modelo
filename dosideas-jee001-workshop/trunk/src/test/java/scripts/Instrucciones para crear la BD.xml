@@ -1,0 +1,35 @@
+Inicio de la base de datos
+
+En NetBeans IDE, ir al menú windows > Services
+Seleccionar el nodo "Java DB" > click derecho > Start server
+El server de base de datos se encuentra ahora corriendo
+
+Creación de la base de datos
+
+Crearemos a continuación una base de datos para nuestro curso
+Seleccionar el nodo "Java DB" > click derecho > Create database
+Completar el formulario:
+Database Name: dosideas
+User Name: dosideas
+Password: dosideas
+Click en Ok
+La base de datos está creado, y tenemos una conexión agregada más abajo.
+
+Conectarse a la base de datos
+
+Seleccionar "jdbc:derby://localhost:1527/dosideas" > click derecho > Connect...
+Estamos conectados a la base de datos.
+Desde aquí podremos crear tablas, realizar consultas y demás tareas.
+
+Creación de los datos
+
+Deberemos habrir una consola SQL para poder ejectuar querys. Para esto, click derecho en la conexión > Execute command...
+
+Copiar y pegar el contenido de los archivos CreacionTablas.sql e InsercionDatos.sql y ejecutar.
+
+Comprobar la base
+
+Abrir una consola SQL (click derecho en la conexión > Execute command...), y ejecutar las siguientes consultas (en forma separada):
+select * from PROVINCIA
+select * from PAIS
+Deberían devolver los datos que acabamos de insertar.

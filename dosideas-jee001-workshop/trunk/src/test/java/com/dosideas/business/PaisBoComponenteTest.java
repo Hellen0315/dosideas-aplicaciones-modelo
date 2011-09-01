@@ -17,7 +17,9 @@ import static org.junit.Assert.*;
  * Este test comprueba el funcionamiento de la clase PaisDao. Esta clase
  * utiliza Hibernate para acceder a la base de datos. Es necesario tener
  * entonces la base de datos iniciada, con el modelo de datos del workshop
- * cargado. Para iniciar la base de datos: 
+ * cargado (ver archivo "Instrucciones para crear la BD").
+ *
+ * Para iniciar la base de datos: 
  *   Ir al menu Window > Services > Databases > Java DB > Click derecho > Start server
  * 
  * Para ejecutar este test en NetBeans: 
