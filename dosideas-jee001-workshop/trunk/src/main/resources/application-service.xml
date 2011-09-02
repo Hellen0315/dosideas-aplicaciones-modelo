@@ -18,6 +18,6 @@
      serán agregadas al factory de Spring automáticamente, sin necesidad de
      declararlas en este XML.
     -->
-    <context:component-scan base-package="com.dosideas.business"/>
+    <context:component-scan base-package="com.dosideas.service"/>
 
 </beans>
