@@ -31,13 +31,13 @@ public class PaisServiceImplTest {
     /** El mock del Dao, que inyectaremos a la instancia bajo test */
     private PaisDao paisDaoMock;
 
-    /** 
+    /**
      * Este método se ejecuta antes de iniciar la ejecución de cada
      * método de test. Aquí se realizan preparaciones generales para
-     * la ejecución del test. 
-     * En este caso, se crea un nuevo mock y una nueva instancia de 
-     * PaisBo, y se inyecta este Dao a PaisBo. De esta manera, 
-     * nos aseguramos que empezamos cada test con un mock "limpio". 
+     * la ejecución del test.
+     * En este caso, se crea un nuevo mock y una nueva instancia de
+     * PaisBo, y se inyecta este Dao a PaisBo. De esta manera,
+     * nos aseguramos que empezamos cada test con un mock "limpio".
      */
     @Before
     public void setUp() {
@@ -57,14 +57,14 @@ public class PaisServiceImplTest {
 
     /**
      * Test of buscarPaisPorId method, of class PaisBoImpl.
-     * 
+     *
      * Este test se encargará de preparar el Mock del Dao para
      * esperar que se lo invoque con el mismo ID que se invoca a PaisBo,
      * y luego devuelva un objeto de Pais.
-     * 
+     *
      * Por último, se verifica que al invocar a paisBo se devuelva la
      * misma instancia que devolvió el Dao.
-     * 
+     *
      */
     @Test
     public void testBuscarPaisPorIdConIdExistente() {
@@ -82,7 +82,7 @@ public class PaisServiceImplTest {
     }
 
     /**
-     * Test de buscarPaisPorId method con un id existente. 
+     * Test de buscarPaisPorId method con un id existente.
      * El metodo debe encontrar un Pais con el id buscado.
      */
     @Test
@@ -97,7 +97,7 @@ public class PaisServiceImplTest {
     }
 
     /**
-     * Test de buscarPaisPorId method con un id null. 
+     * Test de buscarPaisPorId method con un id null.
      * El metodo debe tirar una IllegalArgumentException al intengar invocar
      * al metodo con un null.
      */
@@ -107,7 +107,7 @@ public class PaisServiceImplTest {
         doThrow(new IllegalArgumentException()).when(paisDaoMock).buscarPaisPorId(null);
 
         instance.buscarPaisPorId(null);
-        
+
         fail("Debería haberse lanzado una excepcion.");
     }
 }
