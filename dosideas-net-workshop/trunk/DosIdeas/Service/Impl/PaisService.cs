@@ -23,7 +23,7 @@ namespace DosIdeas.Service.Impl
             return PaisDao.BuscarPaisPorId(id);
         }
 
-        [Transaction()]
+        [Transaction(TransactionPropagation.Required)]
         public void Guardar(Pais pais)
         {
             this.PaisDao.Guardar(pais);
