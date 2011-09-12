@@ -1,6 +1,6 @@
 
 
-
+drop table if exists hibernate_unique_key;
 create table hibernate_unique_key (
 	next_hi INT
 );

@@ -29,7 +29,7 @@
   <object id="transactionManager" type="Spring.Data.NHibernate.HibernateTransactionManager, Spring.Data.NHibernate32">
     <property name="DbProvider" ref="DbProvider"/>
     <property name="SessionFactory" ref="NHibernateSessionFactory"/>
-    <property name="NestedTransactionsAllowed" value="true" />
   </object>
+  
    
 </objects>

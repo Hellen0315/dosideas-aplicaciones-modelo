@@ -25,6 +25,7 @@ namespace DosIdeas.Dao.Impl
             return SessionFactory.GetCurrentSession().Get<Pais>(id);
         }
 
+        [Transaction]
         public Int64 Guardar(Pais pais)
         {
             return (Int64)SessionFactory.GetCurrentSession().Save(pais);
