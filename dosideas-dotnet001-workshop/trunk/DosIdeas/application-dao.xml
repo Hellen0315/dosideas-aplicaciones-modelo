@@ -5,4 +5,8 @@
     <property name="SessionFactory" ref="NHibernateSessionFactory"/>
   </object>
 
+  <object id="AdoTemplate" type="Spring.Data.Core.AdoTemplate, Spring.Data">
+    <constructor-arg index="0" ref="DbProvider"/>
+  </object>
+  
 </objects>

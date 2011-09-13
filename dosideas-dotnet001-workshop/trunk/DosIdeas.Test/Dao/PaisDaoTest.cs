@@ -2,38 +2,51 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.IO;
-
-using NHibernate;
-using NUnit.Framework;
-using Spring.Data.NHibernate;
-using Spring.Testing.NUnit;
-using Spring.Context;
-using Spring.Context.Support;
-
 using System.Data;
+using System.IO;
 
 using DosIdeas.Domain;
 using DosIdeas.Dao;
 
-using Spring.Transaction;
+using NHibernate;
+using NUnit.Framework;
+
+using Spring.Context;
+using Spring.Context.Support;
+using Spring.Data.Common;
+using Spring.Data.Core;
+using Spring.Testing.NUnit;
+using Spring.Testing.Ado;
 using Spring.Transaction.Interceptor;
 
 namespace DosIdeas.Test.Dao
 {
     [TestFixture]
-    public class PaisDaoTest : DosIdeasTestBase
+    public class PaisDaoTest : AbstractTransactionalDbProviderSpringContextTests
     {
+        protected override string[] ConfigLocations
+        {
+            get { return new string[] { "assembly://DosIdeas.Test/DosIdeas.Test/application-context-test.xml" }; }
+        }
+
         public IPaisDao Instancia { protected get; set; }
+
+        public ISessionFactory SessionFactory { get; set; }
         
         [SetUp()]
-        public override void Init()
+        public void Init()
         {
-            base.Init();   
+            Assert.IsNotNull(this.AdoTemplate);
+
+            string sqlTablas = File.ReadAllText("../../scripts/CreacionTablas.sql");
+            string sqlDatos = File.ReadAllText("../../scripts/CreacionDatos.sql");
+
+            SimpleAdoTestUtils.ExecuteSqlScript(this.AdoTemplate, sqlTablas);
+            SimpleAdoTestUtils.ExecuteSqlScript(this.AdoTemplate, sqlDatos);
         }
 
         [TearDown()]
-        public override void Clean()
+        public void Clean()
         {
             
         }
@@ -76,7 +89,7 @@ namespace DosIdeas.Test.Dao
             String query = "select count(*) from Paises";
             Int64 cantidadAntes = (Int64)AdoTemplate.ExecuteScalar(CommandType.Text, query);
 
-            SessionFactoryUtils.GetSession(SessionFactory, true).Flush();
+            this.SessionFactory.GetCurrentSession().Flush();
 
             Int64 cantidadDespues = (Int64)AdoTemplate.ExecuteScalar(CommandType.Text, query);
 
