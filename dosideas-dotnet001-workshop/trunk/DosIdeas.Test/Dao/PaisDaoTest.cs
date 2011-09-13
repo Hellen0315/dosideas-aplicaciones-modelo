@@ -17,7 +17,7 @@ using Spring.Data.Common;
 using Spring.Data.Core;
 using Spring.Testing.NUnit;
 using Spring.Testing.Ado;
-using Spring.Transaction.Interceptor;
+using DosIdeas.Test.Utils;
 
 namespace DosIdeas.Test.Dao
 {
@@ -36,34 +36,13 @@ namespace DosIdeas.Test.Dao
      *
      */
     [TestFixture]
-    public class PaisDaoTest : AbstractTransactionalDbProviderSpringContextTests
+    public class PaisDaoTest : AbstractTransactionalDatabaseTest
     {
-        protected override string[] ConfigLocations
-        {
-            get { return new string[] { "assembly://DosIdeas.Test/DosIdeas.Test/application-context-test.xml" }; }
-        }
 
         public IPaisDao Instancia { protected get; set; }
 
         public ISessionFactory SessionFactory { get; set; }
         
-        [SetUp()]
-        public void Init()
-        {
-            Assert.IsNotNull(this.AdoTemplate);
-
-            string sqlTablas = File.ReadAllText("../../scripts/CreacionTablas.sql");
-            string sqlDatos = File.ReadAllText("../../scripts/CreacionDatos.sql");
-
-            SimpleAdoTestUtils.ExecuteSqlScript(this.AdoTemplate, sqlTablas);
-            SimpleAdoTestUtils.ExecuteSqlScript(this.AdoTemplate, sqlDatos);
-        }
-
-        [TearDown()]
-        public void Clean()
-        {
-            
-        }
 
         [Test]
         public void BuscarPaisPorId_PaisExistente_RetornaUnPais()
@@ -90,7 +69,6 @@ namespace DosIdeas.Test.Dao
         }
 
         [Test]
-        [Transaction(ReadOnly=true)]
         public void Guardar_PaisCorrecto_RetornaPais()
         {
             Pais pais = new Pais()
@@ -98,11 +76,11 @@ namespace DosIdeas.Test.Dao
                 Nombre = "EEUU"
             };
 
-            Int64 idRetorno = this.Instancia.Guardar(pais);
-
             String query = "select count(*) from Paises";
             Int64 cantidadAntes = (Int64)AdoTemplate.ExecuteScalar(CommandType.Text, query);
 
+            Int64 idRetorno = this.Instancia.Guardar(pais);
+            //forzamos un flush para que NHibernate ejecute el query, ya que estamos dentro de una transacción
             this.SessionFactory.GetCurrentSession().Flush();
 
             Int64 cantidadDespues = (Int64)AdoTemplate.ExecuteScalar(CommandType.Text, query);

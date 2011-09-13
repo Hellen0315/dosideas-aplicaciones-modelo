@@ -17,37 +17,14 @@ using Spring.Data.Common;
 using Spring.Data.Core;
 using Spring.Testing.NUnit;
 using Spring.Testing.Ado;
+using DosIdeas.Test.Utils;
 
 namespace DosIdeas.Test.Service
 {
     [TestFixture]
-    public class PaisServiceTest : AbstractDependencyInjectionSpringContextTests
+    public class PaisServiceTest : AbstractInjectionDatabaseTest
     {
-        protected override string[] ConfigLocations
-        {
-            get { return new string[] { "assembly://DosIdeas.Test/DosIdeas.Test/application-context-test.xml" }; }
-        }
-
         public IPaisService Instancia { protected get; set; }
-        public AdoTemplate AdoTemplate { get; set; }
-
-        [SetUp()]
-        public void Init()
-        {
-            Assert.IsNotNull(this.AdoTemplate);
-
-            string sqlTablas = File.ReadAllText("../../scripts/CreacionTablas.sql");
-            string sqlDatos = File.ReadAllText("../../scripts/CreacionDatos.sql");
-
-            SimpleAdoTestUtils.ExecuteSqlScript(this.AdoTemplate, sqlTablas);
-            SimpleAdoTestUtils.ExecuteSqlScript(this.AdoTemplate, sqlDatos);
-        }
-
-        [TearDown()]
-        public void Clean()
-        {
-
-        }
 
         [Test]
         public void BuscarPaisPorId_PaisExistente_RetornaUnPais()

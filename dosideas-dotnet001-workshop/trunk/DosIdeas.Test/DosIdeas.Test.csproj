@@ -75,6 +75,8 @@
     <Compile Include="Dao\PaisDaoTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Service\PaisServiceTest.cs" />
+    <Compile Include="Utils\AbstractInjectionDatabaseTest.cs" />
+    <Compile Include="Utils\AbstractTransactionalDatabaseTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="application-context-test.xml">
