@@ -5,33 +5,46 @@ using System.Text;
 using System.Data;
 using System.IO;
 
-using NUnit.Framework;
-using Spring.Data.NHibernate;
-using Spring.Testing.NUnit;
-using Spring.Context;
-using Spring.Context.Support;
-
 using DosIdeas.Domain;
 using DosIdeas.Service;
+
+using NHibernate;
+using NUnit.Framework;
+
+using Spring.Context;
+using Spring.Context.Support;
+using Spring.Data.Common;
+using Spring.Data.Core;
+using Spring.Testing.NUnit;
+using Spring.Testing.Ado;
 
 namespace DosIdeas.Test.Service
 {
     [TestFixture]
-    public class PaisServiceTest : DosIdeasTestBase
+    public class PaisServiceTest : AbstractDependencyInjectionSpringContextTests
     {
-     
-        public IPaisService Instancia { protected get; set; }
-      
-        [SetUp()]
-        public override void Init()
+        protected override string[] ConfigLocations
         {
-            base.Init();
+            get { return new string[] { "assembly://DosIdeas.Test/DosIdeas.Test/application-context-test.xml" }; }
+        }
 
+        public IPaisService Instancia { protected get; set; }
+        public AdoTemplate AdoTemplate { get; set; }
 
+        [SetUp()]
+        public void Init()
+        {
+            Assert.IsNotNull(this.AdoTemplate);
+
+            string sqlTablas = File.ReadAllText("../../scripts/CreacionTablas.sql");
+            string sqlDatos = File.ReadAllText("../../scripts/CreacionDatos.sql");
+
+            SimpleAdoTestUtils.ExecuteSqlScript(this.AdoTemplate, sqlTablas);
+            SimpleAdoTestUtils.ExecuteSqlScript(this.AdoTemplate, sqlDatos);
         }
 
         [TearDown()]
-        public override void Clean()
+        public void Clean()
         {
 
         }
@@ -72,10 +85,6 @@ namespace DosIdeas.Test.Service
             Int64 cantidadAntes = (Int64)AdoTemplate.ExecuteScalar(CommandType.Text, query);
 
             this.Instancia.Guardar(pais);
-
-            //this.session.Flush();
-
-            //SessionFactoryUtils.GetSession(SessionFactory, true).Flush();
 
             Int64 cantidadDespues = (Int64)AdoTemplate.ExecuteScalar(CommandType.Text, query);
 
