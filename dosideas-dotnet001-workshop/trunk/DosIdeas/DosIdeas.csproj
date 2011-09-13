@@ -9,7 +9,7 @@
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>DosIdeas</RootNamespace>
-    <AssemblyName>dosideas-dotnet001-workshop</AssemblyName>
+    <AssemblyName>DosIdeas</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -74,7 +74,7 @@
     <EmbeddedResource Include="application-db.xml" />
     <EmbeddedResource Include="application-hibernate.xml" />
     <EmbeddedResource Include="application-service.xml" />
-    <Content Include="Domain\Models\Pais.hbm.xml" />
+    <EmbeddedResource Include="Domain\Models\Pais.hbm.xml" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
