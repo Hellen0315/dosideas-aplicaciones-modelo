@@ -5,7 +5,7 @@
 
   <import resource="assembly://DosIdeas/DosIdeas/application-service.xml"/>
   <import resource="assembly://DosIdeas/DosIdeas/application-dao.xml"/>
-  <import resource="application-db-test.xml"/>
+  <import resource="assembly://DosIdeas/DosIdeas/application-db.xml"/>
   <import resource="assembly://DosIdeas/DosIdeas/application-hibernate.xml"/>
 
   <tx:attribute-driven transaction-manager="transactionManager"/>
