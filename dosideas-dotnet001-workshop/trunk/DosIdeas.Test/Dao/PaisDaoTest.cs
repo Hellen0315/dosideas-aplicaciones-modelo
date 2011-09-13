@@ -21,6 +21,20 @@ using Spring.Transaction.Interceptor;
 
 namespace DosIdeas.Test.Dao
 {
+    /**
+     * Esta clase representa un test de componente. Los tests de componentes
+     * se encargan de testear una clase en particular, y todas las dependencias
+     * que la misma tiene. 
+     * 
+     * Esta clase hereda de una clase de test de Spring, que provee varias
+     * facilidades para el testeo de componentes con Spring.
+     * 
+     * Este test comprueba el funcionamiento de la clase PaisDao. Esta clase
+     * utiliza Hibernate para acceder a la base de datos. En el caso de este
+     * proyecto, la base de datos se inicializa en memoria automáticamente
+     * (en el método Init()). 
+     *
+     */
     [TestFixture]
     public class PaisDaoTest : AbstractTransactionalDbProviderSpringContextTests
     {
