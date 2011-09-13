@@ -8,9 +8,9 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTitle("dosideas-dotnet001-workshop")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Telefonica Moviles Argentina")]
+[assembly: AssemblyCompany("www.dosideas.com")]
 [assembly: AssemblyProduct("dosideas-dotnet001-workshop")]
-[assembly: AssemblyCopyright("Copyright © Telefonica Moviles Argentina 2011")]
+[assembly: AssemblyCopyright("")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
