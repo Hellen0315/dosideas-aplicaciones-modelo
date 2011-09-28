@@ -1,11 +1,12 @@
 package com.dosideas.service.impl;
 
-import com.dosideas.service.impl.PaisServiceImpl;
+import org.mockito.Mock;
 import com.dosideas.dao.PaisDao;
 import com.dosideas.domain.Pais;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+import org.mockito.MockitoAnnotations;
 import static org.junit.Assert.*;
 import static org.mockito.Mockito.*;
 
@@ -29,6 +30,7 @@ public class PaisServiceImplTest {
     /** La instancia bajo test */
     private PaisServiceImpl instance;
     /** El mock del Dao, que inyectaremos a la instancia bajo test */
+    @Mock
     private PaisDao paisDaoMock;
 
     /**
@@ -41,7 +43,7 @@ public class PaisServiceImplTest {
      */
     @Before
     public void setUp() {
-        paisDaoMock = mock(PaisDao.class);
+        MockitoAnnotations.initMocks(this);
         instance = new PaisServiceImpl();
         instance.setPaisDao(paisDaoMock);
     }
@@ -78,7 +80,10 @@ public class PaisServiceImplTest {
 
         //ejecución
         Pais result = instance.buscarPaisPorId(id);
+
+        //verificamos
         assertEquals(pais, result);
+        verify(paisDaoMock).buscarPaisPorId(id);
     }
 
     /**
@@ -94,6 +99,7 @@ public class PaisServiceImplTest {
         Pais pais = instance.buscarPaisPorId(id);
 
         assertNull(pais);
+        verify(paisDaoMock).buscarPaisPorId(id);
     }
 
     /**
