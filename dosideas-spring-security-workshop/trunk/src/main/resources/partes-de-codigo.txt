@@ -1,0 +1,57 @@
+============================= AUTHENTICATION PROVIDERS
+
+    <authentication-manager alias="authenticationManager">
+        <authentication-provider>
+            <user-service>
+                <user name="zim" password="123" authorities="USER, ADMIN" />
+                <user name="dib" password="123" authorities="USER" />
+            </user-service>
+        </authentication-provider>
+    </authentication-manager>
+
+    <authentication-manager alias="authenticationManager">
+        <authentication-provider user-service-ref="security.customUserDetailsService">
+            <password-encoder hash="plaintext"/>
+        </authentication-provider>
+    </authentication-manager>
+
+    <authentication-manager alias="authenticationManager">
+        <authentication-provider>
+            <jdbc-user-service data-source-ref="defaultDataSource"/>
+        </authentication-provider>
+    </authentication-manager>
+
+
+============================= REMEMBER ME Y CUSTOM LOGIN 
+
+<remember-me key="contactManagerRememberMeUniqueKey"/>
+
+<form-login login-page="/user/login.jsp" authentication-failure-url="/user/login.jsp?login_error=true" />
+<access-denied-handler error-page="/user/denied.jsp" />
+
+
+============================= CUSTOM PERMISSION EVALUATOR SERVICE
+
+    <global-method-security pre-post-annotations="enabled">
+        <expression-handler ref="expressionHandler"/>
+    </global-method-security>
+
+    <beans:bean id="expressionHandler" class="org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler">
+        <beans:property name="permissionEvaluator" ref="security.customPermissionEvaluatorService"/>
+    </beans:bean>
+
+
+============================= TAGLIB
+
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+<sec:authentication property="principal.username" />
+
+<sec:authorize access="hasRole('admin')">
+    Contenido restringido.
+</sec:authorize>
+
+============================= ANOTACIONES PRE Y POST
+
+@PreAuthorize("isAuthenticated()")
+@PreAuthorize("hasPermission(#contact.addressBook, 'rw')")
+@PreAuthorize("hasPermission(#id, 'Contact', 'rw')")
