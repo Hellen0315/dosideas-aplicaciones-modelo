@@ -6,10 +6,7 @@
 package com.dosideas.demo1.service;
 
 import com.dosideas.domain.Alumno;
-import com.dosideas.domain.Examen;
-import java.util.Date;
 import org.springframework.security.access.prepost.PostAuthorize;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Service;
 
 /**

@@ -20,17 +20,15 @@
     -->
     <sec:global-method-security pre-post-annotations="enabled"/>
     
+    <!-- Agregamos el bean correspondiente al CustomUserDetailsService -->
+    <context:component-scan base-package="com.dosideas.demo3"/>
     
     <!-- Declaramos dónde está el repositorio de usuarios. En este caso, usamos
-         un repositorio en base de datos, usando el modelo por default que
-         espera recibir Spring Security.
-         También se puede especificar los querys para consultar tablas que
-         no tengan la estructura esperada por Spring Security.
+         un servicio custom de usuarios, implementado por la clase
+         com.dosideas.demo3.CustomUserDetailsServiceImpl
     -->
     <sec:authentication-manager alias="authenticationManager">
-        <sec:authentication-provider>
-            <sec:jdbc-user-service data-source-ref="dataSource"/>
-        </sec:authentication-provider>
+        <sec:authentication-provider user-service-ref="security.customUserDetailsService" />
     </sec:authentication-manager>
 
 </beans:beans>
