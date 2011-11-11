@@ -6,4 +6,6 @@ public interface CuerpoDao {
 
     Cuerpo buscarPorId(Long id);
 
+    void guardar(Cuerpo unCuerpo);
+
 }
