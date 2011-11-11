@@ -2,7 +2,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.dosideas.security;
+package com.dosideas.demo4;
 
 import java.io.Serializable;
 import java.util.Collection;
@@ -14,12 +14,11 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 /**
- * The custom PermissionEvaluator for this application. It handles domain object
- * permissions.
- * See: http://static.springsource.org/spring-security/site/docs/3.0.x/reference/el-access.html#el-method-built-in
+ * Esta clase es un evaluador de permisos, que permite hacer evaluaciones 
+ * arbitrarias sobre cualquier objeto. 
+ * Ver más: http://static.springsource.org/spring-security/site/docs/3.0.x/reference/el-access.html#el-method-built-in
  */
 @Service("security.customPermissionEvaluatorService")
-@Transactional
 public class CustomPermissionEvaluatorServiceImpl implements PermissionEvaluator {
 
     @Override
