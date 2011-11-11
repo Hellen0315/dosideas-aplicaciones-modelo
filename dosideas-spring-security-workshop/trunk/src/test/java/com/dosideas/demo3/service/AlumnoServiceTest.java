@@ -1,6 +1,6 @@
 package com.dosideas.demo3.service;
 
-import com.dosideas.demo1.service.*;
+import com.dosideas.service.*;
 import com.dosideas.domain.Alumno;
 import org.junit.After;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
