@@ -1,5 +1,6 @@
 package com.dosideas.demo1.service;
 
+import com.dosideas.service.ExamenService;
 import com.dosideas.domain.Examen;
 import java.util.Date;
 import org.junit.After;

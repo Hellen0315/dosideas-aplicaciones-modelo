@@ -13,26 +13,22 @@
            http://www.springframework.org/schema/context
            http://www.springframework.org/schema/context/spring-context-3.0.xsd">
 
-    <sec:global-method-security pre-post-annotations="enabled">
-    </sec:global-method-security>
     
-
-    <sec:http auto-config="true" use-expressions="true">
-        <sec:remember-me key="rememberMeUniqueKey"/>
-        
-        <sec:intercept-url pattern="/js/**" filters="none"/>
-        <sec:intercept-url pattern="/app/**" access="isAuthenticated()"/>
-        <sec:intercept-url pattern="/pais/**" access="isAuthenticated()"/>
-    </sec:http>
-   
+    <!-- Activamos el uso de anotaciones para seguridad. 
+         De esta manera, podremos usar las anotaciones @PreAuthorize y @PostAuthorize
+         para restringir al ejecución de métodos.
+    -->
+    <sec:global-method-security pre-post-annotations="enabled"/>
     
+    <!-- Agregamos el bean correspondiente al CustomUserDetailsService -->
+    <context:component-scan base-package="com.dosideas.demo3"/>
+    
+    <!-- Declaramos dónde está el repositorio de usuarios. En este caso, usamos
+         un servicio custom de usuarios, implementado por la clase
+         com.dosideas.demo3.CustomUserDetailsServiceImpl
+    -->
     <sec:authentication-manager alias="authenticationManager">
-        <sec:authentication-provider>
-            <sec:user-service>
-                <sec:user name="zim" password="123" authorities="USER, ADMIN" />
-                <sec:user name="dib" password="123" authorities="USER" />
-            </sec:user-service>
-        </sec:authentication-provider>
+        <sec:authentication-provider user-service-ref="security.customUserDetailsService" />
     </sec:authentication-manager>
 
 </beans:beans>
