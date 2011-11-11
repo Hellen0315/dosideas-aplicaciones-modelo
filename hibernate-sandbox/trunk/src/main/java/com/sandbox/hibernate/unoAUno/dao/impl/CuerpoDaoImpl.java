@@ -18,4 +18,9 @@ public class CuerpoDaoImpl implements CuerpoDao {
         return (Cuerpo) sessionFactory.getCurrentSession().get(Cuerpo.class, id);
     }
 
+    @Override
+    public void guardar(Cuerpo cuerpo) {
+        sessionFactory.getCurrentSession().save(cuerpo);            
+    }
+
 }

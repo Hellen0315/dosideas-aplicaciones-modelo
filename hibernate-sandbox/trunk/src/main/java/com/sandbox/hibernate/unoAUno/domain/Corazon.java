@@ -6,8 +6,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
+
 
 @Entity
 @Table(name = "Corazon", schema = "UnoAUno")
@@ -17,8 +18,23 @@ public class Corazon {
     @Column(name = "corazonId")
     private Long id;
     
-    @ManyToOne
-    @JoinColumn(name="cuerpoId")
+    
+    /**
+     * @see <a href="http://download.oracle.com/javaee/5/api/javax/persistence/OneToOne.html">OneToOne</a>
+     * <ul>
+     * <li><strong>optional</strong> (Optional) Si la asociacion es opcional.</li>
+     * </ul>
+     * @see <a href="http://download.oracle.com/javaee/5/api/javax/persistence/JoinColumn.html">JoinColumn</a>
+     * <ul>
+     * <li><strong>name</strong>    (Optional)El nombre de la  foreign key.</li>
+     * <li><strong>unique</strong>  (Optional) La columna es una unique key.</li>
+     * <li><strong>nullable</strong>  (Optional) La columna permite null .</li>
+     * <li><strong>updatable</strong> (Optional) Si la columna es tenida en cuenta para el SQL UPDATE generado por el motor de persistencia.</li>
+     * </ul>
+     */
+    @OneToOne(optional=false)
+    @JoinColumn(
+            name="cuerpoId", unique=true, nullable=false, updatable=false)
     private Cuerpo cuerpo;
     
     
