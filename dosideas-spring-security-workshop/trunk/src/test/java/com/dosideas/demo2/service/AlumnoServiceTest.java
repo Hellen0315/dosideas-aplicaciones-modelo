@@ -21,9 +21,8 @@ import static org.junit.Assert.*;
  */
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = {
-    "/com/dosideas/demo2/application-db.xml",
-    "/com/dosideas/demo2/application-service.xml",
-    "/com/dosideas/demo2/application-security.xml"
+    "/application-service.xml",
+    "/application-security_jdbc-user-service.xml"
 })
 public class AlumnoServiceTest {
 

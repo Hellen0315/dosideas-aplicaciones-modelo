@@ -6,7 +6,6 @@ import java.util.Date;
 import org.junit.After;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,8 +22,8 @@ import static org.junit.Assert.*;
  */
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = {
-    "/com/dosideas/demo1/application-service.xml",
-    "/com/dosideas/demo1/application-security.xml"
+    "/application-service.xml",
+    "/application-security_xml-user-service.xml"
 })
 public class ExamenServiceTest {
 

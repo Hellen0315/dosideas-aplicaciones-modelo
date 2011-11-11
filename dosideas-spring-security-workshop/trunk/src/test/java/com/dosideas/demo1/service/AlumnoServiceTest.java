@@ -3,7 +3,6 @@ package com.dosideas.demo1.service;
 import com.dosideas.service.AlumnoService;
 import com.dosideas.domain.Alumno;
 import com.dosideas.domain.Examen;
-import java.util.Date;
 import org.junit.After;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -23,8 +22,8 @@ import static org.junit.Assert.*;
  */
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = {
-    "/com/dosideas/demo1/application-service.xml",
-    "/com/dosideas/demo1/application-security.xml"
+    "/application-service.xml",
+    "/application-security_xml-user-service.xml"
 })
 public class AlumnoServiceTest {
 
