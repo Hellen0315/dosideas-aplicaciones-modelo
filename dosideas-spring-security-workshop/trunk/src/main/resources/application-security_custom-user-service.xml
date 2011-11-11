@@ -21,7 +21,7 @@
     <sec:global-method-security pre-post-annotations="enabled"/>
     
     <!-- Agregamos el bean correspondiente al CustomUserDetailsService -->
-    <context:component-scan base-package="com.dosideas.demo3"/>
+    <context:component-scan base-package="com.dosideas.security"/>
     
     <!-- Declaramos dónde está el repositorio de usuarios. En este caso, usamos
          un servicio custom de usuarios, implementado por la clase
