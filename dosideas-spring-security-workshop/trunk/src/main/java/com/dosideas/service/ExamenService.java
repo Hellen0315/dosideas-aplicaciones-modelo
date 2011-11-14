@@ -21,4 +21,8 @@ public interface ExamenService {
     int obtenerNotaDeExamen(long idExamen);
     
     void crearExamen(Examen examen);
+    
+    void borrarExamen(long idExamen);
+    
+    void borrarExamen(Examen examen);
 }

@@ -63,4 +63,26 @@ public class ExamenServiceImpl implements ExamenService {
         examen.setFecha(new Date());
     }
 
+    /**
+     * Este método utiliza un autorizador programado para evaluar si el usuario
+     * puede ejecutar este método. En este caso, se recibe un id del objeto
+     * a revisar, por lo cual se utiliza la expresión "hasPermission(id, tipoObjecto, permiso)". 
+     */
+    @Override
+    @PreAuthorize("hasPermission(#idExamen, 'Examen', 'borrar')")
+    public void borrarExamen(long idExamen) {
+        //hacer algo
+    }
+
+    /**
+     * Este método utiliza un autorizador programado para evaluar si el usuario
+     * puede ejecutar este método. En este caso, se recibe el objeto
+     * a revisar, por lo cual se utiliza la expresión "hasPermission(objecto, permiso)". 
+     */
+    @Override
+    @PreAuthorize("hasPermission(#examen, 'borrar')")
+    public void borrarExamen(Examen examen) {
+        //hacer algo
+    }
+
 }

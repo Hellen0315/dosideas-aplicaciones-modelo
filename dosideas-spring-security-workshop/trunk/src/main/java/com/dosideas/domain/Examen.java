@@ -11,11 +11,20 @@ import java.util.Date;
  * @author ldeseta
  */
 public class Examen {
-    
+
+    private long id;
     private String profesor;
     private String tema;
     private Date fecha;
 
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+    
     public Date getFecha() {
         return fecha;
     }
