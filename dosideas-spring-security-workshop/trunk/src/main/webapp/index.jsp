@@ -12,7 +12,10 @@
         
         <ul>
             <li>
-                <a href="pais/consulta.jsp">Consulta de paises</a>
+                <a href="restringido/alumno.jsp">Página restringida para alumnos</a>
+            </li>
+            <li>
+                <a href="restringido/profesor.jsp">Página restringida para profesores</a>
             </li>
         </ul>
         
