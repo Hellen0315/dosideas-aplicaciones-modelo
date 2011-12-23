@@ -19,6 +19,6 @@
             </li>
         </ul>
         
-        Más información en <a href="http://www.dosideas.com/cursos/course/view.php?id=4">Introducción al desarrollo Java EE 5</a> en <a href="http://www.dosideas.com">Dos Ideas</a>.
+        Más información en <a href="http://www.dosideas.com">Dos Ideas</a>.
     </body>
 </html>

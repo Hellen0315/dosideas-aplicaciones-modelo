@@ -14,5 +14,8 @@
             <p>Un ALUMNO visita la página de alumnos!</p>
         </sec:authorize>
         
+        <br/><br/>
+        <a href="<c:url value="/"/>">Página de inicio</a>            
+            
     </body>    
 </html>
