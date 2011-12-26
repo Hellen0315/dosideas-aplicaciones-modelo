@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?fuego version="5.7 GA SP3" application="albpmstudio"?>
+<IDEdesktop>
+	<DOCUMENTATION location="bottom" dividerLocation="-1"/>
+	<PROJECT location="left" dividerLocation="398" size.width="398" size.height="192" visible="true" pinned="true"/>
+	<LOG location="bottom" flapMode="1" dividerLocation="-1" autohide="true"/>
+	<MESSAGES location="bottom" dividerLocation="-1"/>
+	<STRUCTURE location="left" dividerLocation="398" size.width="398" size.height="192" pinned="true"/>
+	<VARIABLES location="right" dividerLocation="-1"/>
+	<SEARCH location="bottom" flapMode="1" dividerLocation="-1" autohide="true"/>
+</IDEdesktop>
