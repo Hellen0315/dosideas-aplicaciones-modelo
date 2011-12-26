@@ -1,0 +1,148 @@
+0033Engine         Tomcat    <0> ET(0)                030120111226T142153
+-001Error Tomcat\: 'StandardWrapper[/workspace\:startup]\: Servlet startu
+-002p threw unload() exception\r\njavax.servlet.ServletException\: Servle
+-003t.destroy() for servlet startup threw exception\r\n\tat org.apache.ca
+-004talina.core.StandardWrapper.unload(StandardWrapper.java\:1135)\r\n\ta
+-005t org.apache.catalina.core.StandardWrapper.stop(StandardWrapper.java\
+-006:1356)\r\n\tat org.apache.catalina.core.ContainerBase.removeChild(Con
+-007tainerBase.java\:1036)\r\n\tat org.apache.catalina.startup.ContextCon
+-008fig.stop(ContextConfig.java\:701)\r\n\tat org.apache.catalina.startup
+-009.ContextConfig.lifecycleEvent(ContextConfig.java\:245)\r\n\tat org.ap
+-010ache.catalina.util.LifecycleSupport.fireLifecycleEvent(LifecycleSuppo
+-011rt.java\:166)\r\n\tat org.apache.catalina.core.StandardContext.stop(S
+-012tandardContext.java\:3695)\r\n\tat org.apache.catalina.core.Container
+-013Base.stop(ContainerBase.java\:1233)\r\n\tat org.apache.catalina.core.
+-014ContainerBase.stop(ContainerBase.java\:1233)\r\n\tat org.apache.catal
+-015ina.startup.Embedded.stop(Embedded.java\:1036)\r\n\tat fuego.mami.Emb
+-016eddedEngine.stopTomcat(EmbeddedEngine.java\:170)\r\n\tat fuego.mami.E
+-017mbeddedEngine.stopEngine(EmbeddedEngine.java\:162)\r\n\tat fuego.mami
+-018.Engine.stopEmbedded(Engine.java\:1221)\r\n\tat fuego.mami.Management
+-019Control.shutdownServer(ManagementControl.java\:584)\r\n\tat sun.refle
+-020ct.NativeMethodAccessorImpl.invoke0(Native Method)\r\n\tat sun.reflec
+-021t.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java\:39)\
+-022r\n\tat sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMet
+-023hodAccessorImpl.java\:25)\r\n\tat java.lang.reflect.Method.invoke(Met
+-024hod.java\:585)\r\n\tat fuego.lang.JavaClass.invokeMethod(JavaClass.ja
+-025va\:1477)\r\n\tat fuego.lang.JavaObject.invoke(JavaObject.java\:185)\
+-026r\n\tat fuego.component.Message.process(Message.java\:585)\r\n\tat fu
+-027ego.component.ExecutionThread.processMessage(ExecutionThread.java\:76
+-0285)\r\n\tat fuego.component.ExecutionThread.processBatch(ExecutionThre
+-029ad.java\:740)\r\n\tat fuego.component.ExecutionThread.doProcessBatch(
+-030ExecutionThread.java\:139)\r\n\tat fuego.component.ExecutorClient$1.p
+-031rocessBatch(ExecutorClient.java\:68)\r\n\tat fuego.component.Executio
+-032nThread.work(ExecutionThread.java\:824)\r\n\tat fuego.component.Execu
+-033tionThread.run(ExecutionThread.java\:396)\r\n----- Root Cause -----\r
+-034\njava.lang.AssertionError\: I should have removed me from the proces
+-035s service map and I removed \: null\r\n\tat fuego.papi.impl.ProcessSe
+-036rviceImpl.close(ProcessServiceImpl.java\:445)\r\n\tat fuego.portal.se
+-037rvlet.BaseStartupServlet.destroy(BaseStartupServlet.java\:70)\r\n\tat
+-038 org.apache.catalina.core.StandardWrapper.unload(StandardWrapper.java
+-039\:1124)\r\n\tat org.apache.catalina.core.StandardWrapper.stop(Standar
+-040dWrapper.java\:1356)\r\n\tat org.apache.catalina.core.ContainerBase.r
+-041emoveChild(ContainerBase.java\:1036)\r\n\tat org.apache.catalina.star
+-042tup.ContextConfig.stop(ContextConfig.java\:701)\r\n\tat org.apache.ca
+-043talina.startup.ContextConfig.lifecycleEvent(ContextConfig.java\:245)\
+-044r\n\tat org.apache.catalina.util.LifecycleSupport.fireLifecycleEvent(
+-045LifecycleSupport.java\:166)\r\n\tat org.apache.catalina.core.Standard
+-046Context.stop(StandardContext.java\:3695)\r\n\tat org.apache.catalina.
+-047core.ContainerBase.stop(ContainerBase.java\:1233)\r\n\tat org.apache.
+-048catalina.core.ContainerBase.stop(ContainerBase.java\:1233)\r\n\tat or
+-049g.apache.catalina.startup.Embedded.stop(Embedded.java\:1036)\r\n\tat 
+-050fuego.mami.EmbeddedEngine.stopTomcat(EmbeddedEngine.java\:170)\r\n\ta
+-051t fuego.mami.EmbeddedEngine.stopEngine(EmbeddedEngine.java\:162)\r\n\
+-052tat fuego.mami.Engine.stopEmbedded(Engine.java\:1221)\r\n\tat fuego.m
+-053ami.ManagementControl.shutdownServer(ManagementControl.java\:584)\r\n
+-054\tat sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)\r\n\
+-055tat sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorI
+-056mpl.java\:39)\r\n\tat sun.reflect.DelegatingMethodAccessorImpl.invoke
+-057(DelegatingMethodAccessorImpl.java\:25)\r\n\tat java.lang.reflect.Met
+-058hod.invoke(Method.java\:585)\r\n\tat fuego.lang.JavaClass.invokeMetho
+-059d(JavaClass.java\:1477)\r\n\tat fuego.lang.JavaObject.invoke(JavaObje
+-060ct.java\:185)\r\n\tat fuego.component.Message.process(Message.java\:5
+-06185)\r\n\tat fuego.component.ExecutionThread.processMessage(ExecutionT
+-062hread.java\:765)\r\n\tat fuego.component.ExecutionThread.processBatch
+-063(ExecutionThread.java\:740)\r\n\tat fuego.component.ExecutionThread.d
+-064oProcessBatch(ExecutionThread.java\:139)\r\n\tat fuego.component.Exec
+-065utorClient$1.processBatch(ExecutorClient.java\:68)\r\n\tat fuego.comp
+-066onent.ExecutionThread.work(ExecutionThread.java\:824)\r\n\tat fuego.c
+-067omponent.ExecutionThread.run(ExecutionThread.java\:396)\r\n'         
+0034Engine         Tomcat    <0> ET(0)                030120111226T142153
+-001Error Tomcat\: 'StandardWrapper[/workspaceportal_versionado\:startup]
+-002\: Servlet startup threw unload() exception\r\njavax.servlet.ServletE
+-003xception\: Servlet.destroy() for servlet startup threw exception\r\n\
+-004tat org.apache.catalina.core.StandardWrapper.unload(StandardWrapper.j
+-005ava\:1135)\r\n\tat org.apache.catalina.core.StandardWrapper.stop(Stan
+-006dardWrapper.java\:1356)\r\n\tat org.apache.catalina.core.ContainerBas
+-007e.removeChild(ContainerBase.java\:1036)\r\n\tat org.apache.catalina.s
+-008tartup.ContextConfig.stop(ContextConfig.java\:701)\r\n\tat org.apache
+-009.catalina.startup.ContextConfig.lifecycleEvent(ContextConfig.java\:24
+-0105)\r\n\tat org.apache.catalina.util.LifecycleSupport.fireLifecycleEve
+-011nt(LifecycleSupport.java\:166)\r\n\tat org.apache.catalina.core.Stand
+-012ardContext.stop(StandardContext.java\:3695)\r\n\tat org.apache.catali
+-013na.core.ContainerBase.stop(ContainerBase.java\:1233)\r\n\tat org.apac
+-014he.catalina.core.ContainerBase.stop(ContainerBase.java\:1233)\r\n\tat
+-015 org.apache.catalina.startup.Embedded.stop(Embedded.java\:1036)\r\n\t
+-016at fuego.mami.EmbeddedEngine.stopTomcat(EmbeddedEngine.java\:170)\r\n
+-017\tat fuego.mami.EmbeddedEngine.stopEngine(EmbeddedEngine.java\:162)\r
+-018\n\tat fuego.mami.Engine.stopEmbedded(Engine.java\:1221)\r\n\tat fueg
+-019o.mami.ManagementControl.shutdownServer(ManagementControl.java\:584)\
+-020r\n\tat sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)\r
+-021\n\tat sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccess
+-022orImpl.java\:39)\r\n\tat sun.reflect.DelegatingMethodAccessorImpl.inv
+-023oke(DelegatingMethodAccessorImpl.java\:25)\r\n\tat java.lang.reflect.
+-024Method.invoke(Method.java\:585)\r\n\tat fuego.lang.JavaClass.invokeMe
+-025thod(JavaClass.java\:1477)\r\n\tat fuego.lang.JavaObject.invoke(JavaO
+-026bject.java\:185)\r\n\tat fuego.component.Message.process(Message.java
+-027\:585)\r\n\tat fuego.component.ExecutionThread.processMessage(Executi
+-028onThread.java\:765)\r\n\tat fuego.component.ExecutionThread.processBa
+-029tch(ExecutionThread.java\:740)\r\n\tat fuego.component.ExecutionThrea
+-030d.doProcessBatch(ExecutionThread.java\:139)\r\n\tat fuego.component.E
+-031xecutorClient$1.processBatch(ExecutorClient.java\:68)\r\n\tat fuego.c
+-032omponent.ExecutionThread.work(ExecutionThread.java\:824)\r\n\tat fueg
+-033o.component.ExecutionThread.run(ExecutionThread.java\:396)\r\n----- R
+-034oot Cause -----\r\njava.lang.AssertionError\: I should have removed m
+-035e from the process service map and I removed \: null\r\n\tat fuego.pa
+-036pi.impl.ProcessServiceImpl.close(ProcessServiceImpl.java\:445)\r\n\ta
+-037t fuego.portal.servlet.BaseStartupServlet.destroy(BaseStartupServlet.
+-038java\:70)\r\n\tat org.apache.catalina.core.StandardWrapper.unload(Sta
+-039ndardWrapper.java\:1124)\r\n\tat org.apache.catalina.core.StandardWra
+-040pper.stop(StandardWrapper.java\:1356)\r\n\tat org.apache.catalina.cor
+-041e.ContainerBase.removeChild(ContainerBase.java\:1036)\r\n\tat org.apa
+-042che.catalina.startup.ContextConfig.stop(ContextConfig.java\:701)\r\n\
+-043tat org.apache.catalina.startup.ContextConfig.lifecycleEvent(ContextC
+-044onfig.java\:245)\r\n\tat org.apache.catalina.util.LifecycleSupport.fi
+-045reLifecycleEvent(LifecycleSupport.java\:166)\r\n\tat org.apache.catal
+-046ina.core.StandardContext.stop(StandardContext.java\:3695)\r\n\tat org
+-047.apache.catalina.core.ContainerBase.stop(ContainerBase.java\:1233)\r\
+-048n\tat org.apache.catalina.core.ContainerBase.stop(ContainerBase.java\
+-049:1233)\r\n\tat org.apache.catalina.startup.Embedded.stop(Embedded.jav
+-050a\:1036)\r\n\tat fuego.mami.EmbeddedEngine.stopTomcat(EmbeddedEngine.
+-051java\:170)\r\n\tat fuego.mami.EmbeddedEngine.stopEngine(EmbeddedEngin
+-052e.java\:162)\r\n\tat fuego.mami.Engine.stopEmbedded(Engine.java\:1221
+-053)\r\n\tat fuego.mami.ManagementControl.shutdownServer(ManagementContr
+-054ol.java\:584)\r\n\tat sun.reflect.NativeMethodAccessorImpl.invoke0(Na
+-055tive Method)\r\n\tat sun.reflect.NativeMethodAccessorImpl.invoke(Nati
+-056veMethodAccessorImpl.java\:39)\r\n\tat sun.reflect.DelegatingMethodAc
+-057cessorImpl.invoke(DelegatingMethodAccessorImpl.java\:25)\r\n\tat java
+-058.lang.reflect.Method.invoke(Method.java\:585)\r\n\tat fuego.lang.Java
+-059Class.invokeMethod(JavaClass.java\:1477)\r\n\tat fuego.lang.JavaObjec
+-060t.invoke(JavaObject.java\:185)\r\n\tat fuego.component.Message.proces
+-061s(Message.java\:585)\r\n\tat fuego.component.ExecutionThread.processM
+-062essage(ExecutionThread.java\:765)\r\n\tat fuego.component.ExecutionTh
+-063read.processBatch(ExecutionThread.java\:740)\r\n\tat fuego.component.
+-064ExecutionThread.doProcessBatch(ExecutionThread.java\:139)\r\n\tat fue
+-065go.component.ExecutorClient$1.processBatch(ExecutorClient.java\:68)\r
+-066\n\tat fuego.component.ExecutionThread.work(ExecutionThread.java\:824
+-067)\r\n\tat fuego.component.ExecutionThread.run(ExecutionThread.java\:3
+-06896)\r\n'                                                             
+-069                                                                     
+0004Portal         Main      <1>...iver[PD0190L:10099]020120111226T142153
+-001Se ha producido una excepci\u00F3n al recibir el mensaje del Engine d
+-002e ejecuci\u00F3n de procesos.\nDetalles\:\nFallo al recibir el mensaj
+-003e\nDebido a\: connection closed\n\nfuego.rmi.spi.ReceiveException\: F
+-004allo al recibir el mensaje\r\n\tat fuego.rmi.ClientCluster.exception(
+-005ClientCluster.java\:153)\r\n\tat fuego.rmi.local.LocalConnection$Rece
+-006iver.run(LocalConnection.java\:199)\r\nCaused by\: java.io.IOExceptio
+-007n\: connection closed\r\n\tat fuego.rmi.local.LocalConnection$Receive
+-008r.run(LocalConnection.java\:190)\r\n                                 
+-009                                                                     

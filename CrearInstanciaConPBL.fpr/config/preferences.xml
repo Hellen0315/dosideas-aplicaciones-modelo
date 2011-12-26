@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?fuego version="5.7 GA SP3" application="albpmstudio"?>
+<preferences>
+	<general/>
+	<processes exceptionHandlingPolicy="PROPAGATE" interactiveRole=""/>
+	<languages default="es" availables="es"/>
+	<activity allowNotSharePredefinedVariables="true" sharingPredefinedVariablesDefault="true"/>
+</preferences>
