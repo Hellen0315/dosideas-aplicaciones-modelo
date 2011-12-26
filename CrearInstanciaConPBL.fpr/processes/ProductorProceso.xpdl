@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?fuego version="5.7 GA SP3" application="albpmstudio"?>
+<process
+	created="2011-12-26"
+	name="ProductorProceso"
+	variation="Default"
+	generatesEvents="GENERATE_INTERACTIVE_EVENTS"
+	atomic="false"
+	containsIPC="false"
+	versionNumber="57303"
+	author="dosIdeas">
+	<process_label
+		language="es">Productor</process_label>
+	<component name="Instance" description="" versionID="Version 5.7 GA" flags="cloneable" type="xobject">
+		<inherit class="Fuego.Lib.ProcessInstance" flags=""/>
+		<objectProperty name="customizeReadObject" value="true"/>
+		<objectProperty name="initAllFields" value="true"/>
+		<objectProperty name="javaSerialId" value="4278124286"/>
+		<objectProperty name="methodPrefix" value="CIL_"/>
+		<attributes/>
+		<methods>
+			<method name="Instance" flags="static public server" language="Fuego">
+				<outputArgument name="return" description="" flags="retval" type="Instance"/>
+				<property name="RelayToSupported" value="false"/>
+			</method>
+			<method name="beginInMethod" flags="public server" language="Fuego">
+				<property name="RelayToSupported" value="false"/>
+			</method>
+			<method name="crear" description="crear" flags="static clientavailable public server" language="Java1">
+logMessage(&quot;DOS_IDEAS: Creando la instancia ConsumidorProceso&quot;, Severity.DEBUG);
+
+String mensaje = &quot;Este es un mensaje creado por el productor a las &quot; + &apos;now&apos;;
+ProcessInstance.create(processId :  ProcessInstance.organization + &quot;/&quot; + ProcessInstance.organizationalUnit + &quot;/ConsumidorProceso&quot;, 
+                           arguments : { &quot;mensaje_inArgument&quot; : mensaje }, argumentsSetName : &quot;BeginIn&quot;);
+				<property name="RelayToSupported" value="false"/>
+			</method>
+			<method name="endOutMethod" flags="public server" language="Fuego">
+				<property name="RelayToSupported" value="false"/>
+			</method>
+		</methods>
+	</component>
+	<processMethod name="beginInMethod"
+		type="BEGIN"/>
+	<processMethod name="crear"
+		type="GLOBAL_ACTIVITY"/>
+	<processMethod name="endOutMethod"
+		type="BEGIN"/>
+	<roles>
+		<role name="AutomaticHandler"
+			virtual="true"
+			location="0,0,221"/>
+		<role name="Productor"
+			location="221,0,130"/>
+		<role name="AutomaticHandler"
+			virtual="true"
+			location="351,0,231"/>
+	</roles>
+	<activities>
+		<activity name="Begin"
+			type="BEGIN"
+			role="AutomaticHandler"
+			location="112,100"
+			autocomplete="true"
+			firstActivityInFlow="Begin"
+			generatesEvents="PROCESS_DEFAULT"
+			level="Begin Level"
+			maxInstances="0"
+			targetForNonCreatedInstances="DO_NOT_CREATE"
+			unlimitedCopies="true">
+			<argumentMapping name="BeginIn"
+				type="IN"
+				scriptName="BeginIn"
+				language="Fuego"
+				relatedScriptName="beginInMethod"/>
+			<activity_label
+				language="es">Inicio</activity_label>
+			<activity_description
+				language="es">Inicio</activity_description>
+		</activity>
+		<activity name="ProcessGroup"
+			type="GROUP"
+			role="AutomaticHandler"
+			location="469,200"
+			atomic="false"
+			collapsed="true"
+			generatesEvents="PROCESS_DEFAULT"
+			level="Begin Level"
+			mainGroup="true"
+			maxInstances="0"
+			maxRetries="1">
+			<activity_label
+				language="es">Process Exceptions</activity_label>
+		</activity>
+		<activity name="Crear"
+			type="GLOBAL_CREATION"
+			role="Productor"
+			location="286,230"
+			autocomplete="true"
+			generatesEvents="PROCESS_DEFAULT"
+			level="Begin Level">
+			<argumentMapping name="CrearOut"
+				type="OUT"
+				scriptName="CrearOut"
+				language="Fuego"/>
+			<activity_label
+				language="es">Crear</activity_label>
+			<activity_task name="Crear"
+				mandatory="true">
+				<task name="Crear"
+					type="METHOD"
+					cil_name="crear">
+					<task_label
+						language="es">Crear</task_label>
+				</task>
+			</activity_task>
+		</activity>
+		<activity name="End"
+			type="END"
+			role="AutomaticHandler"
+			location="469,100"
+			firstActivityInFlow="Begin"
+			generatesEvents="PROCESS_DEFAULT"
+			level="Begin Level">
+			<argumentMapping name="EndOut"
+				type="OUT"
+				scriptName="EndOut"
+				language="Fuego"
+				relatedScriptName="endOutMethod"/>
+			<activity_label
+				language="es">Finalizar</activity_label>
+			<activity_description
+				language="es">Finalizar</activity_description>
+		</activity>
+	</activities>
+	<transitions>
+		<transition name="BeginToEnd"
+			from="Begin"
+			to="A$End"
+			type="UNCONDITIONAL"
+			collapseMessage="false"/>
+	</transitions>
+</process>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?fuego version="5.7 GA SP3" application="albpmstudio"?>
+<FDIObject SchemaVersion="6.0" SchemaId="CrearInstanciaConPBL" Organization="DosIdeas">
+	<DirPresentation>
+		<id>default_instances</id>
+		<type>2</type>
+		<properties><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
+<?fuego version="5.7 GA SP3" application="albpmstudio"?>
+<presentation id="default_instances" owner="organization" type="INSTANCES" version="1">
+	<readonly>false</readonly>
+	<columns>
+		<column size="1">PREDEFINE_PRIORITY</column>
+		<column size="1">PREDEFINE_HAS_ATTACHMENTS</column>
+		<column size="25">PREDEFINE_DESCRIPTION</column>
+		<column size="15">PREDEFINE_ACTIVITY</column>
+		<column size="7">PREDEFINE_STATUS</column>
+		<column size="12">PREDEFINE_RECEIVED TIME</column>
+		<column size="12">PREDEFINE_DEADLINE</column>
+		<column size="10">PREDEFINE_PARTICIPANT</column>
+	</columns>
+</presentation>
+]]></properties>
+	</DirPresentation>
+</FDIObject>
