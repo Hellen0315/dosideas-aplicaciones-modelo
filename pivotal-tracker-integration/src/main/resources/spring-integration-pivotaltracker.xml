@@ -89,7 +89,7 @@
         <!-- Agregado del token y el Content-Type al header del mensaje -->
         <int:header-enricher>
             <int:header name="Content-Type" value="application/xml"/>
-            <int:header name="X-TrackerToken" value="${tracketTocken}"/>
+            <int:header name="X-TrackerToken" value="${tracketToken}"/>
         </int:header-enricher>
         <!-- Serializa el mensaje -->
         <int-xml:marshalling-transformer marshaller="xstreamMarshaller" result-type="StringResult"/>
