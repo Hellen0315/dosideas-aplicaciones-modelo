@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:int="http://www.springframework.org/schema/integration"
+       xmlns:http="http://www.springframework.org/schema/integration/http"
+       xmlns:int-jdbc="http://www.springframework.org/schema/integration/jdbc"
+       xmlns:int-xml="http://www.springframework.org/schema/integration/xml"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+			http://www.springframework.org/schema/beans/spring-beans.xsd
+			http://www.springframework.org/schema/integration
+			http://www.springframework.org/schema/integration/spring-integration-2.1.xsd
+			http://www.springframework.org/schema/integration/http
+                        http://www.springframework.org/schema/integration/http/spring-integration-http-2.1.xsd
+                        http://www.springframework.org/schema/integration/jdbc
+                        http://www.springframework.org/schema/integration/jdbc/spring-integration-jdbc-2.1.xsd
+                        http://www.springframework.org/schema/integration/xml
+                        http://www.springframework.org/schema/integration/xml/spring-integration-xml-2.1.xsd
+                        http://www.springframework.org/schema/context 
+                        http://www.springframework.org/schema/context/spring-context-3.1.xsd">
+                            
+     
+   
+    <context:property-placeholder location="classpath:pivotalTracker.properties"/>
+                            
+    <!-- Canal de entrada -->
+    <int:channel id="incomingPivotalBug">
+        <int:interceptors>
+            <int:wire-tap channel="logger"/>
+        </int:interceptors>
+    </int:channel>
+    
+    <!-- Canal de respuesta -->
+    <int:channel id="outcomingPivotalBug">
+        <int:interceptors>
+            <int:wire-tap channel="logger"/>
+        </int:interceptors>
+    </int:channel>
+    
+    <!-- Canala de posteo en Pivotal Tracker. -->
+    <int:channel id="pivotalPost">
+        <int:interceptors>
+            <int:wire-tap channel="logger"/>
+        </int:interceptors>
+    </int:channel>
+    
+    <!-- Handler de para las urls -->
+    <bean class="org.springframework.integration.http.inbound.UriPathHandlerMapping"/>
+        
+    <!-- Expone un servicio para atender las peticiones de las aplicaciones 
+         Ejemplo de la url cuando se despliega localmente:
+         http://localhost:8084/pivotal-tracker-integration/app/bug
+    -->
+    <http:inbound-gateway id="gatewayHttpEntrada" request-channel="incomingPivotalBug" 
+                          supported-methods="POST" reply-timeout="5000" 
+                          path="/bug" reply-channel="outcomingPivotalBug"
+                          mapped-response-headers="Content-Type"/>
+    
+    <!-- Bean de xStream para serializar los mensajes -->
+    <bean id="xstreamMarshaller" class="org.springframework.oxm.xstream.AnnotationXStreamMarshaller">
+        <property name="streamDriver">
+            <bean class="com.thoughtworks.xstream.io.xml.XppDriver">
+                <constructor-arg>
+                    <bean class="com.thoughtworks.xstream.io.xml.XmlFriendlyReplacer">
+                        <constructor-arg index="0" value="_-"/>
+                        <constructor-arg index="1" value="_"/>
+                    </bean>
+                </constructor-arg>
+            </bean>
+        </property>
+        <property name="encoding" value="ISO-8859-1"/>
+        <property name="annotatedClasses">
+            <list>
+                <value>com.dosideas.pivotaltrackerintegration.domain.Historia</value>
+            </list>
+        </property>
+    </bean>
+       
+    <!-- Cadena para agrupar operaciones comunes -->
+    <int:chain id="cadenaPivotal" input-channel="incomingPivotalBug" output-channel="pivotalPost">
+        <!-- Transformación de Json a objeto -->
+        <int:json-to-object-transformer type="com.dosideas.pivotaltrackerintegration.domain.Historia"/>
+        <!-- Agregado de usuario de Pivotal Tracker al payload del mensaje -->
+        <int:enricher>
+            <int:property name="usuarioPivotal" value="${usuarioPivotal}"/>
+            <int:property name="propietario" value="${propietario}"/>
+            <int:property name="tipo" value="bug"/>
+        </int:enricher>
+        <!-- Agregado del token y el Content-Type al header del mensaje -->
+        <int:header-enricher>
+            <int:header name="Content-Type" value="application/xml"/>
+            <int:header name="X-TrackerToken" value="${tracketTocken}"/>
+        </int:header-enricher>
+        <!-- Serializa el mensaje -->
+        <int-xml:marshalling-transformer marshaller="xstreamMarshaller" result-type="StringResult"/>
+        <!-- Transformación de objeto StringResult a String -->
+        <int:object-to-string-transformer/>
+    </int:chain>
+           
+    <!-- Gateway para invocar el API rest de Pivotal Tracker  -->
+    <http:outbound-gateway request-channel="pivotalPost" 
+                           url="http://www.pivotaltracker.com/services/v3/projects/{project_id}/stories"
+                           http-method="POST"
+                           mapped-request-headers="Content-Type, X-TrackerToken"
+                           mapped-response-headers="Content-Type"
+                           extract-request-payload="true"
+                           expected-response-type="java.lang.String"
+                           charset="ISO-8859-1"
+                           reply-channel="outcomingPivotalBug">
+        <http:uri-variable name="project_id" expression="${project_id}"/>    
+    </http:outbound-gateway>
+                    
+    <!-- Canal de logeo -->
+    <int:channel id="logger"/>
+    <!-- Adaptador de logeo -->
+    <int:logging-channel-adapter id="log" 
+                                 channel="logger" 
+                                 log-full-message="true"/>
+    
+                            
+</beans>
