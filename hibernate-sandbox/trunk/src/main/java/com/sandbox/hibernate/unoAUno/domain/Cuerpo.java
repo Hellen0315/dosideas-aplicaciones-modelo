@@ -31,7 +31,7 @@ public class Cuerpo {
      *   <strong>cascade</strong> (Opcional) Las operaciones que deben ser propagados en cascada con el objetivo de la asociacion.
      *  </li>
      *  <li> 
-     *    <strong>mappedBy</strong> (Opcional) El atributo del objetivo de la asociacion que posee la relacion.
+     *    <strong>mappedBy</strong> (Opcional) En el campo que posee la relaci&oacute;n.
      *  <li>
      * </ul>
      * @see <a href="http://download.oracle.com/javaee/5/api/javax/persistence/CascadeType.html">CascadeType</a>
