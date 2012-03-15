@@ -2,6 +2,7 @@ package com.sandbox.hibernate.util;
 
 import javax.sql.DataSource;
 
+import org.hibernate.SessionFactory;
 import org.junit.Before;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +15,9 @@ public class BaseComponenteTest {
     protected DataSource dataSource;
 
     protected SimpleJdbcTemplate simpleJdbcTemplate;
+    
+    @Autowired
+    protected SessionFactory sessionFactory;
     
     @Before
     public void setUp() {

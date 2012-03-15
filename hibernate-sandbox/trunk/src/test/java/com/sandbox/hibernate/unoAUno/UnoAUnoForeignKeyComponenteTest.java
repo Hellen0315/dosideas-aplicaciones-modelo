@@ -22,7 +22,6 @@ import com.sandbox.hibernate.util.BaseComponenteTest;
  * One-to-one association that maps a foreign key column
  */
 @ContextConfiguration(locations = {"unoAUno-app-context.xml"})
-@Transactional
 public class UnoAUnoForeignKeyComponenteTest extends BaseComponenteTest {
     
     @Autowired
@@ -83,4 +82,25 @@ public class UnoAUnoForeignKeyComponenteTest extends BaseComponenteTest {
         Assert.assertEquals(cantidadCorazonesAntes + 1, cantidadCorazonesDespues);
         
     }
+    
+    @Test
+    public void eliminar_conCuerpo_borraElCuerpoYElCorazon() {
+        Long id = new Long(2L);
+        Cuerpo cuerpoAEliminar = cuerpoDao.buscarPorId(id);
+        
+        int cantidadCuerposAntes = SimpleJdbcTestUtils.countRowsInTable(simpleJdbcTemplate, "UnoAUno.Cuerpo");
+        int cantidadCorazonesAntes = SimpleJdbcTestUtils.countRowsInTable(simpleJdbcTemplate, "UnoAUno.Corazon");
+        
+        //ejercitamos
+        cuerpoDao.eliminar(cuerpoAEliminar);        
+        
+        //verificamos
+        int cantidadCuerposDespues = SimpleJdbcTestUtils.countRowsInTable(simpleJdbcTemplate, "UnoAUno.Cuerpo");
+        int cantidadCorazonesDespues = SimpleJdbcTestUtils.countRowsInTable(simpleJdbcTemplate, "UnoAUno.Corazon");
+        
+        Assert.assertEquals(cantidadCuerposAntes - 1, cantidadCuerposDespues);
+        Assert.assertEquals(cantidadCorazonesAntes - 1, cantidadCorazonesDespues);
+    }
+    
+    
 }

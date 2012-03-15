@@ -8,4 +8,6 @@ public interface CuerpoDao {
 
     void guardar(Cuerpo unCuerpo);
 
+    void eliminar(Cuerpo cuerpo);
+
 }
