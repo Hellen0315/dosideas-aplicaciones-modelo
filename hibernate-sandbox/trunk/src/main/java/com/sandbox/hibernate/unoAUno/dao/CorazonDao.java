@@ -6,4 +6,6 @@ public interface CorazonDao {
 
     Corazon buscarPorId(Long id);
 
+    void eliminar(Corazon corazon);
+
 }

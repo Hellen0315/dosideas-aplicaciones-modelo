@@ -102,5 +102,22 @@ public class UnoAUnoForeignKeyComponenteTest extends BaseComponenteTest {
         Assert.assertEquals(cantidadCorazonesAntes - 1, cantidadCorazonesDespues);
     }
     
-    
+    @Test
+    public void eliminar_conCorazon_borraElCorazonYNoElCuerpo() {
+        Long id = new Long(2L);
+        Corazon corazonAEliminar = corazonDao.buscarPorId(2L);
+        
+        int cantidadCuerposAntes = SimpleJdbcTestUtils.countRowsInTable(simpleJdbcTemplate, "UnoAUno.Cuerpo");
+        int cantidadCorazonesAntes = SimpleJdbcTestUtils.countRowsInTable(simpleJdbcTemplate, "UnoAUno.Corazon");
+        
+        //ejercitamos
+        corazonDao.eliminar(corazonAEliminar);        
+        
+        //verificamos
+        int cantidadCuerposDespues = SimpleJdbcTestUtils.countRowsInTable(simpleJdbcTemplate, "UnoAUno.Cuerpo");
+        int cantidadCorazonesDespues = SimpleJdbcTestUtils.countRowsInTable(simpleJdbcTemplate, "UnoAUno.Corazon");
+        
+        Assert.assertEquals(cantidadCuerposAntes, cantidadCuerposDespues);
+        Assert.assertEquals(cantidadCorazonesAntes - 1, cantidadCorazonesDespues);
+    }
 }
