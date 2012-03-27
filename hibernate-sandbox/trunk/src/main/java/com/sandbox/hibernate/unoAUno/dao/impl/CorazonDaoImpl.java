@@ -20,4 +20,9 @@ public class CorazonDaoImpl implements CorazonDao {
         return (Corazon) sessionFactory.getCurrentSession().get(Corazon.class, id);
     }
 
+    @Override
+    public void eliminar(Corazon corazon) {
+        sessionFactory.getCurrentSession().delete(corazon);
+    }
+
 }
