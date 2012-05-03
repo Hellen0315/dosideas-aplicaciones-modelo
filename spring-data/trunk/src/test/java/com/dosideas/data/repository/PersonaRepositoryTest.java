@@ -105,5 +105,18 @@ public class PersonaRepositoryTest {
         assertEquals(nombre, persona.getNombre());
     }
 
+    @Test
+    public void setApellidoForPersona_nombreOk_retornaUnoComoCantidadDeFilasAfectadas() {
+        Long id = 1L;
+        String apellido = "Nuevo apellido";
+
+        int filasAfectadas = personaRepository.setApellidoForPersona(id, apellido);
+
+        assertEquals(1, filasAfectadas);
+        Persona persona = personaRepository.findOne(id);
+
+        assertEquals(apellido, persona.getApellido());
+    }
+
 }
 
