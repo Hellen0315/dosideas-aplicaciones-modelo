@@ -46,5 +46,13 @@ public class PaisRepositoryTest {
         assertTrue(result.size() > 0);
     }
     
+    @Test
+    public void save_retornaPais() {
+        Pais pais = new Pais();
+        pais.setNombre("Argentina");
+        Pais result = paisRepository.save(pais);
+        assertEquals(pais, result);
+                
+    }
     
 }
