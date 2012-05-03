@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.repository.query.Param;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -52,9 +53,17 @@ public interface PersonaRepository extends CrudRepository<Persona, Long> {
      * (que indican la cantidad de filas actualizadas).
      * Los métodos de actualización tienen que ser transaccionales, ya sea
      * anotados con @Transacional o ser ejecutados dentro de una transacción.
-     *
      */
     @Modifying
     @Query("update Persona p set p.nombre = ?2 where p.id = ?1")
     int setNombreForPersona(long id, String nombre);
+
+    /**
+     * Cambia el apellido de una Persona.
+     * Los parametros pueden pasarse también por nombre, usando la anotación @Param
+     * para indicar el nombre de cada parámetro.
+     */
+    @Modifying
+    @Query("update Persona p set p.apellido = :nombre where p.id = :id")
+    int setApellidoForPersona(@Param("id") long id, @Param("nombre") String nombre);
 }
