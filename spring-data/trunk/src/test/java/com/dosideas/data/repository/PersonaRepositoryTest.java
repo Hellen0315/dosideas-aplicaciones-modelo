@@ -4,7 +4,6 @@
  */
 package com.dosideas.data.repository;
 
-import com.dosideas.data.repository.PersonaRepository;
 import com.dosideas.data.domain.Hobbie;
 import com.dosideas.data.domain.Persona;
 import java.util.Collection;
@@ -70,6 +69,7 @@ public class PersonaRepositoryTest {
         String apellido = "Trout";
 
         List<Persona> personas = personaRepository.findByNombreAndApellido(nombre, apellido);
+
         assertNotNull(personas);
         assertTrue(personas.size() == 1);
 
@@ -90,6 +90,19 @@ public class PersonaRepositoryTest {
             assertNotNull(persona.getPais());
             assertEquals(pais, persona.getPais().getNombre());
         }
+    }
+
+    @Test
+    public void setNombreForPersona_nombreOk_retornaUnoComoCantidadDeFilasAfectadas() {
+        Long id = 1L;
+        String nombre = "Nuevo nombre";
+
+        int filasAfectadas = personaRepository.setNombreForPersona(id, nombre);
+
+        assertEquals(1, filasAfectadas);
+        Persona persona = personaRepository.findOne(id);
+
+        assertEquals(nombre, persona.getNombre());
     }
 
 }
