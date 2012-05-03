@@ -8,7 +8,7 @@ import com.dosideas.data.domain.Pais;
 
 /**
  * Esta interfaz no tiene implementación en el proyecto. En tiempo de ejecución 
- * se implementaran los metodos expuestos en esta interfaz y los expuestos en la
+ * se implementaran los métodos expuestos en esta interfaz y los expuestos en la
  * interfaz "CustomRepository".
  * 
  * Leer más en
