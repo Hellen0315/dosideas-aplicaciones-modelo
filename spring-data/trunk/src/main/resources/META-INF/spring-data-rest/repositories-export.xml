@@ -5,7 +5,13 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 http://www.springframework.org/schema/data/jpa http://www.springframework.org/schema/data/jpa/spring-jpa.xsd">
 
+    <!-- Este archivo es usado por RepositoryRestMvcConfiguration (el servlet
+         "exporter" en web.xml) para levantar el factory de Spring.
+         En particular, este servlet expondrá todos los repositorios declarados
+         en la aplicación (en este ejemplo, declarados usando el tag jpa:repositories).
+    -->
+
     <import resource="classpath:applicationContext.xml"/>
-    <import resource="classpath:datasource-test.xml"/>
+    <import resource="classpath:datasource.xml"/>
 
 </beans>

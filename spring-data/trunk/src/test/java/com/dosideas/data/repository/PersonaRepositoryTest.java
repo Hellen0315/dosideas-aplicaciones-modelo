@@ -8,6 +8,7 @@ import com.dosideas.data.repository.PersonaRepository;
 import com.dosideas.data.domain.Hobbie;
 import com.dosideas.data.domain.Persona;
 import java.util.Collection;
+import java.util.List;
 import static org.junit.Assert.*;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -23,7 +24,7 @@ import org.springframework.transaction.annotation.Transactional;
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = {
     "classpath:applicationContext.xml",
-    "classpath:datasource-test.xml"
+    "classpath:datasource.xml"
 })
 @Transactional
 public class PersonaRepositoryTest {
@@ -62,4 +63,34 @@ public class PersonaRepositoryTest {
             assertNotNull(hobbie.getDescripcion());
         }
     }
+
+    @Test
+    public void findByNombreAndApellido_existe_returnaPersonas() {
+        String nombre = "Kilgore";
+        String apellido = "Trout";
+
+        List<Persona> personas = personaRepository.findByNombreAndApellido(nombre, apellido);
+        assertNotNull(personas);
+        assertTrue(personas.size() == 1);
+
+        Persona persona = personas.iterator().next();
+        assertEquals(apellido, persona.getApellido());
+        assertEquals(nombre, persona.getNombre());
+    }
+
+    @Test
+    public void findByPais_existe_returnaPersonas() {
+        String pais = "Argentina";
+
+        List<Persona> personas = personaRepository.findByPais(pais);
+        assertNotNull(personas);
+        assertTrue(personas.size() > 0);
+
+        for (Persona persona : personas) {
+            assertNotNull(persona.getPais());
+            assertEquals(pais, persona.getPais().getNombre());
+        }
+    }
+
 }
+
