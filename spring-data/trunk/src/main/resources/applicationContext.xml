@@ -14,6 +14,11 @@
        http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.1.xsd
        http://www.springframework.org/schema/data/jpa http://www.springframework.org/schema/data/jpa/spring-jpa.xsd">
 
+    <!--
+    Leer más sobre la configuración de Spring Data con JPA + Hibernate:
+        http://gordondickens.com/wordpress/2011/08/01/simpler-jpa-with-spring-data-jpa/
+    -->
+
 
     <tx:annotation-driven />
     <context:component-scan base-package="com.dosideas.data"/>
