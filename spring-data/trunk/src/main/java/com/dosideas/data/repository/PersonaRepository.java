@@ -7,15 +7,15 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
 
-/*
- * To change this template, choose Tools | Templates and open the template in
- * the editor.
- */
+
 /**
  * Esta interfaz no tiene implementación en el proyecto. Se implementará
  * automáticamente por Spring Data en tiempo de ejecución. La implementación de
  * los métodos se deducirá de acuerdo al nombre del mismo, o usando el query
  * asociado con @Query.
+ *
+ * La interfaz CrudRepository ya incluye varios métodos comunes de acceso a
+ * datos para buscar, guardar, actualizar y eliminar un objeto. 
  *
  * Leer más en
  * http://static.springsource.org/spring-data/data-jpa/docs/current/reference/html/#jpa.query-methods

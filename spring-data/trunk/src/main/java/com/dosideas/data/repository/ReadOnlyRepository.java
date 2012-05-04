@@ -9,17 +9,13 @@ import java.util.List;
 import org.springframework.data.repository.Repository;
 
 /**
- *
- * @author parivero
+ * Es posible crear una interfaz genérica propia para sólo exponer algunos
+ * métodos en particular.
  */
-public interface CustomRepository<T, ID extends Serializable> extends Repository<T, ID> {
+public interface ReadOnlyRepository<T, ID extends Serializable> extends Repository<T, ID> {
 
     List<T> findAll();
-    
+
     T findOne(ID id);
 
-    T save(T entity);
-    
-    
-    
 }
