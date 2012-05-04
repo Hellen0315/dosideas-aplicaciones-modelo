@@ -26,7 +26,7 @@
     <!-- Declara los repositorios de datos. Se implementarán automáticamente todas
          las interfaces que hereden de Repository (o CrudRepository).
     -->
-    <jpa:repositories base-package="com.dosideas.data.repository"/>
+    <jpa:repositories base-package="com.dosideas.data.repository" />
 
 
     <!-- Configuracion para JPA con Hibernate -->
