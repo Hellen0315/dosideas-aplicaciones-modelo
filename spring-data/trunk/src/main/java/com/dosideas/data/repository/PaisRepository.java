@@ -7,14 +7,14 @@ package com.dosideas.data.repository;
 import com.dosideas.data.domain.Pais;
 
 /**
- * Esta interfaz no tiene implementación en el proyecto. En tiempo de ejecución 
+ * Esta interfaz no tiene implementación en el proyecto. En tiempo de ejecución
  * se implementaran los métodos expuestos en esta interfaz y los expuestos en la
- * interfaz "CustomRepository".
- * 
+ * interfaz "ReadOnlyRepository".
+ *
  * Leer más en
  * http://static.springsource.org/spring-data/data-jpa/docs/1.0.3.RELEASE/reference/html/#repositories.definition-tuning
  *
  */
-public interface PaisRepository extends CustomRepository<Pais, Long> {
-    
+public interface PaisRepository extends ReadOnlyRepository<Pais, Long> {
+
 }
