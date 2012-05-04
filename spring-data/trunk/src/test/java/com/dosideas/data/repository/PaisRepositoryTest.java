@@ -46,4 +46,12 @@ public class PaisRepositoryTest {
         assertTrue(result.size() > 0);
     }
 
+    @Test
+    public void buscarPorNombre_retornaListaDePaises() {
+        String nombre = "Argentina";
+        Pais result = paisRepository.buscarPorNombre(nombre);
+        assertNotNull(result);
+        
+    }
+    
 }

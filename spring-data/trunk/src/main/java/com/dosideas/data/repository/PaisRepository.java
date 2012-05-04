@@ -5,6 +5,7 @@
 package com.dosideas.data.repository;
 
 import com.dosideas.data.domain.Pais;
+import java.util.List;
 
 /**
  * Esta interfaz no tiene implementación en el proyecto. En tiempo de ejecución
@@ -16,5 +17,7 @@ import com.dosideas.data.domain.Pais;
  *
  */
 public interface PaisRepository extends ReadOnlyRepository<Pais, Long> {
-
+    
+    Pais buscarPorNombre(String nombre);
+    
 }
