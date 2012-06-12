@@ -6,6 +6,7 @@ package com.dosideas.data.repository;
 
 import com.dosideas.data.domain.Hobbie;
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.rest.repository.annotation.RestResource;
 
 /**
  * Esta interfaz contiene los métodos comunes implementados por Spring Data a
@@ -15,6 +16,7 @@ import org.springframework.data.repository.CrudRepository;
  * sumados a los métodos implementados automáticamente por Spring Data.
  *
  */
+@RestResource(path="hobbie")
 public interface HobbieRepository extends CrudRepository<Hobbie, Long>, CustomHobbieRepository {
 
 }
