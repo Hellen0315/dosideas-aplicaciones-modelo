@@ -6,6 +6,7 @@ import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
+import org.springframework.data.rest.repository.annotation.RestResource;
 
 
 /**
@@ -19,30 +20,48 @@ import org.springframework.data.repository.query.Param;
  *
  * Leer más en
  * http://static.springsource.org/spring-data/data-jpa/docs/current/reference/html/#jpa.query-methods
+ * 
+ * MVC-REST
+ * Mediante la anotación RestResource se indica el path por el cual se quiere 
+ * exponer el metodo como servicio REST y con la anotación Param se indica el 
+ * nombre de los paramatros que debe recibir.
  *
  */
+@RestResource(path="persona")
 public interface PersonaRepository extends CrudRepository<Persona, Long> {
 
     /**
      * Busca todas las instancias de Persona con el apellido dado. Este método
      * se implementará automáticamente, deduciendo la implemetnación a partir
      * del nombre del método.
+     * Url por la cual se puede invocar el servicio REST.
+     * http://localhost:8080/spring-data/persona/search/apellido?apellido=Trout
      */
-    List<Persona> findByApellido(String apellido);
+    @RestResource(path="apellido",rel="porApellido")
+    List<Persona> findByApellido(@Param("apellido") String apellido);
 
     /**
      * Busca todas las instancias de Persona con un nombre y apellido igual al
      * dados.
+     * 
+     * MVC-REST
+     * Url por la cual se puede invocar el servicio REST.
+     * http://localhost:8080/spring-data/persona/search/nombreApellido?apellido=Trout&nombre=Kilgore
      */
-    List<Persona> findByNombreAndApellido(String nombre, String apellido);
+    @RestResource(path="nombreApellido",rel="porNombreYApellido")
+    List<Persona> findByNombreAndApellido(@Param("nombre") String nombre, @Param("apellido")  String apellido);
 
     /**
      * Busca todas las instancias de Persona que pertenecen al pais indicado,
      * segun su nombre. Esta implementación usa un Query específico para
      * resolverse.
+     * 
+     * MVC-REST
+     * Url por la cual se puede invocar el servicio REST.
+     * http://localhost:8080/spring-data/persona/search/findByPais?pais=Argentina
      */
-    @Query("from Persona p where p.pais.nombre = ?1")
-    List<Persona> findByPais(String pais);
+    @Query("from Persona p where p.pais.nombre = :pais")
+    List<Persona> findByPais(@Param("pais") String pais);
 
     /**
      * Cambia el nombre de una Persona.
