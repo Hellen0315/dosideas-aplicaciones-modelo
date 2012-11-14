@@ -51,7 +51,7 @@ public class PaisController {
     public @ResponseBody
     Pais buscarPorId(@PathVariable Long id) throws PaisNoEncontradoException {
 
-        Pais pais = paisService.buscarPaisPorId(id);
+        Pais pais = paisService.buscarPorId(id);
 
         if (pais == null) {
             throw new PaisNoEncontradoException("Pais no encontrado");

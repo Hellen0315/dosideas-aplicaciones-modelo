@@ -13,6 +13,6 @@ import com.dosideas.domain.Pais;
  */
 public interface PaisDao {
 
-    Pais buscarPaisPorId(Long id);
-    
+    Pais buscarPorId(Long id);
+
 }

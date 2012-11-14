@@ -46,14 +46,14 @@ public class PaisDaoComponenteTest {
     private PaisDao instance;
 
     /**
-     * Test de buscarPaisPorId method con un id existente.
+     * Test de buscarPorId method con un id existente.
      * El metodo debe encontrar un Pais con el id buscado.
      */
     @Test
-    public void buscarPaisPorId_ConIdExistente_retornaProvinciaConEseId() {
+    public void buscarPorId_ConIdExistente_retornaProvinciaConEseId() {
         Long id = 1L;
 
-        Pais pais = instance.buscarPaisPorId(id);
+        Pais pais = instance.buscarPorId(id);
 
         assertNotNull(pais);
         assertEquals(id, pais.getId());
@@ -61,26 +61,26 @@ public class PaisDaoComponenteTest {
     }
 
     /**
-     * Test de buscarPaisPorId method con un id inexistente.
+     * Test de buscarPorId method con un id inexistente.
      * El metodo debe devolver null al buscar un id que no existe.
      */
     @Test
-    public void buscarPaisPorId_ConIdInexistente_retornaNull() {
+    public void buscarPorId_ConIdInexistente_retornaNull() {
         Long id = 21L;
 
-        Pais pais = instance.buscarPaisPorId(id);
+        Pais pais = instance.buscarPorId(id);
 
         assertNull(pais);
     }
 
     /**
-     * Test de buscarPaisPorId method con un id null.
+     * Test de buscarPorId method con un id null.
      * El metodo debe tirar una IllegalArgumentException al intengar invocar
      * al metodo con un null.
      */
     @Test(expected = IllegalArgumentException.class)
-    public void buscarPaisPorId_ConIdNull_lanzaExcepcion() {
-        instance.buscarPaisPorId(null);
+    public void buscarPorId_ConIdNull_lanzaExcepcion() {
+        instance.buscarPorId(null);
         fail("Debería haberse lanzado una excepcion.");
     }
 }

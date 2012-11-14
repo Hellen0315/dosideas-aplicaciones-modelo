@@ -58,7 +58,7 @@ public class PaisServiceImplTest {
     }
 
     /**
-     * Test of buscarPaisPorId method, of class PaisBoImpl.
+     * Test of buscarPorId method, of class PaisBoImpl.
      *
      * Este test se encargará de preparar el Mock del Dao para
      * esperar que se lo invoque con el mismo ID que se invoca a PaisBo,
@@ -69,50 +69,50 @@ public class PaisServiceImplTest {
      *
      */
     @Test
-    public void buscarPaisPorId_ConIdExistente_returnaPaisConEseId() {
+    public void buscarPorId_ConIdExistente_returnaPaisConEseId() {
         Long id = 1L;
         Pais pais = new Pais();
         pais.setId(id);
         pais.setNombre("Pais Mock");
 
         //preparación del mock
-        doReturn(pais).when(paisDaoMock).buscarPaisPorId(id);
+        doReturn(pais).when(paisDaoMock).buscarPorId(id);
 
         //ejecución
-        Pais result = instance.buscarPaisPorId(id);
+        Pais result = instance.buscarPorId(id);
 
         //verificamos
         assertEquals(pais, result);
-        verify(paisDaoMock).buscarPaisPorId(id);
+        verify(paisDaoMock).buscarPorId(id);
     }
 
     /**
-     * Test de buscarPaisPorId method con un id existente.
+     * Test de buscarPorId method con un id existente.
      * El metodo debe encontrar un Pais con el id buscado.
      */
     @Test
-    public void buscarPaisPorId_ConIdInexistente_retonraNull() {
+    public void buscarPorId_ConIdInexistente_retonraNull() {
         Long id = 1L;
 
-        doReturn(null).when(paisDaoMock).buscarPaisPorId(id);
+        doReturn(null).when(paisDaoMock).buscarPorId(id);
 
-        Pais pais = instance.buscarPaisPorId(id);
+        Pais pais = instance.buscarPorId(id);
 
         assertNull(pais);
-        verify(paisDaoMock).buscarPaisPorId(id);
+        verify(paisDaoMock).buscarPorId(id);
     }
 
     /**
-     * Test de buscarPaisPorId method con un id null.
+     * Test de buscarPorId method con un id null.
      * El metodo debe tirar una IllegalArgumentException al intengar invocar
      * al metodo con un null.
      */
     @Test(expected = IllegalArgumentException.class)
-    public void buscarPaisPorId_ConIdNull_lanzaExcepcion() {
+    public void buscarPorId_ConIdNull_lanzaExcepcion() {
 
-        doThrow(new IllegalArgumentException()).when(paisDaoMock).buscarPaisPorId(null);
+        doThrow(new IllegalArgumentException()).when(paisDaoMock).buscarPorId(null);
 
-        instance.buscarPaisPorId(null);
+        instance.buscarPorId(null);
 
         fail("Debería haberse lanzado una excepcion.");
     }
