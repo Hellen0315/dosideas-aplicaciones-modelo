@@ -1,14 +1,14 @@
 package com.dosideas.service.impl;
 
-import org.mockito.Mock;
 import com.dosideas.dao.PaisDao;
 import com.dosideas.domain.Pais;
 import org.junit.After;
+import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
-import org.mockito.MockitoAnnotations;
-import static org.junit.Assert.*;
+import org.mockito.Mock;
 import static org.mockito.Mockito.*;
+import org.mockito.MockitoAnnotations;
 
 /**
  * Esta clase representa un test de unitario. Los tests de unitarios
