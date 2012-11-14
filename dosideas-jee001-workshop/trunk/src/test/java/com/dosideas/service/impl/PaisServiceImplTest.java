@@ -14,15 +14,15 @@ import static org.mockito.Mockito.*;
  * Esta clase representa un test de unitario. Los tests de unitarios
  * se encargan de testear una clase en forma aislada al resto de sus
  * dependencias. Para lograr esto se "simulan" las dependencias con
- * objetos falsos que funcionan según nuestras necesidades (Mock Objects). 
- * 
- * Los tests unitarios funcionan en forma aislada sin ningún otro 
+ * objetos falsos que funcionan según nuestras necesidades (Mock Objects).
+ *
+ * Los tests unitarios funcionan en forma aislada sin ningún otro
  * requerimiento de entorno, ya que todas las dependencias y entorno
- * son simulados. 
- * 
- * Para ejecutar este test en NetBeans: 
+ * son simulados.
+ *
+ * Para ejecutar este test en NetBeans:
  *    click derecho > "Test File" (CTRL + F6)
- * 
+ *
  * @author ldeseta
  */
 public class PaisServiceImplTest {
@@ -69,7 +69,7 @@ public class PaisServiceImplTest {
      *
      */
     @Test
-    public void testBuscarPaisPorIdConIdExistente() {
+    public void buscarPaisPorId_ConIdExistente_returnaPaisConEseId() {
         Long id = 1L;
         Pais pais = new Pais();
         pais.setId(id);
@@ -91,7 +91,7 @@ public class PaisServiceImplTest {
      * El metodo debe encontrar un Pais con el id buscado.
      */
     @Test
-    public void buscarPaisPorIdConIdInexistente() {
+    public void buscarPaisPorId_ConIdInexistente_retonraNull() {
         Long id = 1L;
 
         doReturn(null).when(paisDaoMock).buscarPaisPorId(id);
@@ -108,7 +108,7 @@ public class PaisServiceImplTest {
      * al metodo con un null.
      */
     @Test(expected = IllegalArgumentException.class)
-    public void buscarPaisPorIdConIdNull() {
+    public void buscarPaisPorId_ConIdNull_lanzaExcepcion() {
 
         doThrow(new IllegalArgumentException()).when(paisDaoMock).buscarPaisPorId(null);
 
