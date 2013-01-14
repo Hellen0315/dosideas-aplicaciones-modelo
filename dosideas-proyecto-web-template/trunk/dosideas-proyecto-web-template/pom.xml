@@ -1,0 +1,240 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.dosideas</groupId>
+    <artifactId>dosideas-proyecto-web-template</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <packaging>war</packaging>
+
+    <name>dosideas-proyecto-web-template</name>
+
+    <properties>
+        <endorsed.dir>${project.build.directory}/endorsed</endorsed.dir>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.apache.tiles</groupId>
+            <artifactId>tiles-servlet</artifactId>
+            <version>3.0.1</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.tiles</groupId>
+            <artifactId>tiles-jsp</artifactId>
+            <version>3.0.1</version>
+        </dependency>
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
+            <version>1.0.9</version>
+        </dependency>
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>jstl</artifactId>
+            <version>1.2</version>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>jcl-over-slf4j</artifactId>
+            <version>1.7.2</version>
+        </dependency>
+        <dependency>
+            <groupId>net.jawr</groupId>
+            <artifactId>jawr</artifactId>
+            <version>3.3.3</version>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>log4j-over-slf4j</artifactId>
+            <version>1.7.2</version>
+        </dependency>
+        <dependency>
+            <groupId>javax</groupId>
+            <artifactId>javaee-web-api</artifactId>
+            <version>6.0</version>
+            <scope>provided</scope>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+             <plugin>
+                <groupId>com.github.searls</groupId>
+                <artifactId>jasmine-maven-plugin</artifactId>
+                <version>1.2.0.0</version>
+                <extensions>true</extensions>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>test</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+
+                    <!--
+                    where is your javascript - default is src/main/javascript
+                    below is a typical tomcat project
+                    -->
+                    <jsSrcDir>${project.basedir}/src/main/webapp/js</jsSrcDir>
+
+                    <!--
+                    an ordered list of filters to match script source files
+                    -->
+                    <sourceIncludes>
+                        <!--   add the ones you want first  -->
+                        <include>**/jquery-1.8.3.min.js</include>
+                        <include>**/dosideas/*.js</include>
+                        <include>**/dosideas/service/*.js</include>
+                        <include>**/dosideas/service/**/*.js</include>
+                        
+                    </sourceIncludes>
+
+                    <!--
+                    an ordered list of filters to match script source files NOT to be included
+                    -->
+                    <!--                    <sourceExcludes>
+                        <exclude>**/modules/vendor/*.js</exclude>
+                    </sourceExcludes>-->
+
+                    <!--
+                    where are your test script - default is src/test/javascript
+                    below is a typical tomcat project
+                    -->
+                    <jsTestSrcDir>${project.basedir}/src/test/javascript</jsTestSrcDir>
+
+                    <!--
+                    an ordered list of filters to match script spec files NOT to be included
+                    -->
+<!--                    <specIncludes>
+                           add the ones you want first  
+                        <include>${project.basedir}/src/test/resources/jasmine-fake-ajax.js</include>
+                        <include>**/mock-ajax.js</include>
+                        <include>**/mock_responses.js</include>
+                           these are the defaults  
+                        <include>**/*.js</include>
+                        <include>**/*.coffee</include>
+                    </specIncludes>-->
+
+                    <!--
+                    an ordered list of filters to match script source files NOT to be included
+                    -->
+                    <!--                    <specExcludes>
+                        <exclude>**/modules/vendor/*.js</exclude>
+                    </specExcludes>-->
+
+                    
+                    <!--
+                    when true, specs won't be executed during the build
+                    will most likely come in handy when set on the command line, like so:
+                    mvn package -DskipTests
+                    -->
+                    <skipTests>false</skipTests>
+
+                    <!--
+                    the style with which the plugin outputs results during the build
+                    values: progress (terse) or documentation (default)
+                    -->
+                    <format>documentation</format>
+
+                    <!--
+                   the type of browser HtmlUnit emulates when your specs run during the build
+                   possible other value: INTERNET_EXPLORER_6, INTERNET_EXPLORER_7, INTERNET_EXPLORER_8
+                   default: FIREFOX_3
+                   see HtmlUnit documentation to see if any have been added since
+                    -->
+                    <browserVersion>FIREFOX_3_6</browserVersion>
+
+                    <!--
+                    when true, failing specs break the build
+                    -->
+                    <haltOnFailure>false</haltOnFailure>
+
+                    <!--
+                    The template used to generate the specRunner file
+                    The default one is here:
+                    https://github.com/searls/jasmine-maven-plugin/blob/master/src/main/resources/jasmine-templates/SpecRunner.htmltemplate
+                    -->
+                    <!--<customRunnerTemplate>${project.basedir}/src/main/resources/jasmine-templates/SpecRunner.htmltemplate</customRunnerTemplate>-->
+
+                    <!--
+                    a list of to scripts that need to be loaded before any others.
+                    Mostly useful to load remote scripts
+                    -->
+<!--                    <preloadSources>
+                        <source>http://a.com/lib.js</source>
+                    </preloadSources>-->
+
+                    <!--
+                    when spec execution exceeds the timeout (in seconds), the build fails
+                    -->
+                    <timeout>300</timeout>
+
+                    <!--
+                    the name of the generated JUnit XML report
+                    the plugin generates XML of the same brand JUnit does; this is handy for when your CI server is capable of aggregating these XML files (like Jenkins freestyle projects)
+                    -->
+                    <junitXmlReportFileName>TEST-jasmine.xml</junitXmlReportFileName>
+
+                    <!--
+                    True to increase HtmlUnit output and attempt reporting on specs even if a timeout occurred.
+                    -->
+                    <debug>false</debug>
+
+                    <!--
+                    Source encoding
+                    -->
+                    <sourceEncoding>utf-8</sourceEncoding>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>2.3.2</version>
+                <configuration>
+                    <source>1.6</source>
+                    <target>1.6</target>
+                    <compilerArguments>
+                        <endorseddirs>${endorsed.dir}</endorseddirs>
+                    </compilerArguments>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-war-plugin</artifactId>
+                <version>2.1.1</version>
+                <configuration>
+                    <failOnMissingWebXml>false</failOnMissingWebXml>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-dependency-plugin</artifactId>
+                <version>2.1</version>
+                <executions>
+                    <execution>
+                        <phase>validate</phase>
+                        <goals>
+                            <goal>copy</goal>
+                        </goals>
+                        <configuration>
+                            <outputDirectory>${endorsed.dir}</outputDirectory>
+                            <silent>true</silent>
+                            <artifactItems>
+                                <artifactItem>
+                                    <groupId>javax</groupId>
+                                    <artifactId>javaee-endorsed-api</artifactId>
+                                    <version>6.0</version>
+                                    <type>jar</type>
+                                </artifactItem>
+                            </artifactItems>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>
