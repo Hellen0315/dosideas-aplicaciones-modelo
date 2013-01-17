@@ -62,6 +62,27 @@
     <build>
         <plugins>
              
+             
+            <plugin>
+                <groupId>ro.isdc.wro4j</groupId>
+                <artifactId>wro4j-maven-plugin</artifactId>
+                <version>1.6.2</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>jshint</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <failNever>true</failNever>
+                    <options>devel,evil,noarg</options>
+                </configuration>
+            </plugin>
+
+             
+             
+             
             <plugin>
                 <groupId>com.github.timurstrekalov</groupId>
                 <artifactId>saga-maven-plugin</artifactId>
