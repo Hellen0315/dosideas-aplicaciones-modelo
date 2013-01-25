@@ -5,14 +5,12 @@
 package com.dosideas.testsimplexmlframework.domain;
 
 import org.simpleframework.xml.Element;
-import org.simpleframework.xml.Root;
 
 /**
- * Entidad de dominio que vamos a des/serializar.
+ * Entidad de dominio que vamos a des/serializar. Este es el caso de ejemplo más sencillo.
  *
  * @author Nahuel Barrios.
  */
-@Root
 public class Persona {
 
     @Element
@@ -25,12 +23,12 @@ public class Persona {
         return identidad;
     }
 
-    public int getEdad() {
-        return edad;
-    }
-
     public void setIdentidad(String identidad) {
         this.identidad = identidad;
+    }
+
+    public int getEdad() {
+        return edad;
     }
 
     public void setEdad(int edad) {

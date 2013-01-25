@@ -11,7 +11,7 @@ import com.dosideas.testsimplexmlframework.domain.Persona;
  *
  * @author Nahuel Barrios.
  */
-public interface PersonaService {
+public interface XmlService {
 
     /**
      * Crea un XML en formato String a partir de la {@code persona} que le pasamos como parámetro.
@@ -24,7 +24,7 @@ public interface PersonaService {
      * @throws Exception
      *         Cuando ocurra algún error al serializar el objeto.
      */
-    String obtenerXml(Persona persona) throws Exception;
+    <T> String obtenerXml(T persona) throws Exception;
 
     /**
      * Crea una entidad Persona a partir del String en formato XML que le pasamos.
@@ -37,6 +37,6 @@ public interface PersonaService {
      * @throws Exception
      *         Cuando ocurra algún error al deserializar el objeto.
      */
-    Persona crear(String xml) throws Exception;
+    <T> T crear(Class<T> clase, String xml) throws Exception;
 
 }
