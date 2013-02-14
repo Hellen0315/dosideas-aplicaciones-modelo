@@ -4,8 +4,18 @@
 -->
 <configuration scan="true" scanPeriod="2 seconds">
     <appender name="console" class="ch.qos.logback.core.ConsoleAppender">
+<!--        <filter class="ch.qos.logback.core.filter.EvaluatorFilter">      
+            <evaluator>
+                <expression>
+                    String usuario = (String) mdc.get("usuario");
+                    return usuario.equals("zim") || usuario.equals("gir");
+                </expression>
+            </evaluator>
+            <OnMismatch>DENY</OnMismatch>
+            <OnMatch>ACCEPT</OnMatch>
+        </filter>        -->
         <encoder>
-            <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{50} - [%mdc{username}] - %msg%n</pattern>
+            <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{50} - [%mdc{usuario}] - %msg%n</pattern>
         </encoder>
     </appender>
 
