@@ -1,0 +1,1 @@
+Un grupo de aplicaciones modelo que sirven como referencia para usar varias tecnologías web, especialmente orientado a Java, Spring, Hibernate y servicios REST.
